@@ -59,3 +59,20 @@ not theoretical.
 Incident reports are welcome. If an AI tool failed in your project in a way not
 covered by the existing contract, open an issue with documentation. The contract
 evolves from evidence, not from opinion.
+
+## License
+
+Copyright (c) 2026 Wendall Cada.
+Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+You are free to copy, adapt, and redistribute this specification. If you publish
+a modified version, your version must also be CC BY-SA 4.0.
+
+The ShareAlike requirement applies to this specification document. It does not
+affect the license of any software project that adopts `AI_CONDUCT.md`. Your
+project's code remains under its own license. Only a modified redistribution of
+this specification itself carries the ShareAlike obligation.
+
+The "viral license" framing — the claim that copyleft contaminates everything
+adjacent to it — is a distortion that serves proprietary interests. See
+`principles/license-integrity.md` for the full analysis.

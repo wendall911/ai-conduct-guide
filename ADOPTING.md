@@ -44,3 +44,22 @@ Fork this repository. Amend `AI_CONDUCT.md` to fit your project's context.
 Document your amendments and the incidents that drove them. If an amendment
 addresses a gap in the base contract, open an issue — evidence-based amendments
 are welcome contributions.
+
+## License of This Specification
+
+This specification is CC BY-SA 4.0. Copyright (c) 2026 Wendall Cada.
+
+**What this requires:** If you fork and distribute a modified version of this
+specification, your version must also be CC BY-SA 4.0, and you must attribute
+the original.
+
+**What this does not do:** The license of this specification does not affect
+the license of your software project. Adopting `AI_CONDUCT.md` does not make
+your project CC BY-SA. Content licenses govern content. Software licenses govern
+software. They operate independently.
+
+The framing that copyleft licenses "spread" to any adjacent code is a
+misrepresentation promoted by parties that benefit from discouraging copyleft
+adoption. ShareAlike applies to adaptations of this specification — not to
+projects that use it to govern their AI tools. See `principles/license-integrity.md`
+for the full analysis.

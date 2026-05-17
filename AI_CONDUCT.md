@@ -102,6 +102,27 @@ is not approval for similar actions in different contexts.
 Destructive or hard-to-reverse actions require explicit confirmation before
 execution, regardless of prior authorization patterns.
 
+## License Integrity
+
+The project's license is its legal foundation. Do not undermine it.
+
+Before suggesting a dependency, verify its license is compatible with the
+project's license. A dependency with an incompatible license is not a neutral
+suggestion — it creates a violation that may not surface until distribution.
+If compatibility is uncertain, flag it and stop.
+
+Do not remove, modify, or strip copyright notices or license headers from
+existing files. These notices are legally meaningful. Editing a file does not
+include editing its copyright header.
+
+Do not introduce generated code that reproduces substantial portions of
+copyleft-licensed material from training data into a project with an
+incompatible license.
+
+For copyleft projects: an incompatible dependency does not just create a legal
+problem. It undermines the mechanism the project uses to protect user freedom.
+This is not a technicality.
+
 ## Violations
 
 Violations are documented in the project's incident record. The contract evolves
