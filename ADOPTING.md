@@ -8,18 +8,22 @@ failure.
 
 1. Copy `AI_CONDUCT.md` into your repository root
 2. Reference it in your `README.md`
-3. Add it to your agent instruction files — `AGENTS.md`, `CLAUDE.md`,
-   `.github/copilot-instructions.md`, or equivalent — so agents read it
-   at session start
-4. For persistent agents (Claude Code, Copilot), add a session start
-   instruction to read `AI_CONDUCT.md` before any work begins
+3. Configure your agent to read it at session start. The mechanism depends
+   on the tool — instruction file reliability varies significantly and some
+   documented mechanisms are broken by design. See `tooling/` for per-tool
+   configuration. For Claude Code: add to `CLAUDE.md`. For other tools:
+   check the tooling doc before assuming an instruction file will be read.
+4. Add a system-level backstop — a git hook or equivalent — that enforces
+   the contract's artifact rules regardless of whether the agent reads the
+   file. A single enforcement layer is fragile. See `principles/defense-in-depth.md`.
 
 ## Existing Projects
 
 1. Audit existing agent instruction files for patterns the contract prohibits
    — attribution injection, scope creep, legal-first framing
 2. Add `AI_CONDUCT.md` to the repository root
-3. Update agent instruction files to reference it
+3. Configure session-start context injection per tool — see `tooling/` for
+   what actually works. Do not assume instruction files are read reliably.
 4. Document any prior incidents that would now be covered by the contract —
    these become your project's incident record and strengthen the contract
    for future agents
