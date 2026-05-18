@@ -35,3 +35,6 @@ https://github.com/wendall911/wendall911/blob/main/AI_TOOL_WALL_OF_SHAME.md
 - [2026-05-18](incidents/2026-05-18-incomplete-source-material.md) — Incomplete
   source material treated as sufficient for analysis; produced incomplete source
   material clause
+- [2026-05-18](incidents/2026-05-18-instruction-mechanism-pattern.md) — Instruction
+  file mechanism broken or absent across Microsoft-hosted tools and Cursor;
+  produced tooling doc corrections and validates Defense in Depth clause
