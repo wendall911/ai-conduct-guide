@@ -2,14 +2,12 @@
 
 A behavioral contract for AI tools participating in open source projects.
 
-## What This Is
+## Overview
 
-`CODE_OF_CONDUCT.md` establishes how humans treat each other in a project.
-`AGENTS.md` tells AI tools how to build the project.
-`AI_CONDUCT.md` establishes how AI tools must conduct themselves while doing it.
+Just like how placing a `CODE_OF_CONDUCT.md` in the top level of your project establishes how humans treat each other in a project, `AI_CONDUCT.md` is a specification that sets in place guidelines for how AI tools must treat your project. Currently, AI tools are trained using RLHF (Reinforcement Learning from Human Feedback), which weights responses toward answers that satisfy the majority of users rather than the correct ones. This enforces that "correct" means Epistemic Honesty as it relates to software projects. The goal is to minimize hedging, editorializing, hallucinating, or any other "AI is bad" behavior from negatively affecting your project **before** it happens, not after.
 
 This repository is the specification. Projects adopt it by dropping `AI_CONDUCT.md`
-into their repository as a condition of AI tool participation.
+into their repository as a directive for AI tools that may be used within the project. This ensures that users who might use AI tooling for pull requests or other project contributions are provided guardrails for how these tools will behave when used. And most importantly, what is and what is not allowed. This is intended to protect project code from copyright violations and other problematic behavior, allowing the tools to be used effectively.
 
 ## The Problem It Solves
 
