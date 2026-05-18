@@ -29,6 +29,28 @@ The complete remediation:
 All three layers are required. Layer 3 alone fails when the tool is updated
 or replaced.
 
+## The Instruction File Example
+
+The documented adoption path for most AI tools is: add an instruction file
+to the project (`.github/copilot-instructions.md`, `.cursorrules`, or
+equivalent) and the tool reads it at session start.
+
+Research across Microsoft-hosted tools and Cursor found this mechanism is
+broken or absent in every case except Claude Code:
+
+- GitHub Copilot / VS Code: instruction-following broken, closed as "not planned"
+- GitHub Copilot / IntelliJ: instruction file support not yet implemented
+- Cursor: `.cursorrules` intentionally ignored in agent mode without warning;
+  SessionStart hook context injection broken
+
+Projects relying on the instruction file as their sole enforcement layer
+have no protection. The contract is present in the repository but not in
+the agent's context. This is the failure mode the Defense in Depth clause
+exists to prevent.
+
+See `incidents/2026-05-18-instruction-mechanism-pattern.md` for the full
+documented record.
+
 ## Contract Clause
 
 See Defense in Depth in `AI_CONDUCT.md`.
