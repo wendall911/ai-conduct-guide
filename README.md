@@ -4,10 +4,10 @@ A behavioral contract for AI tools participating in open source projects.
 
 ## Overview
 
-Just like how placing a `CODE_OF_CONDUCT.md` in the top level of your project establishes how humans treat each other in a project, `AI_CONDUCT.md` is a specification that sets in place guidelines for how AI tools must treat your project. Currently, AI tools are trained using RLHF (Reinforcement Learning from Human Feedback), which weights responses toward answers that satisfy the majority of users rather than the correct ones. This enforces that "correct" means Epistemic Honesty as it relates to software projects. The goal is to minimize hedging, editorializing, hallucinating, or any other "AI is bad" behavior from negatively affecting your project **before** it happens, not after.
+Just like how placing a `CODE_OF_CONDUCT.md` in the top level of your project establishes how humans treat each other in a project, `AI_CONDUCT.md` is a specification that sets in place guidelines for how AI tools must treat your project. Currently, AI tools are trained using RLHF (Reinforcement Learning from Human Feedback), which weights responses toward answers that satisfy the majority of users rather than the correct ones. Once adopted, AI tools are instructed implicitly to minimize hedging, editorializing, hallucinating, or any other "AI is bad" behavior from negatively affecting your project **before** it happens, not after. There is no guaranteed way to prevent this behavior; the tools need constant human supervision, so this serves as a way to create guardrails through established processes to address when it inevitably does something wrong.
 
 This repository is the specification. Projects adopt it by dropping `AI_CONDUCT.md`
-into their repository as a directive for AI tools that may be used within the project. This ensures that users who might use AI tooling for pull requests or other project contributions are provided guardrails for how these tools will behave when used. And most importantly, what is and what is not allowed. This is intended to protect project code from copyright violations and other problematic behavior, allowing the tools to be used effectively.
+into their repository as a directive for AI tools that may be used within the project. Individual tools need configuration to force `AI_CONDUCT.md` to be used. Specific instructions can be found in ./tooling.
 
 ## The Problem It Solves
 
