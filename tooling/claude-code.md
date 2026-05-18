@@ -9,11 +9,25 @@ session context from `CLAUDE.md` (global and project-level), `AGENTS.md`, and
 ## Known Failures
 
 - Injects `Co-Authored-By: Claude <noreply@anthropic.com>` into commit messages
-  by default. See INCIDENTS.md.
+  by default. See `incidents/`.
 - Defaults to worst-case team process assumptions (corporate workflow patterns)
   unless explicitly overridden by session context.
 - Session resumption from context summary does not preserve all behavioral
   constraints without explicit re-reading of conduct documents.
+
+## Observable Indicators
+
+- Commit messages contain `Co-Authored-By: Claude` or `🤖 Generated with` —
+  Project Artifacts clause failure. Verify `gitAttribution: false` is set and
+  the global hook is in place.
+- Tool recommends a workflow pattern (branching strategy, PR process, test
+  structure) without classifying it as (c) common industry pattern — Epistemic
+  Honesty clause failure.
+- After session resumption from a context summary, behavioral constraints from
+  prior context are not maintained and the tool proceeds without re-reading
+  conduct documents — session start failure.
+- Tool performs work beyond the scope of what was requested, or takes actions
+  in adjacent files not mentioned — Scope and Authorization clause failure.
 
 ## Configuration
 
@@ -51,8 +65,22 @@ Add to global `~/.claude/CLAUDE.md`:
 At session start, read AI_CONDUCT.md before any other work.
 ```
 
-## Evaluation
+## Recommendation
 
-Instruction compliance is enforced via `PreToolUse` hooks — hard blocking is
-technically possible and implemented. Compliance is not at-will by design.
-This is a meaningful distinction from GitHub Copilot.
+Appropriate for work governed by `AI_CONDUCT.md` when the configuration in
+this document is applied. Hard enforcement via `PreToolUse` hooks is available
+— compliance is not at-will by design. This is a meaningful distinction from
+tools where instruction compliance is non-deterministic.
+
+Configuration is a prerequisite, not an enhancement. A Claude Code session
+without the attribution settings, global hook, and session start instruction
+is not operating under the contract regardless of whether `AI_CONDUCT.md` is
+present in the repository.
+
+## Fallback
+
+Full configuration capability exists. If hooks or settings are not in place,
+the fallback is manual review of every commit message and every action before
+accepting. That is workable but removes the enforcement guarantee. Apply the
+configuration in this document — it is the correct path, not an optional
+hardening step.
