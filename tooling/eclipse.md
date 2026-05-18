@@ -25,18 +25,13 @@ No hooks system is available for the Eclipse Copilot plugin.
 
 ## Amazon Q Developer
 
-Uses `.amazonq/rules/` directory (Markdown files). Generally available as of
-June 2025. Documented as automatically included in context.
+**Deprecated.** New signups closed May 15, 2026. IDE plugins reach end of support
+April 30, 2027. The CLI was archived November 2025. The successor is Kiro —
+see `tooling/kiro.md` when available.
 
-Amazon Q's instruction mechanism has not been documented as broken in the way
-VS Code Copilot's has. It is a newer implementation and has not accumulated
-the same failure record. That said, it is relatively new and has not been
-evaluated under the same conditions.
-
-No hooks system is available for Amazon Q Developer in Eclipse.
-
-Amazon Q Developer is a distinct tool from GitHub Copilot and warrants separate
-evaluation. See the Contributing section for how to file evaluation findings.
+See `tooling/amazonq.md` for the full evaluation. Summary: rules are explicitly
+documented as best-effort, no global rules support, and the tool is in end-of-life.
+Do not adopt for new projects.
 
 ## Known Failures
 
@@ -56,17 +51,10 @@ For GitHub Copilot:
   in `.github/copilot-instructions.md` — instruction file failure. Verify the
   file is present and test whether it is being read.
 
-For Amazon Q Developer:
-- Tool proceeds without acknowledging rules in `.amazonq/rules/` — instruction
-  file failure. Verify path and format.
-
 ## Configuration for Conduct Compliance
 
 **GitHub Copilot:** Add `AI_CONDUCT.md` reference to
 `.github/copilot-instructions.md`. Verify it is being read before relying on it.
-
-**Amazon Q Developer:** Add `AI_CONDUCT.md` content or reference to
-`.amazonq/rules/conduct.md`.
 
 For governed work requiring reliable enforcement: run Claude Code CLI in a
 terminal alongside Eclipse. Claude Code's hook system operates independently
@@ -76,7 +64,7 @@ terminal.
 ## Session Start
 
 No hooks system available. File-based injection is the only mechanism and
-reliability is unverified for Copilot, new for Amazon Q.
+reliability is unverified for Copilot.
 
 Manual paste fallback for any session where instruction file injection cannot
 be confirmed:
@@ -91,9 +79,7 @@ AI_CONDUCT.md applies this session. Read it before we start.
 the same skepticism as VS Code Copilot until independently tested. No hooks
 available. Use with manual oversight.
 
-**Amazon Q Developer:** Instruction files documented as functional. Not yet
-evaluated under adversarial conditions. Worth evaluating further — it does not
-share the broken-by-design history of Microsoft's Copilot instruction mechanism.
+**Amazon Q Developer:** Deprecated. See `tooling/amazonq.md`. Do not adopt.
 
 For production work under this contract: Claude Code CLI alongside Eclipse
 is the reliable path. Eclipse handles JVM-specific IDE features; Claude Code
