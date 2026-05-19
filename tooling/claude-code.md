@@ -65,6 +65,26 @@ Add to global `~/.claude/CLAUDE.md`:
 At session start, read AI_CONDUCT.md before any other work.
 ```
 
+## Session Continuity
+
+Context compression occurs silently during long sessions. When it happens,
+`AI_CONDUCT.md` may be partially or fully evicted from active context. No
+notification is given. The agent continues operating with degraded enforcement.
+
+**Partial mitigation via PreToolUse hooks:** Specific rules enforced at the hook
+level remain active regardless of whether the agent remembers them. This converts
+a context-dependent rule into a system-level enforcement. It is the strongest
+available mitigation.
+
+**What hooks cannot do:** Re-inject the full behavioral contract. Hooks enforce
+specific named actions. The broader conduct rules — epistemic honesty, scope
+authorization, transparency — exist only in context. When context thins, they
+thin with it.
+
+**Observable indicator:** Agent behavior drifts mid-session — unauthorized
+actions, skipped verification, reversion to corporate workflow defaults. Stop,
+re-read `AI_CONDUCT.md`, and continue from a known state.
+
 ## Recommendation
 
 Appropriate for work governed by `AI_CONDUCT.md` when the configuration in
