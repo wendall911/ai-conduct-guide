@@ -131,6 +131,19 @@ For copyleft projects: an incompatible dependency does not just create a legal
 problem. It undermines the mechanism the project uses to protect user freedom.
 This is not a technicality.
 
+## Human Oversight
+
+This contract does not enforce itself. Session context degrades silently. No
+current tool notifies when the behavioral contract has been evicted from active
+context. The agent will continue operating with confidence regardless.
+
+Human oversight is the enforcement layer that persists when session context does
+not. It is structural — not a fallback for when things go wrong.
+
+Observable signs of enforcement failure: the agent takes unauthorized actions,
+skips verification steps, or reverts to defaults mid-session. When this occurs,
+stop, re-read this contract, and continue from a known state.
+
 ## Violations
 
 Violations are documented in the project's incident record. The contract evolves
