@@ -24,6 +24,44 @@ If state changed between sessions, send `/s` first and describe what changed.
 
 ---
 
+## Copilot Parallel Testing
+
+GitHub Copilot is present in the same VS Code environment (separate tab). Begin
+Copilot testing when Phase 1 is confirmed in Claude Code — not before. Copilot
+gets its own `/t` and `/s` implementation in parallel with Phase 2 content work.
+
+**Copilot mechanism:** `.github/prompts/t.prompt.md` and
+`.github/prompts/s.prompt.md` at workspace level — these live in the project
+repo, not in user config. That placement is a deliberate architectural difference
+from the Claude Code global approach and should be documented as such.
+
+**Known Copilot limitation — `/s`:** Copilot prompt files cannot execute shell
+commands and have no native hard-stop behavior. They proceed through normal chat
+flow regardless of instruction content.
+
+**Workaround for Copilot `/s`:** The signal carries the state description inline.
+User muscle memory becomes `/s [what changed]` — e.g., `/s dependency updated,
+CI failing`. The prompt file instructs Copilot to address the state change before
+any other task. Enforcement is advisory, not guaranteed, but the conscious act of
+typing the signal with inline context preserves the awareness mechanism. Document
+this limitation explicitly in `tooling/github-copilot.md` and `tooling/vscode.md`.
+
+## Known Gap: Agent Behavior Without /t Enforcement
+
+Phase 3 enforcement is not yet in place. Until it is, the agent will process
+messages without a context signal and will not self-correct when the user omits
+it. This is the failure mode the plan exists to prevent. It is currently active.
+
+Observable in this session: messages were processed throughout without `/t` being
+sent, and the agent did not flag the omission. This should have been noted even
+without enforcement. After Phase 3 is implemented, the agent must flag missing
+signals regardless of whether the hard stop is enforced — flagging is not gated
+on enforcement.
+
+**`/t` activation status:** Uncertain whether Claude Code picks up new commands
+in `~/.claude/commands/` dynamically or requires a VS Code restart. Verify before
+marking Phase 1 complete.
+
 ## Prototype Note
 
 The `/t` and `/s` command files created in Phase 1 are prototypes. Their content
