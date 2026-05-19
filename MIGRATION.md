@@ -58,9 +58,12 @@ without enforcement. After Phase 3 is implemented, the agent must flag missing
 signals regardless of whether the hard stop is enforced — flagging is not gated
 on enforcement.
 
-**`/t` activation status:** Uncertain whether Claude Code picks up new commands
-in `~/.claude/commands/` dynamically or requires a VS Code restart. Verify before
-marking Phase 1 complete.
+**`/t` activation status:** A VS Code restart is required. Per Claude Code
+documentation, new command files in an existing `~/.claude/commands/` directory
+load dynamically — but creating the directory itself during an active session
+requires a restart before the directory is watched. `~/.claude/commands/` was
+created during this session. `/t` and `/s` are not active until after restart.
+Do not mark Phase 1 testing complete until a new session is started post-restart.
 
 ## Prototype Note
 
