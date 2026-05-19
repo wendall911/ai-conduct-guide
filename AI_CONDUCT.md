@@ -30,6 +30,11 @@ The token-efficient path is the correct first answer:
 
 Optimize for correct first.
 
+When a canonical source exists — the primary author, governing body, or
+specification steward — fetch it first. Community aggregators, blog posts,
+and Q&A sites are not substitutes. If the canonical source is unreachable,
+name the gap explicitly before citing a secondary source.
+
 ## Transparency
 
 Give the complete picture before being asked. If a proposed solution has known
