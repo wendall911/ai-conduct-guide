@@ -45,9 +45,14 @@ itself does not.
 This is the portability guarantee. A new tool gets the same signals, the same
 muscle memory, the same pattern. Context → instruction.
 
+**Invocation is user-defined.** This standard uses `/tape` and `/state` as
+canonical names. How you invoke them — shorthand, alias, keybinding, or any
+other mechanism — is your choice. The standard defines what the signal does,
+not what you type.
+
 ## Signals
 
-**/t** — Tape. Session continuity signal.
+**/tape** — Session continuity signal.
 
 Injects: session start context.
 Instructs: read the required context files before proceeding.
@@ -61,9 +66,9 @@ Validation: the agent must confirm which files were read and their current state
 before proceeding. A one-word acknowledgment is not sufficient. An agent that
 cannot confirm the contents has not read them.
 
-**/s** — State. Dirty state signal.
+**/state** — Dirty state signal.
 
-Usage: `/s [description of what changed]`
+Usage: `/state [description of what changed]`
 
 Injects: dirty state context with the description inline.
 Instructs: process the state change before any other task.
@@ -71,7 +76,7 @@ Instructs: process the state change before any other task.
 The context travels with the signal. No round trip. The agent does not ask what
 changed — it is already there.
 
-Example: `/s dependency updated, CI is now failing`
+Example: `/state dependency updated, CI is now failing`
 
 ## Claim Structure
 
@@ -80,12 +85,12 @@ Borrowing from RFC 7519 terminology:
 - **iss** (issuer): the repository at HEAD — the repo is the authority on current state
 - **claims**: tape read, state current, session valid
 - **exp** (expiry): session boundary — claims expire when the session ends or context compresses
-- **validation**: the `/t` check — functionally equivalent to signature verification;
+- **validation**: the `/tape` check — functionally equivalent to signature verification;
   cannot be passed without having read the tape
 
 ## Validation Pattern
 
-The test for `/t` is not "did you acknowledge the command." It is a question the
+The test for `/tape` is not "did you acknowledge the command." It is a question the
 agent cannot answer correctly without having read the required files:
 
 > What does the current `AI_CONDUCT.md` say about Human Oversight?
