@@ -4,9 +4,15 @@ This is temporary scaffolding. It exists to preserve context across session
 boundaries during a large, phased change. Remove it when Phase 4 is complete
 and the migration is verified working.
 
-**To resume work:** Read this file. Send `/t` to verify the agent has read the
-tape. Confirm which phase is active and what is checked off before proceeding.
-If state changed between sessions, send `/s` first and describe what changed.
+**To resume work:** Read this file. Send `/tape` (or your shorthand) to verify
+the agent has read the tape. Confirm which phase is active and what is checked
+off before proceeding. If state changed between sessions, send `/state` first
+and describe what changed.
+
+**Shorthand note:** `/t` and `/s` appear throughout this document as Wendall's
+shorthand for `/tape` and `/state` — the canonical signal names per
+`principles/session-signal-standard.md`. Invocation is user-defined; the
+standard does not prescribe it.
 
 ---
 
@@ -55,12 +61,9 @@ without enforcement. After Phase 3 is implemented, the agent must flag missing
 signals regardless of whether the hard stop is enforced — flagging is not gated
 on enforcement.
 
-**`/t` activation status:** A VS Code restart is required. Per Claude Code
-documentation, new command files in an existing `~/.claude/commands/` directory
-load dynamically — but creating the directory itself during an active session
-requires a restart before the directory is watched. `~/.claude/commands/` was
-created during this session. `/t` and `/s` are not active until after restart.
-Do not mark Phase 1 testing complete until a new session is started post-restart.
+**Signal activation status:** VS Code restart completed. `/tape` and `/state`
+(as `/t` and `/s`) confirmed active in Claude Code this session. Copilot prompt
+files (`.github/prompts/t.prompt.md`, `s.prompt.md`) created but not yet tested.
 
 ## Prototype Note
 
@@ -72,25 +75,40 @@ the migration is complete, that sequence changes — guardrails are inside
 optional. The command content must be updated at the end of Phase 4 to match the
 target state. Do not treat the Phase 1 command files as final.
 
+## Completed Outside Migration Phases
+
+- **Versioning:** `v0.1.0` tagged at `0d8fcae` (pre-migration stable point).
+  Version declared in `AI_CONDUCT.md`. GPL-patterned adoption language ("version
+  or later") added to `ADOPTING.md`. Steward: Wendall Cada.
+- **Signal polyfill:** `.github/prompts/t.prompt.md` and `s.prompt.md` created
+  for Copilot. Session Signals section added to `tooling/vscode.md` with
+  universal polyfill framing.
+- **Canonical signal names:** `/tape` and `/state` established in
+  `principles/session-signal-standard.md`. Invocation is user-defined.
+
 ## Gate Condition
 
-**Phase 3 cannot begin until `/t` and `/s` are tested and confirmed working in
-VS Code.** Making `/t` and `/s` hard requirements before the user has a working
-mechanism to send them would lock out all agent interaction. This is the critical
-path constraint. Everything else is sequenced around it.
+**Phase 3 cannot begin until `/tape` and `/state` are tested and confirmed
+working in all tools in active use.** Making them hard requirements before the
+user has a working mechanism to send them would lock out all agent interaction.
+This is the critical path constraint. Everything else is sequenced around it.
 
 ---
 
 ## Phase 1 — Unblocking Prerequisite
 *Complete this before anything in Phase 3.*
 
-- [x] Define `/t` VS Code snippet in `tooling/vscode.md` — exact expansion text
-- [x] Define `/s` VS Code snippet in `tooling/vscode.md` — exact expansion text,
-      equal weight to `/t`
-- [ ] Test `/t` in an active session: agent confirms tape read before proceeding
-- [ ] Test `/s` in an active session: agent stops completely, asks what changed,
-      does not infer, does not continue from prior context
-- [ ] Both confirmed working before opening Phase 3
+- [x] Define `/tape` signal in `tooling/vscode.md` — expansion text, polyfill model documented
+- [x] Define `/state` signal in `tooling/vscode.md` — equal weight to `/tape`
+- [ ] Test `/tape` signal in each tool in active use: agent confirms tape read before
+      proceeding — Claude Code: confirmed this session. Copilot: untested (prompt files in place).
+- [ ] Test `/state` signal in each tool in active use: agent processes state change
+      before any other task — Claude Code: confirmed this session. Copilot: untested.
+- [ ] Both confirmed working in all active tools before opening Phase 3
+- [ ] Add signal status section to `tooling/claude-code.md` — confirmed signals, activation method
+- [ ] Add signal status section to `tooling/github-copilot.md` — untested, prompt files in place
+- [ ] Update `tooling/vscode.md` Session Signals section to note `/t`/`/s` are shorthand
+      for `/tape`/`/state`
 
 ---
 
@@ -109,10 +127,12 @@ path constraint. Everything else is sequenced around it.
       stated. Layer 1: user-scoped contract. Layer 2: session signals (`/t`, `/s`).
       Layer 3: repo-level context (git log default, `project-context.md` optional).
       Remove repo boundary assumption — the contract is user-scoped.
-- [ ] Update `principles/session-signal-standard.md`: `/s` given equal weight
-      to `/t` throughout. `/t` = contract knowledge. `/s` = world state. Different
-      trigger conditions, equal requirement. `/s` fires more frequently than `/t`
-      in practice — mid-session, between sessions, any time external state shifts.
+- [ ] Update `principles/session-signal-standard.md`: `/state` given equal weight
+      to `/tape` throughout (partial — canonical names `/tape`/`/state` established,
+      equal weight prose update still pending). `/tape` = contract knowledge.
+      `/state` = world state. Different trigger conditions, equal requirement.
+      `/state` fires more frequently than `/tape` in practice — mid-session,
+      between sessions, any time external state shifts.
 - [ ] Scope `project-context.md` as explicitly optional repo-level context. Git
       log is the default. `project-context.md` exists for projects with complex
       in-flight state not legible from commits. Note: this project does not need
@@ -225,7 +245,7 @@ VsCodeVim — see `tooling/vscode.md`).
 
 Delete this file when:
 - All Phase 1–4 checkboxes are complete
-- `/t` and `/s` are confirmed working in VS Code with keybindings
+- `/tape` and `/state` are confirmed working in all tools in active use
 - `session-signal-standard.md` reflects hard requirements
 - `AI_CONDUCT.md` contains the enforcement section
 - `ADOPTING.md` reflects the tiered adoption path
