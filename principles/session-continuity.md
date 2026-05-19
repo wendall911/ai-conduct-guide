@@ -26,7 +26,7 @@ The gap is that the agent does not reliably watch the tape before starting work.
 
 ## The Process Fix
 
-The correct mental model is RFC 7519 (JWT): every request carries its own context
+The correct mental model is [RFC 7519 (JWT)](https://datatracker.ietf.org/doc/html/rfc7519): every request carries its own context
 claims. The agent validates them on receipt and proceeds. No session storage. No
 memory layer. State is carried by the sender, not held by the receiver.
 

@@ -29,7 +29,7 @@ creates the illusion of conversation — the underlying model is stateless by de
 This standard makes that model explicit and gives the user a minimal, tool-agnostic
 way to manage it correctly.
 
-The analogy is RFC 7519 (JWT): a compact, self-contained token that carries its
+The analogy is [RFC 7519 (JWT)](https://datatracker.ietf.org/doc/html/rfc7519): a compact, self-contained token that carries its
 own claims with every request. The agent validates the claims on receipt and
 proceeds. No session storage. No memory layer. State is carried by the sender,
 not held by the receiver.
