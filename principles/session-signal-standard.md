@@ -34,13 +34,23 @@ own claims with every request. The agent validates the claims on receipt and
 proceeds. No session storage. No memory layer. State is carried by the sender,
 not held by the receiver.
 
+## Signal Model
+
+Both signals follow the same model: context injection with an instruction set.
+The signal carries its own context. The agent receives it and executes the
+instruction. No tool-specific implementation required. Any tool that accepts
+text input supports this model — execution fidelity varies by tool, the signal
+itself does not.
+
+This is the portability guarantee. A new tool gets the same signals, the same
+muscle memory, the same pattern. Context → instruction.
+
 ## Signals
 
-**/t** — Tape. Session continuity check.
+**/t** — Tape. Session continuity signal.
 
-Asserts: I may be starting a new session. Before reading further, confirm you
-have read the required context files this session. If you have not, read them
-now before proceeding.
+Injects: session start context.
+Instructs: read the required context files before proceeding.
 
 Required reading, in order:
 1. `.github/guardrails.md`
@@ -51,20 +61,17 @@ Validation: the agent must confirm which files were read and their current state
 before proceeding. A one-word acknowledgment is not sufficient. An agent that
 cannot confirm the contents has not read them.
 
-**/s** — State. External state change notification.
+**/s** — State. Dirty state signal.
 
 Usage: `/s [description of what changed]`
 
-Asserts: Something changed outside this session. The description is provided
-inline — the context travels with the signal. The agent processes the state
-change before any other task. No round trip. No asking what changed — it is
-already there.
+Injects: dirty state context with the description inline.
+Instructs: process the state change before any other task.
+
+The context travels with the signal. No round trip. The agent does not ask what
+changed — it is already there.
 
 Example: `/s dependency updated, CI is now failing`
-
-The inline form is the universal pattern. It works identically across all tools,
-including those that cannot enforce a hard stop. The pattern does not degrade
-to accommodate weak tooling — the tooling accommodates the pattern.
 
 ## Claim Structure
 
