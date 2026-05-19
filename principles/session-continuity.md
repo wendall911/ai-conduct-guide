@@ -9,6 +9,10 @@ or what you agreed to yesterday.
 
 This is not a technology problem. It is a process problem.
 
+More precisely: the chat interface creates the illusion of conversation. The
+underlying model is a stateless API. Every request is independent. Treating it
+as anything else produces the failures documented in `incidents/`.
+
 ## The 50 First Dates Pattern
 
 In the film, the solution is not a medical procedure or new technology. It is a
@@ -22,16 +26,22 @@ The gap is that the agent does not reliably watch the tape before starting work.
 
 ## The Process Fix
 
-A text prefix, injected before every message, that tells the agent: if you have
-not read the tape this session, stop and do that before reading further.
+The correct mental model is RFC 7519 (JWT): every request carries its own context
+claims. The agent validates them on receipt and proceeds. No session storage. No
+memory layer. State is carried by the sender, not held by the receiver.
+
+In practice: a short signal prefixed to each message. Two signals cover the common
+cases. See `principles/session-signal-standard.md` for the specification.
+
+**/t** — session continuity check. Have you read the tape this session? If not,
+read it now before proceeding.
+
+**/s** — state change. Something changed outside this session. Stop and ask what
+before proceeding.
 
 Any tool that accepts text input supports this. No hooks required. No memory
-infrastructure. No MCP servers. A snippet or template expansion in any editor,
-chat interface, or IDE inserts the prefix automatically. The user does not have
-to remember — the prefix fires on every message.
-
-The agent either reads the tape at session start, or reads it on the first
-message when the prefix fires. Either way it gets watched before work proceeds.
+infrastructure. A snippet or keyboard shortcut in any editor fires the prefix
+automatically. The user does not have to remember.
 
 ## What the Tape Contains
 
@@ -56,9 +66,9 @@ place for it given the current state of these tools.
 
 ## Implementation
 
-Per-tool implementation details belong in each tool's documentation under
-`tooling/`. The mechanism varies — snippet expansion, system prompt prefix,
-keyboard shortcut — but the pattern is the same across all tools.
+The signal specification is in `principles/session-signal-standard.md`. Per-tool
+implementation of the prefix mechanism belongs in each tool's documentation under
+`tooling/`.
 
 ## Limitations
 
