@@ -157,5 +157,6 @@ this contract does not address, document it — that gap is the next amendment.
 
 ---
 
+*Version 0.1.0.*
 *Based on [ai-conduct-guide](https://github.com/wendall911/ai-conduct-guide).*
 *Adopt, fork, and amend freely.*

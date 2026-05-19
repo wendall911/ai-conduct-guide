@@ -28,6 +28,29 @@ failure.
    these become your project's incident record and strengthen the contract
    for future agents
 
+## Declaring the Version You're Adopting
+
+Reference the version of this standard in your project documentation. Two
+forms are available, following the pattern established by the GNU General
+Public License:
+
+**Specific version** — bound to that version's terms only:
+
+> This project operates under the AI Conduct standard, version 0.1.0.
+
+**Version or later** — accepts any later version published by the steward,
+at your option:
+
+> This project operates under the AI Conduct standard, version 0.1.0, or
+> (at your option) any later version published by Wendall Cada.
+
+The `(at your option)` preserves your freedom. You may remain on the declared
+version or upgrade to any later published version — the choice is yours, not
+the steward's.
+
+Published versions are tagged in the canonical repository. The version is
+declared in `AI_CONDUCT.md` itself.
+
 ## What Adoption Costs
 
 Reading time at session start. That is the overhead. A session that begins
