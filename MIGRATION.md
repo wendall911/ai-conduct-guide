@@ -24,6 +24,16 @@ If state changed between sessions, send `/s` first and describe what changed.
 
 ---
 
+## Prototype Note
+
+The `/t` and `/s` command files created in Phase 1 are prototypes. Their content
+reflects the current tape-read sequence: `.github/guardrails.md` as a separate
+file, `project-context.md` as a named step, CLAUDE.md as part of the setup. Once
+the migration is complete, that sequence changes — guardrails are inside
+`AI_CONDUCT.md`, `project-context.md` is explicitly optional, CLAUDE.md is
+optional. The command content must be updated at the end of Phase 4 to match the
+target state. Do not treat the Phase 1 command files as final.
+
 ## Gate Condition
 
 **Phase 3 cannot begin until `/t` and `/s` are tested and confirmed working in
