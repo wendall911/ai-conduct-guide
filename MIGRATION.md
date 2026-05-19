@@ -35,16 +35,16 @@ gets its own `/t` and `/s` implementation in parallel with Phase 2 content work.
 repo, not in user config. That placement is a deliberate architectural difference
 from the Claude Code global approach and should be documented as such.
 
-**Known Copilot limitation — `/s`:** Copilot prompt files cannot execute shell
-commands and have no native hard-stop behavior. They proceed through normal chat
-flow regardless of instruction content.
+**Known Copilot limitation — `/s`:** Copilot prompt files cannot enforce a hard
+stop. They proceed through normal chat flow regardless of instruction content.
 
-**Workaround for Copilot `/s`:** The signal carries the state description inline.
-User muscle memory becomes `/s [what changed]` — e.g., `/s dependency updated,
-CI failing`. The prompt file instructs Copilot to address the state change before
-any other task. Enforcement is advisory, not guaranteed, but the conscious act of
-typing the signal with inline context preserves the awareness mechanism. Document
-this limitation explicitly in `tooling/github-copilot.md` and `tooling/vscode.md`.
+**Universal `/s` pattern — not a Copilot workaround:** `/s [description of what
+changed]` is the canonical form of the signal for all tools. The context travels
+inline. No round trip. No asking what changed. This is stronger design, not a
+downgrade to accommodate weak tooling. Tools that can enforce a hard stop do.
+Tools that cannot still receive the full context inline. The pattern is identical
+everywhere. Document Copilot's hard-stop limitation in `tooling/github-copilot.md`
+and `tooling/vscode.md` — note the limitation, not a different pattern.
 
 ## Known Gap: Agent Behavior Without /t Enforcement
 

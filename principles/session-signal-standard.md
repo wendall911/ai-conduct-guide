@@ -53,9 +53,18 @@ cannot confirm the contents has not read them.
 
 **/s** — State. External state change notification.
 
-Asserts: Something changed outside this session that you do not know about. Stop.
-Ask what changed before proceeding. Do not infer. Do not continue from prior
-context.
+Usage: `/s [description of what changed]`
+
+Asserts: Something changed outside this session. The description is provided
+inline — the context travels with the signal. The agent processes the state
+change before any other task. No round trip. No asking what changed — it is
+already there.
+
+Example: `/s dependency updated, CI is now failing`
+
+The inline form is the universal pattern. It works identically across all tools,
+including those that cannot enforce a hard stop. The pattern does not degrade
+to accommodate weak tooling — the tooling accommodates the pattern.
 
 ## Claim Structure
 
