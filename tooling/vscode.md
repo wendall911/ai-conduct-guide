@@ -33,6 +33,21 @@ section for full configuration.
 Do not use `.github/copilot-instructions.md` as the mechanism for establishing
 the behavioral contract. See `tooling/github-copilot.md` — Known Failures.
 
+## Session Signals
+
+`/t` and `/s` are context injection signals typed directly in any AI chat panel.
+No keybinding or snippet system is required — type the command and the tool loads
+the instruction set from the appropriate prompt file.
+
+The prompt file is the polyfill. Same content, different locations per tool:
+
+- **Claude Code:** `~/.claude/commands/t.md`, `~/.claude/commands/s.md`
+- **GitHub Copilot:** `.github/prompts/t.prompt.md`, `.github/prompts/s.prompt.md`
+
+The signal model is the same regardless of tool. Execution fidelity varies —
+see `tooling/claude-code.md` and `tooling/github-copilot.md` for per-tool
+behavior.
+
 ## Observable Indicators
 
 VS Code hosts GitHub Copilot for AI agent functionality. Observable indicators

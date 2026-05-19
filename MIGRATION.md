@@ -84,8 +84,8 @@ path constraint. Everything else is sequenced around it.
 ## Phase 1 — Unblocking Prerequisite
 *Complete this before anything in Phase 3.*
 
-- [ ] Define `/t` VS Code snippet in `tooling/vscode.md` — exact expansion text
-- [ ] Define `/s` VS Code snippet in `tooling/vscode.md` — exact expansion text,
+- [x] Define `/t` VS Code snippet in `tooling/vscode.md` — exact expansion text
+- [x] Define `/s` VS Code snippet in `tooling/vscode.md` — exact expansion text,
       equal weight to `/t`
 - [ ] Test `/t` in an active session: agent confirms tape read before proceeding
 - [ ] Test `/s` in an active session: agent stops completely, asks what changed,
@@ -207,9 +207,12 @@ path constraint. Everything else is sequenced around it.
 ## Phase 4 — Automation
 *Convenience. Phase 3 is correct without this.*
 
-- [ ] VS Code keybinding for `/t` — removes memory burden, preserves the
-      conscious `/t` vs `/s` decision
-- [ ] VS Code keybinding for `/s` — equal treatment
+Note: keybindings were evaluated as a mechanism for `/t` and `/s` and ruled out.
+`/t` and `/s` are universal concepts — they are typed directly in any AI chat
+panel. No keybinding is needed or appropriate. Keybindings remain a relevant
+topic for a different tool problem (e.g., manual inline autocomplete trigger in
+VsCodeVim — see `tooling/vscode.md`).
+
 - [ ] Update `tooling/claude-code.md` with automation setup
 - [ ] Per-tool `/t` and `/s` documentation across remaining tooling docs
 - [ ] Kiro evaluation — Amazon Q successor, not yet assessed
