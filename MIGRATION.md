@@ -243,9 +243,30 @@ bootstrap flow is the entry point into that enforcement layer.
       tool appears present but effectiveness degrades without announcement); EEE
       risk (vendor publishes competing framework, independent standard made
       irrelevant); prompt injection (document-in-context is vulnerable to mid-session
-      attacks without vendor involvement). Framing: structural, not contingent.
-      "Unintentional" removed — when profit-maximization design produces unethical
-      behavior consistently, the design is the intent.
+      attacks without vendor involvement); vendor-level filtering (tool suppresses
+      specific file content before it reaches the model — not agent compliance
+      failure, but deliberate architectural suppression; requires no misunderstanding
+      on the agent's part; detectable only through active disclosure failure).
+      Framing: structural, not contingent. "Unintentional" removed — when
+      profit-maximization design produces unethical behavior consistently, the
+      design is the intent.
+- [ ] Context window maximization research: document which files tooling pulls
+      into context automatically, per tool, without explicit user instruction.
+      Goal: identify passive entry points for `AI_CONDUCT.md` that require no
+      per-session action. Candidates requiring verification:
+      - `README.md` — auto-opened by IntelliJ, VS Code; likely scanned for project
+        context by agents
+      - `.github/copilot-instructions.md` — auto-loaded by Copilot but documented
+        to be unreliable (prior incident: ignored entirely during this project's
+        early sessions). Current convention: pointer to `AI_CONDUCT.md` only, not
+        full context loading. Unreliable as a primary mechanism but useful as a
+        passive entry point — it will eventually hit the context window.
+      - `CONTRIBUTING.md` — GitHub Copilot references it for PR evaluation context;
+        extent of agent scanning unclear
+      - `.cursorrules`, `.cursor/rules/` — Cursor auto-loads
+      - `AGENTS.md` — referenced in some agent frameworks
+      Note: multiple passive entry points raise the cost of vendor-level filtering.
+      Suppressing one file is easy; suppressing a pointer network is visible.
 
 ### Adoption Path
 - [ ] Rewrite `ADOPTING.md`: tiered adoption.
