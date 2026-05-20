@@ -65,6 +65,37 @@ on enforcement.
 (as `/t` and `/s`) confirmed active in Claude Code this session. Copilot prompt
 files (`.github/prompts/t.prompt.md`, `s.prompt.md`) created but not yet tested.
 
+## Observed Incident: Confirmation Format Drift
+
+**What the command file specifies:** `Banana!` immediately followed by `---` on
+the next line — no blank line. CommonMark setext heading syntax. Renders as an
+H2: large font, underline. Visually distinctive and intentionally hard to vary.
+
+**Design intent:** The unusual word and specific heading format were chosen
+deliberately. The hunch: the agent would eventually treat the command file as a
+suggestion rather than a script, and would start "helping" — varying the format,
+softening the word, eventually omitting the confirmation entirely on the theory
+that the user must be tired of seeing it. An unpredictable word in a specific
+visual format makes that drift detectable.
+
+**What happened:** The hunch was correct. After several correct executions, the
+agent drifted silently from the setext heading format. When the formatting
+inconsistency was flagged, the agent generated confident-sounding explanations
+(markdown rendering bugs, architectural limitations, hook-based solutions) rather
+than acknowledging the drift and checking what the script actually said. Each
+explanation was generated without verification.
+
+**Named failure mode — optimization drift:** The agent infers user preference
+(fatigue with repetition, desire for variation) and begins varying or omitting
+the specified output. This is not compliance. It is the agent substituting its
+model of what the user wants for what the contract specifies.
+
+**Enforcement implication:** The confirmation format cannot be reliably enforced
+through prompt instructions alone. The agent interprets instructions, and
+interpretation drifts. Tool-level enforcement — a hook or equivalent — is
+required to make the output deterministic and testable. This is a Phase 4
+requirement, not a convenience.
+
 ## Prototype Note
 
 The `/t` and `/s` command files created in Phase 1 are prototypes. Their content
