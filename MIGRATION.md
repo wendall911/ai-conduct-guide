@@ -211,10 +211,21 @@ bootstrap flow is the entry point into that enforcement layer.
 *Safe to execute independently of Phase 1. No enforcement impact.*
 
 ### AI_CONDUCT.md
+
+**Standing rule for all additions:** `AI_CONDUCT.md` is a context window artifact.
+All content must use compact/direct register with tool-neutral vocabulary. No "AI",
+"agent", or tool-specific product names. "Tool" is the established shorthand for
+"automated tool" throughout. Rationale lives in `principles/`; the contract is
+instruction-only.
+
+- [x] Apply tool-neutral vocabulary throughout — "AI" and "agent" replaced; definitional
+      anchor added; "tool" established as shorthand for "automated tool"; "tool-generated"
+      replaces "AI-drafted"; "from training data" removed from License Integrity;
+      tool-specific filenames removed from opening paragraph (commit 0c81f5b)
 - [ ] Add enforcement section: migrate universal guardrails in as non-optional
       enforcement terms. Ban on push, approval-first, no attribution injection,
       scope authorization. These travel with the contract.
-- [ ] Note CLAUDE.md and equivalents as optional automation, not requirements.
+- [ ] Note tool config files as optional automation, not requirements.
       `/t` is the mechanism. Tool config is convenience.
 
 ### Session Model
