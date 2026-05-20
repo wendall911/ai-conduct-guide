@@ -276,6 +276,11 @@ bootstrap flow is the entry point into that enforcement layer.
         instruction). Reduces friction, does not change correctness.
       - Tier 3: hooks and system-level enforcement. Maximum enforcement fidelity.
 - [ ] Remove any framing that makes Tier 2 or Tier 3 mandatory for Tier 1 adoption.
+- [ ] Update greenfield adoption steps to distinguish user-configured signals
+      (per-user, `~/.claude/commands/` etc.) from project-committed tool config
+      (per-repo, `.github/copilot-instructions.md`, `.github/prompts/`, etc.).
+      Required step: document both mechanisms separately in ADOPTING.md greenfield
+      and existing project sections.
 
 ---
 
