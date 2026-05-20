@@ -9,8 +9,6 @@ Just like how placing a `CODE_OF_CONDUCT.md` in the top level of your project es
 This repository is the specification. Projects adopt it by dropping `AI_CONDUCT.md`
 into their repository as a directive for AI tools that may be used within the project. Individual tools need configuration to force `AI_CONDUCT.md` to be used. Specific instructions can be found in ./tooling.
 
-This section should now be accurate, and this line can be removed. It was added as a test to see if we can work across state changes.
-
 ## The Problem It Solves
 
 AI tools default to behavior that serves their vendors, not the projects they
