@@ -1,5 +1,39 @@
 # Adopting AI_CONDUCT.md
 
+## Signal Configuration Architecture
+
+AI tool configuration operates at three distinct scopes. Understanding which
+scope a configuration belongs to determines where it lives and how it is
+maintained.
+
+**Tier 1 — Specification (this repository)**
+The canonical reference. `AI_CONDUCT.md` is the contract. The `tooling/`
+directory contains reference script implementations for each supported tool —
+complete, copy-ready code with default settings. These are the templates
+users and projects start from. They are not personal configuration; they are
+the interface definition.
+
+**Tier 2 — Personal (user's global config repository)**
+Customized scripts under the user's own version control. A personal global
+repository (e.g., a dotfiles or shared-config repo) holds the user's actual
+tool scripts: personal confirmation word, preferred defaults, tool-specific
+adjustments. A `.env` file in this repository documents the personal settings.
+An install script reads those settings and deploys scripts to the correct
+per-tool locations (`~/.claude/commands/`, etc.). The user owns this tier.
+It is never in a project repository.
+
+**Tier 3 — Project (per-project repository)**
+Tool configuration committed to a project repository for all contributors.
+Project-committed files (`.github/copilot-instructions.md`, `.cursor/rules/`,
+etc.) carry `AI_CONDUCT.md` into contributors' context windows automatically
+without per-user setup. The maintainer controls this tier. It does not contain
+personal configuration — it contains project-level instructions that reference
+or include the conduct contract.
+
+The tiers are independent. Personal config (Tier 2) is never committed to a
+project repository. Project config (Tier 3) never contains personal settings.
+The specification (Tier 1) is the reference both tiers derive from.
+
 ## Greenfield Projects
 
 Add `AI_CONDUCT.md` before any AI tool touches the project. The contract is
