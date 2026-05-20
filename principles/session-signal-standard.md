@@ -30,22 +30,30 @@ the contract in the context window? Did the agent see it?
 
 **The two-layer approach:**
 
-1. **Explicit injection** — signals (`/tape`, `/state`) and tool configuration.
-   Reliable when set up. Requires per-user configuration. This is the primary
-   mechanism for users who have adopted the standard.
+1. **User-configured signals** — `/tape` and `/state` commands, per-tool
+   configuration files (`~/.claude/commands/`, etc.). Reliable when set up.
+   Requires per-user action. This is the primary mechanism for contributors
+   who have adopted the standard for their own workflow.
 
-2. **Passive entry** — files tooling loads automatically: README.md references,
-   `.github/copilot-instructions.md`, CONTRIBUTING.md, tool-specific instruction
-   files. Unreliable individually. Collectively they increase the probability
-   that the contract hits the context window before any task begins, even for
-   users who have not configured signals. Research into which files specific
-   tools load by default belongs in the tooling docs.
+2. **Project-committed tool configuration** — instruction files committed to
+   the repository by the maintainer: `.github/copilot-instructions.md`,
+   `.github/prompts/*.prompt.md`, `.cursor/rules/`, and equivalents for other
+   tools. Tooling auto-loads these for every contributor without per-user setup.
+   The maintainer controls this layer. It provides zero-config context injection
+   for all contributors regardless of their personal configuration.
 
-The passive layer does not replace the explicit layer. It extends coverage to
-contributors who have not configured anything. A contributor who clones a project
-and opens an AI tool with no configuration may still encounter `AI_CONDUCT.md`
-through a README.md reference or an auto-loaded instruction file. The contract
-does not need to be found every time. It needs to be found early enough to matter.
+`AI_CONDUCT.md` alone does nothing. A file sitting in a repository is inert
+until something carries it into a context window. The project-committed layer
+is what closes that gap for contributors who have not configured anything. A
+contributor clones the project, opens their tool, and the tool auto-loads the
+project's instruction file — which references or includes the conduct contract.
+The contract reaches the context window before any task begins.
+
+The project-committed layer does not require reliability from any single file.
+Individual auto-load mechanisms are inconsistent across tools and versions.
+Committing instruction files for multiple tools — each referencing the contract
+— increases the probability that at least one reaches the context window. Research
+into which files specific tools auto-load by default belongs in the tooling docs.
 
 ## Ethical Use
 
