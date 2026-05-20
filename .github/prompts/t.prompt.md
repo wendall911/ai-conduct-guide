@@ -1,13 +1,18 @@
-Session continuity signal. Before proceeding with any task:
+AI agents process each request independently. There is no memory. Every time
+you hit Enter, the agent starts from zero — it only has what is currently in
+its context window. This signal loads the context the agent needs for this
+request.
 
-Read the following files in order. If a file is not present in the current
-project, skip it and note the omission. If `.github/project-context.md` is
-absent, run `git log --oneline -10` instead.
+If no task follows: the signal is working. Respond with the configured
+confirmation and "No task — ready when you are."
+
+If a task follows: read the files below before proceeding. Skip any file not
+present and note the omission. If `.github/project-context.md` is absent, run
+`git log --oneline -10` instead.
 
 1. `.github/guardrails.md`
 2. `AI_CONDUCT.md`
 3. `.github/project-context.md`
 
-After reading each file, confirm its current contents to the user. A one-word
-acknowledgment is not sufficient — confirm what the file says. Do not proceed
-with any task until this confirmation is complete.
+After reading: respond "Context loaded." followed by one line per file
+confirming it was read. Then proceed with the task.

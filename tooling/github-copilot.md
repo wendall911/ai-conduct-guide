@@ -56,6 +56,19 @@ Disable co-author injection (VS Code):
 Add system-level hook as backstop regardless of setting (see `claude-code.md`
 for hook setup — the same hook covers all tools).
 
+## Signal Configuration
+
+`/tape` and `/state` are defined in `.github/prompts/t.prompt.md` and
+`s.prompt.md` at workspace level. The confirmation format for `/tape` is set
+in the prompt file. Change the word or phrase in the "After reading" instruction
+to your preferred confirmation.
+
+Default: `Context loaded.`
+
+An unpredictable word is recommended — see `principles/session-signal-standard.md`
+for the rationale. The agent must produce the exact configured word; it cannot
+pattern-match to a generic acknowledgment.
+
 ## Session Start
 
 Do not use `copilot-instructions.md` — see Known Failures.

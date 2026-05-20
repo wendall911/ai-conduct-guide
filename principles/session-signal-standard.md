@@ -50,6 +50,16 @@ canonical names. How you invoke them — shorthand, alias, keybinding, or any
 other mechanism — is your choice. The standard defines what the signal does,
 not what you type.
 
+**Confirmation format is user-configured.** The standard requires that
+confirmation occurs — not what the confirmation says. Users set their preferred
+format in their tool's command or prompt file. The default for tools that do
+not specify one is "Context loaded."
+
+An unpredictable confirmation word serves as a lightweight integrity check: the
+agent must produce the specific configured word, so pattern-matching to a generic
+acknowledgment will not satisfy it. This is optional but recommended — it gives
+the user a fast signal that the instruction was actually followed, not inferred.
+
 ## Signals
 
 **/tape** — Session continuity signal.

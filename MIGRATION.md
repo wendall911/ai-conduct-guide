@@ -85,6 +85,14 @@ target state. Do not treat the Phase 1 command files as final.
   universal polyfill framing.
 - **Canonical signal names:** `/tape` and `/state` established in
   `principles/session-signal-standard.md`. Invocation is user-defined.
+- **Prompt files rewritten:** All four files updated — no "tape" language, correct
+  stateless mechanic ("every request starts from zero"), standalone fallback for
+  tool validation, confirmation step added to `/state`.
+- **Confirmation format principle:** User configures confirmation format.
+  Default: "Context loaded." Wendall's config: "Banana!" Documented as
+  lightweight integrity check in `session-signal-standard.md` and both tooling docs.
+- **Signal configuration docs:** Added to `tooling/claude-code.md` and
+  `tooling/github-copilot.md`.
 
 ## Gate Condition
 

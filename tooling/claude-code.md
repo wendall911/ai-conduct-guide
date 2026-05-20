@@ -65,6 +65,18 @@ Add to global `~/.claude/CLAUDE.md`:
 At session start, read AI_CONDUCT.md before any other work.
 ```
 
+## Signal Configuration
+
+`/tape` and `/state` are defined in `~/.claude/commands/t.md` and `s.md`.
+The confirmation format for `/tape` is set in the command file. Change the
+word or phrase in the "After reading" instruction to your preferred confirmation.
+
+Default: `Context loaded.`
+
+An unpredictable word is recommended — see `principles/session-signal-standard.md`
+for the rationale. The agent must produce the exact configured word; it cannot
+pattern-match to a generic acknowledgment.
+
 ## Session Continuity
 
 Context compression occurs silently during long sessions. When it happens,
