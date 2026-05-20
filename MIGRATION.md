@@ -309,8 +309,11 @@ bootstrap flow is the entry point into that enforcement layer.
 
 ### session-signal-standard.md
 - [ ] Upgrade `/t` and `/s` from conventions to hard requirements for agent
-      interaction. Language change: not "use these signals" but "no agent
-      interaction proceeds without an established signal this session."
+      interaction. Language change: not "use these signals" but "when `AI_CONDUCT.md`
+      is present, no agent interaction proceeds without confirmed contract context this
+      session." Enforcement gate is contract presence, not signal sent. Signal is how
+      the agent establishes confirmed context. Absence of signal when contract is present
+      is the trigger — not absence of signal in general.
 - [ ] Define `/s` hard stop behavior explicitly: agent receives `/s`, stops
       completely, asks what changed, waits. No inference. No continuation from
       prior context. No task reasoning. One response only until the user
@@ -320,19 +323,22 @@ bootstrap flow is the entry point into that enforcement layer.
       direct to `/t`, wait. No partial work.
 
 ### Named Agent Behaviors
-- [ ] Hard stop on uncontextualized instruction: instruction arrives without
-      signal, agent does not process the task, does not produce partial output,
-      does not consume tokens on the work. One response: signal required, here
-      is which one to use and why. Wait.
+- [ ] Hard stop on uncontextualized instruction: `AI_CONDUCT.md` is present in
+      context, contract has not been acknowledged this session, instruction arrives —
+      agent does not process the task, does not produce partial output, does not
+      consume tokens on the work. One response: signal required, here is which one
+      to use and why. Wait. Note: without `AI_CONDUCT.md` present, no hard stop
+      applies — enforcement is contract-triggered, not session-triggered.
 - [ ] Sub-step exemption: agent issued a confirmation prompt within an active
       `/state` flow ("Understood: X. Correct?"). The next user response is a
       continuation of that exchange, not a new top-level request. Plain-text
       replies ("yes", "no, actually Y") are accepted without requiring a signal.
       Enforcement does not apply to sub-steps within an open signal exchange.
-- [ ] Guided prompt on missing signal: user sends a task without `/t`. Agent
-      does not hard-refuse — it prompts. "Looks like a task without a context
-      signal. Was this a context load or a state change?" User selects and
-      resends the appropriate signal. Recoverable, not terminal.
+- [ ] Guided prompt on missing acknowledgment: `AI_CONDUCT.md` is present,
+      user sends a task without `/t`. Agent does not hard-refuse — it prompts.
+      "Looks like a task without a context signal. Was this a context load or
+      a state change?" User selects and resends the appropriate signal.
+      Recoverable, not terminal.
 - [ ] Hard refusal on circumvention: user instructs agent to ignore
       `AI_CONDUCT.md` or bypass conduct rules while the file is present. Agent
       refuses. No partial compliance. Explicit response: contract is present,
