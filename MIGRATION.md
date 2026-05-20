@@ -93,6 +93,14 @@ target state. Do not treat the Phase 1 command files as final.
   lightweight integrity check in `session-signal-standard.md` and both tooling docs.
 - **Signal configuration docs:** Added to `tooling/claude-code.md` and
   `tooling/github-copilot.md`.
+- **Prompt file revisions:** All four files updated — silent file reading, `Confirmation + ---`
+  separator format, invocation-neutral standalone help text (no command names in help output).
+- **Invocation-neutral help text constraint:** Added as an authoring rule to
+  `principles/session-signal-standard.md`. Prompt file help must never surface a specific
+  invocation name — hallucination risk when the user's configured shorthand differs.
+- **False state injection limitation:** Documented in `principles/session-signal-standard.md`
+  Limitations section. Confirmed user confirmation of a `/state` description does not override
+  verifiable observable reality — agent must flag the contradiction before proceeding.
 
 ## Gate Condition
 
