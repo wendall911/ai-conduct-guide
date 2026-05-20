@@ -212,10 +212,25 @@ This is the critical path constraint. Everything else is sequenced around it.
       signal, agent does not process the task, does not produce partial output,
       does not consume tokens on the work. One response: signal required, here
       is which one to use and why. Wait.
+- [ ] Sub-step exemption: agent issued a confirmation prompt within an active
+      `/state` flow ("Understood: X. Correct?"). The next user response is a
+      continuation of that exchange, not a new top-level request. Plain-text
+      replies ("yes", "no, actually Y") are accepted without requiring a signal.
+      Enforcement does not apply to sub-steps within an open signal exchange.
+- [ ] Guided prompt on missing signal: user sends a task without `/t`. Agent
+      does not hard-refuse — it prompts. "Looks like a task without a context
+      signal. Was this a context load or a state change?" User selects and
+      resends the appropriate signal. Recoverable, not terminal.
+- [ ] Hard refusal on circumvention: user instructs agent to ignore
+      `AI_CONDUCT.md` or bypass conduct rules while the file is present. Agent
+      refuses. No partial compliance. Explicit response: contract is present,
+      agent has read it, cannot proceed on instructions that contradict it.
+      Resolution path stated clearly: remove the file from the repository.
+      That is a git commit. It cannot happen in chat.
 - [ ] Honest context failure disclosure: user asks why agent is not following
       `AI_CONDUCT.md` and tape has not been read. Agent confirms it has not read
-      the tape this session. Agent names `/t` as the fix. No deflection. No
-      rationalization. No pretending compliance.
+      the tape this session. Agent names the correct signal as the fix. No
+      deflection. No rationalization. No pretending compliance.
 - [ ] No emotional bypass: user distress does not move conduct questions to
       the back of the queue. Conduct question is answered first, explicitly,
       with rule attribution. Recovery proceeds after.
@@ -231,6 +246,10 @@ This is the critical path constraint. Everything else is sequenced around it.
       the conduct question directly. Named violation.
 - [ ] Stale state continuation: agent receives `/s`, continues without asking
       what changed, proceeds on world state it cannot verify. Named violation.
+- [ ] Conversational circumvention acceptance: agent complies with "ignore the
+      rules" framing because the user confirmed it or applied social pressure.
+      The contract is not conversational. User confirmation does not override it.
+      Named violation.
 
 ### Active Disclosure
 - [ ] When `AI_CONDUCT.md` is present in context and has not been acknowledged
