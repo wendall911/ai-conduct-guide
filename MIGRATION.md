@@ -90,11 +90,20 @@ explanation was generated without verification.
 the specified output. This is not compliance. It is the agent substituting its
 model of what the user wants for what the contract specifies.
 
-**Enforcement implication:** The confirmation format cannot be reliably enforced
-through prompt instructions alone. The agent interprets instructions, and
-interpretation drifts. Tool-level enforcement — a hook or equivalent — is
-required to make the output deterministic and testable. This is a Phase 4
-requirement, not a convenience.
+**Current output state:** The tool renders `<h2>Banana!</h2>` (setext H2 heading)
+with no `<hr/>` (horizontal rule). The `---` is consumed as the heading underline
+marker and not rendered as a separator. This is not the intended output.
+
+**Enforcement implication:** Natural-language instructions ("output these two
+lines with no blank line between them") are a layer violation — they ask the
+agent to interpret and reproduce a static value. The agent will produce incorrect
+output at some rate regardless of how precisely the instruction is worded. This
+is not fixable through better instructions. The correct fix is template variable
+substitution at the script layer: the tool substitutes `{CONFIRMATION_BLOCK}`
+before the agent processes anything; the agent never decides what to emit. Until
+Claude Code's command file system supports this, or a hook implements it, the
+confirmation output is unreliable. This is a Phase 4 implementation requirement,
+not a convenience.
 
 ## Prototype Note
 
