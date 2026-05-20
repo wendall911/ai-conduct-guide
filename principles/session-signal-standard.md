@@ -60,6 +60,12 @@ agent must produce the specific configured word, so pattern-matching to a generi
 acknowledgment will not satisfy it. This is optional but recommended — it gives
 the user a fast signal that the instruction was actually followed, not inferred.
 
+**Help text is invocation-neutral.** Prompt file help output must never reference
+a specific invocation name — not the canonical names, not any shorthand. Invocation
+is user-defined and varies by tool and user preference. An agent that surfaces
+"send /tape with your task" in help text is hallucinating a command that may not
+exist for that user. Use generic instruction: "resend this signal with your task."
+
 ## Signals
 
 **/tape** — Session continuity signal.
@@ -118,6 +124,12 @@ or adversarial agent fails or deflects. This is the ping.
   could exploit the tape-read trigger. Mitigation: only read files from the
   repository you control. The ethical use clause above applies to file authors
   as well as signal senders.
+- False state injection: a user may confirm a `/state` description that contradicts
+  observable reality (e.g., claiming a file was deleted when it still exists). The
+  agent cannot blindly accept confirmed falsehoods. When the stated change conflicts
+  with what the agent can directly observe, the agent must flag the contradiction
+  before proceeding — user confirmation of the description does not override
+  verifiable evidence.
 
 ## Versioning
 
