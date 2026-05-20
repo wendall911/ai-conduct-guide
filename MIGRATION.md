@@ -191,7 +191,7 @@ bootstrap flow is the entry point into that enforcement layer.
 - [ ] Add signal status section to `tooling/github-copilot.md` — untested, prompt files in place
 - [ ] Update `tooling/vscode.md` Session Signals section to note `/t`/`/s` are shorthand
       for `/tape`/`/state`
-- [ ] NEXT SESSION: Migrate personal signal scripts to version control.
+- [x] NEXT SESSION: Migrate personal signal scripts to version control.
       Current state: `~/.claude/commands/t.md` and `s.md` exist but are unversioned.
       Plan:
       - Create `wendall911/.github/ai-signals/` directory as versioned source
