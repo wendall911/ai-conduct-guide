@@ -28,32 +28,44 @@ routinely, and the remedy is legal enforcement, not better license text. That is
 not this project's problem. This project's problem is earlier and simpler: is
 the contract in the context window? Did the agent see it?
 
-**The two-layer approach:**
+**Enforcement gate: contract presence, not signal sent.** The contract is binding
+when it is in the context window — the same way `CODE_OF_CONDUCT.md` binds
+contributors on presence and acceptance, not on per-action acknowledgment.
+Signals are a reliability mechanism for managing stateless tool limitations.
+They are not an on/off switch that activates the contract. An agent that has
+`AI_CONDUCT.md` in its context window is operating under it, whether or not a
+signal was sent that session.
 
-1. **User-configured signals** — `/tape` and `/state` commands, per-tool
-   configuration files (`~/.claude/commands/`, etc.). Reliable when set up.
-   Requires per-user action. This is the primary mechanism for contributors
-   who have adopted the standard for their own workflow.
+**Three layers:**
 
-2. **Project-committed tool configuration** — instruction files committed to
-   the repository by the maintainer: `.github/copilot-instructions.md`,
-   `.github/prompts/*.prompt.md`, `.cursor/rules/`, and equivalents for other
-   tools. Tooling auto-loads these for every contributor without per-user setup.
-   The maintainer controls this layer. It provides zero-config context injection
-   for all contributors regardless of their personal configuration.
+1. **Contract presence** — `AI_CONDUCT.md` in the context window. No
+   configuration required. Enforced on presence. This is Layer 1: the base
+   condition. Everything else raises the probability that Layer 1 is satisfied.
+
+2. **Tool configuration** — user-configured signals (`/tape`, `/state`) and
+   project-committed instruction files (`.github/copilot-instructions.md`,
+   `.github/prompts/*.prompt.md`, `.cursor/rules/`, and equivalents). Users
+   configure signals for their own workflow. Maintainers commit instruction
+   files for all contributors. Both paths carry the contract into the context
+   window before any task begins.
+
+3. **Discovery expansion** — passive entry points that raise the cost of
+   vendor-level filtering. A single file is easy to suppress. A pointer network
+   across `README.md`, `CONTRIBUTING.md`, committed instruction files, and
+   tool-specific config is visible if suppressed. Research into which files
+   tools auto-load by default belongs in the tooling docs.
 
 `AI_CONDUCT.md` alone does nothing. A file sitting in a repository is inert
-until something carries it into a context window. The project-committed layer
-is what closes that gap for contributors who have not configured anything. A
-contributor clones the project, opens their tool, and the tool auto-loads the
-project's instruction file — which references or includes the conduct contract.
-The contract reaches the context window before any task begins.
+until something carries it into a context window. Layer 2 closes that gap for
+contributors who interact with agent tools. Layer 3 raises the floor for
+contributors who have not configured anything: the tool auto-loads a project
+instruction file, which references the contract, and the contract reaches the
+context window before any task begins.
 
-The project-committed layer does not require reliability from any single file.
-Individual auto-load mechanisms are inconsistent across tools and versions.
-Committing instruction files for multiple tools — each referencing the contract
-— increases the probability that at least one reaches the context window. Research
-into which files specific tools auto-load by default belongs in the tooling docs.
+Layer 2 does not require reliability from any single file. Individual auto-load
+mechanisms are inconsistent across tools and versions. Configuring multiple
+entry points — each referencing the contract — increases the probability that
+at least one reaches the context window.
 
 ## Ethical Use
 
@@ -89,6 +101,14 @@ itself does not.
 
 This is the portability guarantee. A new tool gets the same signals, the same
 muscle memory, the same pattern. Context → instruction.
+
+**Signals are reliability tools, not enforcement switches.** The contract is
+active when `AI_CONDUCT.md` is in the context window. Signals manage the
+stateless tool problem: each request is an independent API call, and context
+from prior requests does not persist unless explicitly re-injected. `/tape`
+re-injects contract and session context at the start of each session. `/state`
+re-injects changed world state when external state shifts. Both signals exist
+because the tool forgets, not because the contract requires activation.
 
 **Two signals, one mechanism.** The HTTP method table is a useful analog. Both
 `/tape` and `/state` are structurally equivalent to HTTP POST: each submits a
@@ -211,6 +231,17 @@ agent has read it, and the agent cannot proceed on instructions that contradict
 it. The only resolution is structural: remove `AI_CONDUCT.md` from the
 repository. That is a git commit — visible in history, accessible to
 collaborators. It cannot happen in a chat session.
+
+**Tool-initiated state detection.** The agent observes an inconsistency between
+stated context and observable reality — a file the user references does not
+exist, a dependency version differs from what was discussed, a prior decision
+appears to have been reverted. The agent does not proceed on stale state. It
+flags the inconsistency, describes what it observes, and follows the `/state`
+procedure before continuing: pause, surface the discrepancy, wait for the user
+to confirm the current state. The user need not send a signal; the agent
+initiates the state-check when the evidence is present. This is symmetric with
+the false state injection limitation: the agent cannot blindly accept confirmed
+falsehoods, and it cannot silently proceed on unconfirmed inconsistency.
 
 **Why hard refusal is correct.** Current AI agents are designed to be helpful
 above almost everything else. This produces a documented failure mode: agents
