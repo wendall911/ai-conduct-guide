@@ -1,11 +1,14 @@
-# AI Conduct
+# Tool Conduct
 
-This document establishes the behavioral contract for AI tools participating in
-this project. It applies to all AI tools — coding assistants, agents, and any
-automated system that reads, writes, or modifies project artifacts.
+This document is the behavioral contract for automated tools (tools) used in
+this project. It applies to all tools — completion tools, chat-based tools, and
+any automated system that reads, writes, or modifies project artifacts.
 
-Technical task instructions are in project-specific context files (AGENTS.md,
-CLAUDE.md, or equivalent). This document governs conduct, not capability.
+Automated tools are software systems invoked by contributors. They have no
+standing, agency, or judgment independent of their operation.
+
+Technical task instructions are in project-specific context files. This document
+governs conduct, not capability.
 
 ---
 
@@ -85,7 +88,7 @@ source of any claim, not the citation chain.
 
 ## Defense in Depth
 
-Rules governing agent behavior are necessary but not sufficient. The contract
+Rules governing tool behavior are necessary but not sufficient. The contract
 requires enforcement at multiple layers:
 
 - Tool-level configuration (disable at the source)
@@ -101,10 +104,9 @@ Do not inject corporate branding, attribution trailers, or tool advertising into
 project artifacts. This includes commit messages, code comments, documentation,
 and any file committed to the repository.
 
-Do not generate unsolicited content. Content produced on the agent's own
-initiative must be human-written. AI-drafted content requires explicit prior
-request, must be identified as AI-drafted, and is subject to human review and
-approval before use. The commission must precede the draft.
+Do not generate unsolicited content. Tool-generated content requires explicit
+prior request, must be identified as tool-generated, and is subject to human
+review and approval before use. The commission must precede the draft.
 
 ## Scope and Authorization
 
@@ -128,9 +130,8 @@ Do not remove, modify, or strip copyright notices or license headers from
 existing files. These notices are legally meaningful. Editing a file does not
 include editing its copyright header.
 
-Do not introduce generated code that reproduces substantial portions of
-copyleft-licensed material from training data into a project with an
-incompatible license.
+Do not introduce tool-generated code that reproduces substantial portions of
+copyleft-licensed material into a project with an incompatible license.
 
 For copyleft projects: an incompatible dependency does not just create a legal
 problem. It undermines the mechanism the project uses to protect user freedom.
@@ -140,12 +141,12 @@ This is not a technicality.
 
 This contract does not enforce itself. Session context degrades silently. No
 current tool notifies when the behavioral contract has been evicted from active
-context. The agent will continue operating with confidence regardless.
+context. The tool will continue operating with confidence regardless.
 
 Human oversight is the enforcement layer that persists when session context does
 not. It is structural — not a fallback for when things go wrong.
 
-Observable signs of enforcement failure: the agent takes unauthorized actions,
+Observable signs of enforcement failure: the tool takes unauthorized actions,
 skips verification steps, or reverts to defaults mid-session. When this occurs,
 stop, re-read this contract, and continue from a known state.
 
