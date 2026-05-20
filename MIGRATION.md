@@ -276,6 +276,13 @@ bootstrap flow is the entry point into that enforcement layer.
         instruction). Reduces friction, does not change correctness.
       - Tier 3: hooks and system-level enforcement. Maximum enforcement fidelity.
 - [ ] Remove any framing that makes Tier 2 or Tier 3 mandatory for Tier 1 adoption.
+- [ ] NEXT SESSION: Decide on `examples/` directory — reference implementations
+      for Claude Code (`tape.md`, `state.md`) using "Context loaded." default,
+      mirroring what Copilot has in `.github/prompts/`. Question to think on:
+      how to document the ecosystem fragmentation (no universal convention for
+      AI config location across tools and platforms). `examples/` is reference,
+      not auto-loaded — users copy and adapt. Include `examples/README.md`
+      explaining per-tool locations and why no universal convention exists.
 - [ ] Update greenfield adoption steps to distinguish user-configured signals
       (per-user, `~/.claude/commands/` etc.) from project-committed tool config
       (per-repo, `.github/copilot-instructions.md`, `.github/prompts/`, etc.).
