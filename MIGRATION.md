@@ -126,6 +126,11 @@ target state. Do not treat the Phase 1 command files as final.
   `tooling/github-copilot.md`.
 - **Prompt file revisions:** All four files updated — silent file reading, `Confirmation + ---`
   separator format, invocation-neutral standalone help text (no command names in help output).
+- **Confirmation output bug fixed:** Instruction text in all four files updated to explicitly
+  require no blank line between the confirmation word and `---`. Without this, the agent
+  sometimes inserts a blank line, breaking the setext H2 heading and producing different
+  rendering. Fix applied to `~/.claude/commands/t.md`, `~/.claude/commands/s.md`,
+  `.github/prompts/t.prompt.md`, `.github/prompts/s.prompt.md`.
 - **Invocation-neutral help text constraint:** Added as an authoring rule to
   `principles/session-signal-standard.md`. Prompt file help must never surface a specific
   invocation name — hallucination risk when the user's configured shorthand differs.

@@ -11,18 +11,18 @@ run `git log --oneline -10` instead.
 2. `AI_CONDUCT.md`
 3. `.github/project-context.md`
 
-If all files loaded: respond exactly as follows, then proceed with the task:
+If all files loaded: output these two lines with no blank line between them, then proceed with the task:
 
 Context loaded.
 ---
 
-If any required file was not found, respond:
+If any required file was not found, output these two lines with no blank line between them, then continue:
 
 Context loaded.
 ---
 Context incomplete: [list missing files]. Proceed with caution.
 
-If no task follows, respond:
+If no task follows, output these two lines with no blank line between them, then continue:
 
 Context loaded.
 ---
