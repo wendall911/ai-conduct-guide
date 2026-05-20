@@ -24,6 +24,39 @@ The repo is the tape. The incident record, the contract, the tooling docs, the
 project context — all of it is already there. The gap is not missing information.
 The gap is that the agent does not reliably watch the tape before starting work.
 
+The analogy has three phases, not one — and the happy ending is the design goal.
+
+**Phase 1 — Fighting the stateless model.** Lucy's family resets the environment
+every day: new newspapers, replayed football game, fake October 13th. The goal is
+to prevent Lucy from discovering she is stateless. The agent equivalent: fabricating
+continuity that does not exist, producing confident summaries of prior sessions from
+pattern inference rather than actual recall, proceeding on stale context without
+flagging the gap. Fragile. Dishonest in effect.
+
+**Phase 2 — Accepting statelessness.** Henry creates the tape. The correct design:
+stop fighting the stateless model and design for it. Inject context at session start.
+This is the signal. Lucy wakes, watches the tape, has enough context to continue. It
+works as far as it goes — but the tape in this phase is primarily information
+delivery. Lucy reads it. She is not guaranteed to follow what it says to do.
+
+**Phase 3 — The happy ending.** The goal was never to fix Lucy. No medical procedure,
+no restored long-term memory, no cure. The happy ending works because the stateless
+model is fully accepted, the tape is kept current, and when the tape contains a
+directive, the directive is executed. Lucy wakes on the boat in Alaska, watches the
+tape, steps outside, finds her family. Reality confirms the tape. Life continues —
+stateless, every morning, forever, and functional.
+
+One detail the film leaves in: Lucy had been painting Henry's face, from something
+below conscious recall. That is not fixed either. In the agent model, that maps to
+training — behavioral patterns embedded below the level of explicit session context,
+persisting across stateless sessions. The happy ending accepts this too. The tape
+does not replace what training has embedded. It verifies that the embedded patterns
+are oriented toward the right thing before each session begins.
+
+The project goal is Phase 3: not a cure, not infrastructure that remembers, not a
+fight against the stateless design. A tape that is current, followed, and accepted
+for exactly what it is.
+
 ## The Process Fix
 
 The correct mental model is [RFC 7519 (JWT)](https://datatracker.ietf.org/doc/html/rfc7519): every request carries its own context
