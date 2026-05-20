@@ -191,6 +191,19 @@ bootstrap flow is the entry point into that enforcement layer.
 - [ ] Add signal status section to `tooling/github-copilot.md` — untested, prompt files in place
 - [ ] Update `tooling/vscode.md` Session Signals section to note `/t`/`/s` are shorthand
       for `/tape`/`/state`
+- [ ] NEXT SESSION: Migrate personal signal scripts to version control.
+      Current state: `~/.claude/commands/t.md` and `s.md` exist but are unversioned.
+      Plan:
+      - Create `wendall911/.github/ai-signals/` directory as versioned source
+      - Add `t.md` and `s.md` with `Banana!` hardcoded (no `.env` runtime dependency)
+      - `.env` in `wendall911` kept as documentation reference only — not read at runtime
+      - Symlink `~/.claude/commands/t.md` → versioned source
+      - Symlink `~/.claude/commands/s.md` → versioned source
+      - Symlink `~/.config/Code/User/prompts/t.md` → versioned source (GitHub Copilot Chat)
+      - Symlink `~/.config/Code/User/prompts/s.md` → versioned source
+      - Verify all symlinks active in all tools before removing originals
+      - Update `tooling/claude-code.md` and `tooling/github-copilot.md` to reference
+        versioned source location
 
 ---
 
