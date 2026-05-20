@@ -58,12 +58,20 @@ for hook setup — the same hook covers all tools).
 
 ## Signal Configuration
 
-`/tape` and `/state` are defined in `.github/prompts/t.prompt.md` and
-`s.prompt.md` at workspace level. The confirmation format for `/tape` is set
-in the prompt file. Change the word or phrase in the "After reading" instruction
-to your preferred confirmation.
+**Project-level** (one workspace): `/tape` and `/state` are defined in
+`.github/prompts/t.prompt.md` and `s.prompt.md` at workspace level.
 
-Default: `Context loaded.`
+**User-level** (all workspaces): place `t.md` and `s.md` in
+`~/.config/Code/User/prompts/`. These can be symlinked from the same versioned
+source used for Claude Code commands:
+
+```bash
+ln -s /path/to/your-repo/.github/ai-signals/t.md ~/.config/Code/User/prompts/t.md
+ln -s /path/to/your-repo/.github/ai-signals/s.md ~/.config/Code/User/prompts/s.md
+```
+
+The confirmation format is set in the prompt file. Change the `WORD` value to
+your preferred confirmation. Default: `Context loaded.`
 
 An unpredictable word is recommended — see `principles/session-signal-standard.md`
 for the rationale. The agent must produce the exact configured word; it cannot

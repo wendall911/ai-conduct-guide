@@ -141,6 +141,19 @@ These are the reference implementations. Personal customization (confirmation
 word, file paths) belongs in the user's personal config repository — not in
 any project repository. See `ADOPTING.md` for the three-tier architecture.
 
+**Versioned source pattern:** Place `t.md` and `s.md` in a personal config
+repository (e.g., `your-repo/.github/ai-signals/`) and symlink from
+`~/.claude/commands/`:
+
+```bash
+ln -s /path/to/your-repo/.github/ai-signals/t.md ~/.claude/commands/t.md
+ln -s /path/to/your-repo/.github/ai-signals/s.md ~/.claude/commands/s.md
+```
+
+This keeps the signal scripts under version control and makes changes auditable.
+The same versioned source can be symlinked from `~/.config/Code/User/prompts/`
+for use with GitHub Copilot Chat.
+
 ## Session Continuity
 
 Context compression occurs silently during long sessions. When it happens,
