@@ -147,12 +147,33 @@ target state. Do not treat the Phase 1 command files as final.
   Limitations section. Confirmed user confirmation of a `/state` description does not override
   verifiable observable reality — agent must flag the contradiction before proceeding.
 
-## Gate Condition
+## Gate Conditions
 
 **Phase 3 cannot begin until `/tape` and `/state` are tested and confirmed
 working in all tools in active use.** Making them hard requirements before the
 user has a working mechanism to send them would lock out all agent interaction.
 This is the critical path constraint. Everything else is sequenced around it.
+
+**Phase 3 requires a documented bootstrap flow before enforcement goes in.**
+A new contributor cloning a project with `AI_CONDUCT.md` has no signals
+configured. Under enforcement, the agent would hard-stop on any interaction —
+including the interaction needed to configure signals. This is a lock-out.
+The bootstrap flow must define:
+- How the agent recognizes a first-time-setup state (no signals configured)
+- An explicit enforcement exception: "help me configure signals" is a valid
+  task without a signal
+- How the agent assists with signal configuration (tool detection, file
+  location, confirmation word selection, file write)
+
+**Context:** the primary open source use case is a contributor who clones a
+project, uses an AI tool to make edits, and has not read the contract. The
+contract is not a human conduct document — a contributor could work the entire
+clone-edit-PR cycle without noticing it. If the agent discovers it, it is
+forbidden from ignoring it. This is not a guarantee of compliance but it
+addresses one of the most significant current problems in open source
+maintainership: AI-generated PRs submitted without any human review, clogging
+bug trackers and PR queues to the point of becoming automated spam. The
+bootstrap flow is the entry point into that enforcement layer.
 
 ---
 
