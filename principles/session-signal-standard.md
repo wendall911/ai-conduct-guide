@@ -276,6 +276,17 @@ record, not in a chat session with no accountability.
   with what the agent can directly observe, the agent must flag the contradiction
   before proceeding — user confirmation of the description does not override
   verifiable evidence.
+- In-file directive compliance gap: the tape ensures required files are read, not
+  that directives within those files are followed. A file read during the tape
+  sequence may contain explicit resumption instructions ("read X before proceeding,"
+  "confirm Y before proceeding," "complete Z first"). These are not automatically
+  binding — the agent may observe the instruction and proceed without executing it.
+  Reading is not compliance. This is an indirect violation of the session continuity
+  principle: context is present, the instruction is visible, and the instruction is
+  still bypassed. Detection requires external verification; the agent's acknowledgment
+  of having read a file does not confirm that in-file directives were followed.
+  Mitigation: place critical resumption directives in the tape's required reading list
+  or in the user's active request — not solely in files the tape reads.
 
 ## Versioning
 

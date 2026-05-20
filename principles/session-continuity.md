@@ -78,3 +78,10 @@ will trigger a re-read. Between messages, the gap remains.
 
 This also depends on the agent following the instruction to read the tape. That
 is a single enforcement layer. See `principles/defense-in-depth.md`.
+
+In-file directives found in files read during the tape sequence are not
+automatically binding. An agent may read a required file, observe an explicit
+"read X before proceeding" instruction, and proceed without executing it. The
+tape's enforcement covers reading — not compliance with what is read. See
+`principles/session-signal-standard.md` Limitations for the full analysis and
+mitigation.
