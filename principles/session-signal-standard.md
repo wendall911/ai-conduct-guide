@@ -10,6 +10,43 @@ This standard is maintained by the ai-conduct-guide project. It is not an RFC.
 It does not require infrastructure, memory layers, or tool-specific configuration.
 It works with any tool that accepts text input.
 
+## Design Scope
+
+This standard solves one problem: getting `AI_CONDUCT.md` into the agent's
+context window as early as possible, and ensuring the agent acknowledges it
+before proceeding.
+
+The outcome of that contact is binary. The agent either operates under the
+contract, or it explicitly proceeds without it. Both outcomes are legible. An
+agent that has read `AI_CONDUCT.md` cannot claim ignorance. An agent that has
+not read it — or that proceeds as if it has not — has disclosed something about
+its design or its configuration.
+
+This standard does not solve deliberate bypasses. A sufficiently motivated actor
+can circumvent any in-context instruction. Corporations bypass GPL licenses
+routinely, and the remedy is legal enforcement, not better license text. That is
+not this project's problem. This project's problem is earlier and simpler: is
+the contract in the context window? Did the agent see it?
+
+**The two-layer approach:**
+
+1. **Explicit injection** — signals (`/tape`, `/state`) and tool configuration.
+   Reliable when set up. Requires per-user configuration. This is the primary
+   mechanism for users who have adopted the standard.
+
+2. **Passive entry** — files tooling loads automatically: README.md references,
+   `.github/copilot-instructions.md`, CONTRIBUTING.md, tool-specific instruction
+   files. Unreliable individually. Collectively they increase the probability
+   that the contract hits the context window before any task begins, even for
+   users who have not configured signals. Research into which files specific
+   tools load by default belongs in the tooling docs.
+
+The passive layer does not replace the explicit layer. It extends coverage to
+contributors who have not configured anything. A contributor who clones a project
+and opens an AI tool with no configuration may still encounter `AI_CONDUCT.md`
+through a README.md reference or an auto-loaded instruction file. The contract
+does not need to be found every time. It needs to be found early enough to matter.
+
 ## Ethical Use
 
 This standard exists for honest, productive interaction with AI tools. The signals
