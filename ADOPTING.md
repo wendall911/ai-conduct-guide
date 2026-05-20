@@ -28,6 +28,32 @@ failure.
    these become your project's incident record and strengthen the contract
    for future agents
 
+## First-Time Setup — Agent-Assisted Configuration
+
+If you are a contributor encountering `AI_CONDUCT.md` in a project for the first
+time, the agent can configure itself before you begin work. This bootstrap
+interaction is intentional — the agent cannot require a signal before helping you
+set up the signal.
+
+1. Tell the agent: "This project has `AI_CONDUCT.md`. Help me configure session
+   signals for [your tool]."
+2. The agent identifies your tool and asks for a preferred confirmation word.
+   The default is "Context loaded." — any word or phrase works.
+3. The agent generates and writes the command file to the correct location for
+   your tool.
+4. Send the signal once to verify it works. If the configured confirmation word
+   appears, setup is confirmed.
+
+After setup, send the context signal at the start of every session before any
+task. The project's conduct contract is now active for your sessions.
+
+An agent that reads `AI_CONDUCT.md` and proceeds as if it did not is in
+violation of the contract. If your tool cannot follow the contract, it is not
+an appropriate tool for AI-assisted work on this project. This is not a
+judgment about the tool's general capability — it is a compliance requirement.
+Non-compliant tools will produce non-compliant output, and maintainers will
+close those contributions without further review.
+
 ## Declaring the Version You're Adopting
 
 Reference the version of this standard in your project documentation. Two
@@ -62,8 +88,24 @@ incident recovery over time.
 
 See `INCIDENTS.md` for documented cases. The short version: unauthorized
 actions on shared infrastructure, confidently wrong recommendations to domain
-experts, corporate defaults injected into project artifacts, and legal framing
-that inverts the ethical priority.
+experts, corporate defaults injected into project artifacts, legal framing that
+inverts the ethical priority, and unreviewed AI-generated contributions submitted
+as if they were human work.
+
+The last item is increasingly the primary motivation for adoption. AI tools are
+producing contributions at scale — code, documentation, bug reports — submitted
+through automated or semi-automated workflows without the judgment and review
+that meaningful contribution requires. Maintainers absorb the cost: triage time,
+PR queue noise, the effort of explaining why a patch that compiles is not
+necessarily a correct patch. This pattern is not hypothetical. Maintainers of
+major open source projects have had to address it explicitly as a moderation
+problem.
+
+The contract does not eliminate this. It makes the agent a participant in the
+problem statement rather than an oblivious instrument of it. An agent that has
+read the contract cannot pretend it has not. A contribution produced under the
+contract carries a different accountability structure than one produced without
+it. That difference is the value.
 
 ## Amending the Contract
 
