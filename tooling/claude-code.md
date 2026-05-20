@@ -67,15 +67,79 @@ At session start, read AI_CONDUCT.md before any other work.
 
 ## Signal Configuration
 
-`/tape` and `/state` are defined in `~/.claude/commands/t.md` and `s.md`.
-The confirmation format for `/tape` is set in the command file. Change the
-word or phrase in the "After reading" instruction to your preferred confirmation.
+Place these files at `~/.claude/commands/t.md` and `~/.claude/commands/s.md`.
+The confirmation word is user-configured. Default: `Context loaded.` An
+unpredictable word is recommended — see `principles/session-signal-standard.md`
+for the rationale.
 
-Default: `Context loaded.`
+**`~/.claude/commands/t.md`** (`/tape` — session continuity signal):
 
-An unpredictable word is recommended — see `principles/session-signal-standard.md`
-for the rationale. The agent must produce the exact configured word; it cannot
-pattern-match to a generic acknowledgment.
+```markdown
+AI agents process each request independently. There is no memory. Every time
+you hit Enter, the agent starts from zero — it only has what is currently in
+its context window. This signal loads the context the agent needs for this
+request.
+
+Read the files below silently before proceeding. Skip any file not present.
+If `.github/project-context.md` is absent, run `git log --oneline -10` instead.
+
+1. `.github/guardrails-agent.md`
+2. `AI_CONDUCT.md`
+3. `.github/project-context.md`
+
+CONFIRMATION_BLOCK:
+  template: "{WORD}\n{SEP}"
+  WORD: "Context loaded."
+  SEP:  "***"
+  parser: CommonMark (UI contract)
+  rule: emit byte-exact — deviations are visible UI bugs
+
+If all files loaded:
+  emit CONFIRMATION_BLOCK
+  proceed with: $ARGUMENTS
+
+If required file missing:
+  emit CONFIRMATION_BLOCK
+  Context incomplete: [list missing files]. Proceed with caution.
+  proceed with: $ARGUMENTS
+
+If $ARGUMENTS is empty:
+  emit CONFIRMATION_BLOCK
+  AI agents have no memory. Every request starts from zero. This signal loads
+  the context the agent needs before processing your request. Resend this
+  signal with your task to proceed with context loaded.
+```
+
+**`~/.claude/commands/s.md`** (`/state` — external state change signal):
+
+```markdown
+External state change signal. Include a description of what changed inline.
+
+Something outside this session changed. The description is inline.
+
+CONFIRMATION_BLOCK:
+  template: "{WORD}\n{SEP}"
+  WORD: "Context loaded."
+  SEP:  "***"
+  parser: CommonMark (UI contract)
+  rule: emit byte-exact — deviations are visible UI bugs
+
+If $ARGUMENTS is empty:
+  emit CONFIRMATION_BLOCK
+  This signal is for reporting external state changes — a file was updated, a
+  decision was made, an external event occurred. When you have a state change
+  to report, include the description with this signal.
+
+If $ARGUMENTS contains a description:
+  emit CONFIRMATION_BLOCK
+  Understood: [one sentence summary of $ARGUMENTS]. Correct?
+  Then wait for the user to confirm or correct before proceeding. Do not infer
+  beyond the description. Do not proceed past the confirmation without it.
+```
+
+These are the reference implementations. Personal customization (confirmation
+word, file paths) belongs in the user's personal config repository — not in
+any project repository. See `ADOPTING.md` for the three-tier architecture.
 
 ## Session Continuity
 
