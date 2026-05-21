@@ -185,10 +185,10 @@ bootstrap flow is the entry point into that enforcement layer.
       `principles/epistemic-honesty.md` (Domain Vocabulary and Term Construction section).
       Remaining: verify product-specific examples (Claude Code vs VS Code, GitHub Copilot
       not "VS Code Copilot") are documented in tooling docs as reference material.
-- [ ] **Commit discipline deep dive**: One-logical-change-per-commit rule is not in the
-      source-of-truth guardrails. Add to `wendall911/.github/guardrails.md` following
-      the standard rule-writing process (draft → loophole analysis → ethical framing →
-      present all three before committing). Then propagate to local guardrails.
+- [x] **Commit discipline deep dive**: Added "Commit Granularity" rule to source-of-truth
+      guardrails and propagated to `guardrails-agent.md`. Loophole analysis closed
+      category-description reformulation attack. Ethical framing trivially satisfied —
+      rule grounded in empirical outcomes, no legal dependency.
 - [ ] **Eclipse Copilot evaluation**: Instruction file behavior in Eclipse Copilot is
       documented as unverified in `tooling/eclipse.md`. The VS Code mechanism is broken
       by design; Eclipse plugin is maintained separately and may behave differently. Needs

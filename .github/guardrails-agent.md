@@ -25,6 +25,7 @@
 - `git push` and all variants are permanently banned. No exceptions, no overrides.
 - Verify local branch matches remote default before any commit. Never use `master` when `main` is the default.
 - Always run `git status` after file operations. Never claim completion without command output confirmation.
+- One logical change per commit. Multiple purposes in one session: separate commits, staged selectively. If describing the commit requires "and" to join distinct purposes, or a category description to avoid it, split before committing.
 
 ## Rules
 - New rules go to source-of-truth first: `/home/wendallc/Repos/git/github/minecraft/wendall911/.github/guardrails.md`. Local commit on main is the gate. Then propagate.
