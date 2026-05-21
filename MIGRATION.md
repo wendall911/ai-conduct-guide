@@ -180,10 +180,11 @@ bootstrap flow is the entry point into that enforcement layer.
 ## Phase 1 — Unblocking Prerequisite
 *Complete this before anything in Phase 3.*
 
-- [ ] **Terminology deep dive**: Product naming rules (Claude Code vs VS Code, GitHub
-      Copilot not "VS Code Copilot", Cursor assessment) are not in any project artifact.
-      Establish correct terminology in tooling docs and/or a dedicated reference. Memory
-      entry removed — behavior needs a documented home before it can be enforced.
+- [ ] **Terminology deep dive**: "Terminology Integrity" rule exists in source-of-truth
+      guardrails and is reflected in `guardrails-agent.md`. Principle backing added to
+      `principles/epistemic-honesty.md` (Domain Vocabulary and Term Construction section).
+      Remaining: verify product-specific examples (Claude Code vs VS Code, GitHub Copilot
+      not "VS Code Copilot") are documented in tooling docs as reference material.
 - [ ] **Commit discipline deep dive**: One-logical-change-per-commit rule is not in the
       source-of-truth guardrails. Add to `wendall911/.github/guardrails.md` following
       the standard rule-writing process (draft → loophole analysis → ethical framing →
