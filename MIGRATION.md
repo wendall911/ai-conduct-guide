@@ -121,7 +121,7 @@ target state. Do not treat the Phase 1 command files as final.
   Version declared in `AI_CONDUCT.md`. GPL-patterned adoption language ("version
   or later") added to `ADOPTING.md`. Steward: Wendall Cada.
 - **Signal polyfill:** `.github/prompts/t.prompt.md` and `s.prompt.md` created
-  for Copilot. Session Signals section added to `tooling/vscode.md` with
+  for Copilot. Session Signals section added to `tooling/editors/vscode.md` with
   universal polyfill framing.
 - **Canonical signal names:** `/tape` and `/state` established in
   `principles/session-signal-standard.md`. Invocation is user-defined.
@@ -131,8 +131,8 @@ target state. Do not treat the Phase 1 command files as final.
 - **Confirmation format principle:** User configures confirmation format.
   Default: "Context loaded." Wendall's config: "Banana!" Documented as
   lightweight integrity check in `session-signal-standard.md` and both tooling docs.
-- **Signal configuration docs:** Added to `tooling/claude-code.md` and
-  `tooling/github-copilot.md`.
+- **Signal configuration docs:** Added to `tooling/agents/claude-code.md` and
+  `tooling/editors/vscode.md` (absorbed from dissolved `github-copilot.md`).
 - **Prompt file revisions:** All four files updated — silent file reading, `Confirmation + ---`
   separator format, invocation-neutral standalone help text (no command names in help output).
 - **Confirmation output bug fixed:** Instruction text in all four files updated to explicitly
@@ -190,19 +190,19 @@ bootstrap flow is the entry point into that enforcement layer.
       category-description reformulation attack. Ethical framing trivially satisfied —
       rule grounded in empirical outcomes, no legal dependency.
 - [ ] **Eclipse Copilot evaluation**: Instruction file behavior in Eclipse Copilot is
-      documented as unverified in `tooling/eclipse.md`. The VS Code mechanism is broken
+      documented as unverified in `tooling/editors/eclipse.md`. The VS Code mechanism is broken
       by design; Eclipse plugin is maintained separately and may behave differently. Needs
       independent test before the unverified caveat can be removed.
-- [x] Define `/tape` signal in `tooling/vscode.md` — expansion text, polyfill model documented
-- [x] Define `/state` signal in `tooling/vscode.md` — equal weight to `/tape`
+- [x] Define `/tape` signal in `tooling/editors/vscode.md` — expansion text, polyfill model documented
+- [x] Define `/state` signal in `tooling/editors/vscode.md` — equal weight to `/tape`
 - [ ] Test `/tape` signal in each tool in active use: agent confirms tape read before
       proceeding — Claude Code: confirmed this session. Copilot: untested (prompt files in place).
 - [ ] Test `/state` signal in each tool in active use: agent processes state change
       before any other task — Claude Code: confirmed this session. Copilot: untested.
 - [ ] Both confirmed working in all active tools before opening Phase 3
-- [ ] Add signal status section to `tooling/claude-code.md` — confirmed signals, activation method
-- [ ] Add signal status section to `tooling/github-copilot.md` — untested, prompt files in place
-- [ ] Update `tooling/vscode.md` Session Signals section to note `/t`/`/s` are shorthand
+- [ ] Add signal status section to `tooling/agents/claude-code.md` — confirmed signals, activation method
+- [ ] Add signal status section to `tooling/editors/vscode.md` — untested, prompt files in place
+- [ ] Update `tooling/editors/vscode.md` Session Signals section to note `/t`/`/s` are shorthand
       for `/tape`/`/state`
 - [x] NEXT SESSION: Migrate personal signal scripts to version control.
       Current state: `~/.claude/commands/t.md` and `s.md` exist but are unversioned.
@@ -215,7 +215,7 @@ bootstrap flow is the entry point into that enforcement layer.
       - Symlink `~/.config/Code/User/prompts/t.md` → versioned source (GitHub Copilot Chat)
       - Symlink `~/.config/Code/User/prompts/s.md` → versioned source
       - Verify all symlinks active in all tools before removing originals
-      - Update `tooling/claude-code.md` and `tooling/github-copilot.md` to reference
+      - Update `tooling/agents/claude-code.md` and `tooling/editors/vscode.md` to reference
         versioned source location
 
 ---
@@ -408,9 +408,9 @@ Note: keybindings were evaluated as a mechanism for `/t` and `/s` and ruled out.
 `/t` and `/s` are universal concepts — they are typed directly in any AI chat
 panel. No keybinding is needed or appropriate. Keybindings remain a relevant
 topic for a different tool problem (e.g., manual inline autocomplete trigger in
-VsCodeVim — see `tooling/vscode.md`).
+VsCodeVim — see `tooling/editors/vscode.md`).
 
-- [ ] Update `tooling/claude-code.md` with automation setup
+- [ ] Update `tooling/agents/claude-code.md` with automation setup
 - [ ] Per-tool `/t` and `/s` documentation across remaining tooling docs
 - [ ] Kiro evaluation — Amazon Q successor, not yet assessed
 - [ ] Research autocomplete and non-agent tools — different interaction model,

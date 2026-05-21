@@ -29,7 +29,7 @@ No hooks system is available for the Eclipse Copilot plugin.
 April 30, 2027. The CLI was archived November 2025. The successor is Kiro —
 see `tooling/kiro.md` when available.
 
-See `tooling/amazonq.md` for the full evaluation. Summary: rules are explicitly
+See `../agents/amazonq.md` for the full evaluation. Summary: rules are explicitly
 documented as best-effort, no global rules support, and the tool is in end-of-life.
 Do not adopt for new projects.
 
@@ -79,7 +79,7 @@ AI_CONDUCT.md applies this session. Read it before we start.
 the same skepticism as VS Code Copilot until independently tested. No hooks
 available. Use with manual oversight.
 
-**Amazon Q Developer:** Deprecated. See `tooling/amazonq.md`. Do not adopt.
+**Amazon Q Developer:** Deprecated. See `../agents/amazonq.md`. Do not adopt.
 
 For production work under this contract: Claude Code CLI alongside Eclipse
 is the reliable path. Eclipse handles JVM-specific IDE features; Claude Code
