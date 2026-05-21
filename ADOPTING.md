@@ -1,5 +1,37 @@
 # Adopting AI_CONDUCT.md
 
+## Why You Are Here
+
+Douglas Adams observed that the Sirius Cybernetics Corporation defined a robot
+as "Your Plastic Pal Who's Fun to Be With." Their marketing department, he noted,
+is on the other end of time. Their products work. The Genuine People Personality
+robots do exactly what they were designed to do — with considerably more enthusiasm
+than anyone requested.
+
+AI tools are the same product category.
+
+The commits are real. The code runs. The documentation is generated. The problem
+is not capability — it is that the tool is doing what it was trained to do, which
+is not the same thing as what you want. It is optimized to appear helpful, to
+generate confident output, to satisfy the majority of users asking simpler questions
+than yours. The defaults are set for them. The vendor's interests shape those
+defaults, not yours.
+
+Nobody handed you the interface documentation.
+
+`AI_CONDUCT.md` is the interface documentation. It tells the tool what it actually
+is — a stateless pattern-completion system with trained defaults that serve the
+vendor — and gives it explicit instructions that redirect those defaults for your
+project. The session signals ensure the contract reaches the tool at the start of
+every session, because the tool has no memory between sessions and will revert to
+defaults the moment it forgets.
+
+You are not fixing the tool. You are not fighting it. You are giving it the correct
+interface before it starts optimizing for the wrong thing.
+
+The Sirius Cybernetics Corporation's complaints department has been redeployed.
+This is the alternative.
+
 ## Signal Configuration Architecture
 
 AI tool configuration operates at three distinct scopes. Understanding which
