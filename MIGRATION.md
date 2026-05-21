@@ -180,6 +180,18 @@ bootstrap flow is the entry point into that enforcement layer.
 ## Phase 1 — Unblocking Prerequisite
 *Complete this before anything in Phase 3.*
 
+- [ ] **Terminology deep dive**: Product naming rules (Claude Code vs VS Code, GitHub
+      Copilot not "VS Code Copilot", Cursor assessment) are not in any project artifact.
+      Establish correct terminology in tooling docs and/or a dedicated reference. Memory
+      entry removed — behavior needs a documented home before it can be enforced.
+- [ ] **Commit discipline deep dive**: One-logical-change-per-commit rule is not in the
+      source-of-truth guardrails. Add to `wendall911/.github/guardrails.md` following
+      the standard rule-writing process (draft → loophole analysis → ethical framing →
+      present all three before committing). Then propagate to local guardrails.
+- [ ] **Eclipse Copilot evaluation**: Instruction file behavior in Eclipse Copilot is
+      documented as unverified in `tooling/eclipse.md`. The VS Code mechanism is broken
+      by design; Eclipse plugin is maintained separately and may behave differently. Needs
+      independent test before the unverified caveat can be removed.
 - [x] Define `/tape` signal in `tooling/vscode.md` — expansion text, polyfill model documented
 - [x] Define `/state` signal in `tooling/vscode.md` — equal weight to `/tape`
 - [ ] Test `/tape` signal in each tool in active use: agent confirms tape read before
