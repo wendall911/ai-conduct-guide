@@ -45,7 +45,7 @@ Disable attribution in Cursor settings: Settings > Agents > Attribution >
 "Add Cursor as co-author" → OFF.
 
 Add system-level hook as backstop — the global `commit-msg` hook covers
-Cursor trailers. See `claude-code.md` for hook setup.
+Cursor trailers. See `../agents/claude-code.md` for hook setup.
 
 The hook should include:
 

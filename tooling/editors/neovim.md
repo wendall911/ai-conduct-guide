@@ -20,7 +20,7 @@ Vim and Neovim plugins are not git-integrated. They do not invoke git commands
 or inject commit metadata. Attribution injection — the pattern documented for
 VS Code Copilot, Claude Code, and Cursor — is not a risk from these plugins.
 
-Apply the system-level git hook from `tooling/claude-code.md` as a general
+Apply the system-level git hook from `../agents/claude-code.md` as a general
 backstop regardless, since Claude Code CLI or other tools in the workflow may
 inject attribution.
 
@@ -38,7 +38,7 @@ is read at session start, PreToolUse hooks block unauthorized actions, and
 session-start instructions are deterministic. The Neovim plugin is a UI
 bridge only.
 
-See `tooling/claude-code.md` for full configuration.
+See `../agents/claude-code.md` for full configuration.
 
 ## avante.nvim
 

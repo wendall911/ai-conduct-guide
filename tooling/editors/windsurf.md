@@ -50,7 +50,7 @@ Disable autonomous tool execution:
 }
 ```
 
-Add system-level hook as backstop (see `claude-code.md` for hook setup).
+Add system-level hook as backstop (see `../agents/claude-code.md` for hook setup).
 Windsurf does not currently inject attribution into commits, but the hook
 provides a general backstop regardless.
 
