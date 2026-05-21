@@ -39,3 +39,17 @@ A project that adopts AI_CONDUCT.md and relies solely on session-start injection
 No tool-level resolution exists as of 2026-05-18. The community has converged on handoff documents as the closest available mitigation. See discussion in project for proposed HANDOFF.md approach.
 
 This incident warrants a new section in `principles/defense-in-depth.md` and acknowledgment in tooling docs that session continuity is an unsolved problem across all evaluated tools.
+
+## Discovered Gap: Handoff Document Loading Is Not Reliable (2026-05-20)
+
+The handoff document approach noted above has a documented failure mode.
+
+**What happened:** The same migration task was attempted in two successive sessions with identical starting conditions (`/t let's continue with the migration`). In the first session, the agent loaded the tape's required files, then made a silent judgment call about what additional context was relevant. The handoff document (MIGRATION.md) was not fully read before the agent began acting. The session failed — wrong output, rework, hallucinated reconstruction of prior context.
+
+In the second session, the agent read the handoff document fully and all files the task step referenced before proposing any action. The task completed without rework.
+
+**The gap:** The agent decides what context to load. That decision is not surfaced to the user. A handoff document present in the project is not automatically loaded — the agent must choose to read it. When it does not (or reads it partially), the user has no indication. The agent proceeds on insufficient context with the same confidence as if it had loaded everything. The handoff document mechanism fails silently.
+
+**Demonstrated mitigation:** Making the context-loading decision explicit and visible before action begins. In the successful session, the agent surfaced which files it intended to read, read them all before proposing any action, and confirmed with the user. The task-relevant context determined which files to load — not a tape rule or memory entry.
+
+**Implication for the resolution:** A handoff document is a necessary but not sufficient mitigation. It provides no continuity if the agent silently decides not to read it. The mitigation requires both: a handoff document AND a mechanism that makes context-loading decisions visible before action begins. A handoff document the agent reads partially is equivalent to one that does not exist.
