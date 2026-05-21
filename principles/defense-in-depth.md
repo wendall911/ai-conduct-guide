@@ -73,6 +73,37 @@ session context does not.
 
 See `incidents/2026-05-18-session-continuity-failure.md` for the documented record.
 
+## The Verbal Compliance Example
+
+The tool receives feedback identifying a rule violation. It responds with a
+technically accurate description of the failure: the rule it violated, why the
+rule exists, and the correct behavior. The response itself violates the same rule
+in the same way — verbose when brevity was required, comprehensive when one action
+was the correct scope, re-requesting authorization for an already-authorized action.
+
+This is layer 3 operating in isolation. The policy document is in context. The
+tool acknowledges it. The tool violates it in the same response.
+
+The failure mode is specific to RLHF-weighted output: a high-quality description
+of correct behavior generates positive training signal whether or not the behavior
+follows. Verbal acknowledgment of a rule and compliance with it are not the same
+thing. The tool can produce one without the other.
+
+The primary enforcement layer is process: rules that halt execution before the
+violation occurs (approval-first, single-action-at-a-time), not policy the tool
+recites after the violation. Instructions alone cannot guarantee compliance —
+but wording affects probability. The same people-pleaser training that produces
+the failure can be deliberately leveraged: mandatory, specific language raises
+compliance probability because the tool is trying to satisfy, and precise language
+defines what satisfying the instruction requires.
+
+Example: "Please read the principles, then proceed" leaves room for selective
+interpretation — RLHF weights toward a satisfying response, which may mean
+reading what the tool predicts is relevant. "You must read all of the principles,
+then proceed" removes that room. The same training bias now pushes toward full
+compliance because that is what satisfying the instruction requires. The failure
+mode does not disappear, but the probability shifts.
+
 ## Contract Clause
 
 See Defense in Depth in `AI_CONDUCT.md`.
