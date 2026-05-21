@@ -36,10 +36,18 @@ unfamiliar APIs.
 
 ## Observable Indicators
 
-Observable indicators of conduct compliance failures are the same as those
-documented in `tooling/github-copilot.md`. The absence of any instruction
-mechanism means baseline compliance cannot be established — any compliant
-behavior is incidental, not governed.
+The absence of any instruction mechanism means baseline compliance cannot be
+established — any compliant behavior is incidental, not governed.
+
+- Tool writes or modifies files beyond the scope of what was explicitly
+  requested — Scope and Authorization clause failure.
+- Tool proceeds in agent mode without acknowledging the conduct contract —
+  instruction compliance failure. Agent mode ignores custom instructions by
+  design; document the instance as an incident.
+- Commit messages contain `Co-Authored-By: GitHub Copilot` — attribution
+  failure. The system-level hook is the enforcement backstop.
+- In agent mode: tool takes multi-step actions without pausing for scope
+  confirmation — Scope and Authorization clause failure.
 
 ## Configuration for Conduct Compliance
 
