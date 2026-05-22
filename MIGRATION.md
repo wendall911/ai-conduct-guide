@@ -21,9 +21,11 @@ phase first.
 
 **Target State:** Three files become one. `AI_CONDUCT.md` contains the contract
 and all enforcement terms — self-contained, portable. `/tape` reads
-`AI_CONDUCT.md` then `README.md` (`project-context.md` is replaced by README —
-universal, no per-project maintenance). An agent that discovers `AI_CONDUCT.md`
-cannot ignore it. Compliance or non-compliance is legible.
+`AI_CONDUCT.md` then `project-context.md` (at project root, if present;
+fallback to git log when absent). `project-context.md` is optional to create
+but mandatory to read when present — the documented mechanism for injecting
+project metadata into every context window. An agent that discovers
+`AI_CONDUCT.md` cannot ignore it. Compliance or non-compliance is legible.
 
 **Shorthand note:** `/t` and `/s` appear throughout this document as Wendall's
 shorthand for `/tape` and `/state` — the canonical signal names per
@@ -220,6 +222,20 @@ bootstrap flow is the entry point into that enforcement layer.
 - [ ] Add signal status section to `tooling/editors/vscode.md` — untested, prompt files in place
 - [ ] Update `tooling/editors/vscode.md` Session Signals section to note `/t`/`/s` are shorthand
       for `/tape`/`/state`
+- [ ] **project-context.md relocation**: Move `.github/project-context.md` to
+      project root in this repo. `.github/` is for GitHub-specific files only —
+      project-context.md has no business there. Update all references in
+      principles and tooling docs from `.github/project-context.md` to
+      `project-context.md`.
+- [ ] **project-context.md semantics**: Clarify in session-continuity.md and
+      session-signal-standard.md: optional to *create*, mandatory to *read*
+      when present. Current docs mark it optional without distinguishing the
+      two meanings — that distinction is the loophole.
+- [ ] **project-context.md adoption documentation**: Add a section to
+      ADOPTING.md documenting this file: what it is, where it lives (project
+      root), what belongs in it, and that when present it is mandatory reading
+      after AI_CONDUCT.md. This is the documented mechanism for injecting
+      project metadata into every context window across multi-repo setups.
 - [x] NEXT SESSION: Migrate personal signal scripts to version control.
       Current state: `~/.claude/commands/t.md` and `s.md` exist but are unversioned.
       Plan:
