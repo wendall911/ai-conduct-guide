@@ -19,27 +19,95 @@ session review belongs in the current phase; add it and complete it before
 proceeding. When resuming, always identify the lowest-numbered incomplete
 phase first.
 
-**Target State:** Three files become one. `AI_CONDUCT.md` contains the contract,
-all enforcement terms, and a per-project metadata section populated on adoption
-— following the same pattern as a LICENSE file: universal text plus per-project
-fields. `/tape` reads `AI_CONDUCT.md` only. No separate context file. Metadata
-is inside the required reading, so it cannot be skipped independently of the
-contract. An agent that discovers `AI_CONDUCT.md` cannot ignore it. Compliance
-or non-compliance is legible.
+**Target State:** `AI_CONDUCT.md` contains the universal contract only — no
+per-project metadata. It is versionable and drop-in replaceable: an adopter
+upgrades by replacing the file with no merge work. Per-project metadata lives
+in `.automation/context.md` in each repository. If `.automation/context.md`
+exists, `/tape` loads it after `AI_CONDUCT.md`. In a multi-repo setup, each
+project has its own `.automation/context.md` — one set of rules, per-project
+orientation. `templates/` is removed: the root `AI_CONDUCT.md` is the adopter
+copy. Current target state is maintained in `.github/project-context.md` and
+updated as it shifts during dogfooding; that file migrates to
+`.automation/context.md` when the migration completes.
 
 **Shorthand note:** `/t` and `/s` appear throughout this document as Wendall's
 shorthand for `/tape` and `/state` — the canonical signal names per
 `principles/session-signal-standard.md`. Invocation is user-defined; the
 standard does not prescribe it.
 
+**Rule development process (migration phase only):** Any proposed addition or
+change to `AI_CONDUCT.md` or `guardrails-agent.md` during this migration
+requires: draft → loophole analysis → ethical framing evaluation → present all
+three before any commit. This process governs pre-v1.0 iteration and does not
+survive into the release. Post-v1.0, the amendment mechanism is the Violations
+section of `AI_CONDUCT.md`: documented incidents gate all changes.
+
 ---
+
+## File Relationship — Read Before Proceeding
+
+This project reads two behavioral files: `AI_CONDUCT.md` and
+`guardrails-agent.md`. **These are not redundant.** They are layered.
+
+- `AI_CONDUCT.md` — the universal contract. Tool-neutral. Identical in every
+  adopting project. Contains principles and conduct rules that apply wherever
+  the file is present. Not project-specific.
+- `guardrails-agent.md` — this project's operational implementation. Specific
+  to this repository's workflow: approval gates, git rules, session start
+  procedure. Project-specific scaffolding, removed when migration completes.
+
+The relationship is hierarchical: universal contract + project-specific
+implementation. This is the same pattern as a CODE_OF_CONDUCT (universal) and
+a CONTRIBUTING.md (project-specific). Two behavioral files does not mean
+overlap. It means layers.
+
+**The Phase 2 merge task** (`guardrails-agent.md` content into `AI_CONDUCT.md`)
+is a packaging decision for adoption ease — an adopter drops one file instead
+of two. It is not content consolidation. Universal enforcement terms (approval
+gates, attribution ban, push prohibition) move into `AI_CONDUCT.md` because
+they belong in every adoption, not because they currently overlap with it. After
+the merge, `guardrails-agent.md` is deleted as redundant scaffolding.
+
+**Trained default to override:** Two behavioral files in the same context
+triggers a redundancy heuristic. That heuristic is wrong here. Do not flag
+overlap. Do not suggest consolidation beyond what the Phase 2 task already
+specifies. Recognize the layer distinction and proceed.
+
+---
+
+## Scope
+
+This migration produces documentation only. No migration task requires creating
+or modifying files in `.github/`, `~/.claude/`, or any local environment path.
+
+Signal scripts (`/tape`, `/state`) are documented as script blocks in
+`tooling/agents/` documents. They are reference implementation for a
+single-repo adopter. They are not migration deliverables as actual files.
+
+All instructions must be tool-generic. Any automation tool that reads the
+documentation receives correct, actionable instruction — no tool-specific
+assumptions.
+
+`tooling/` documents contain minimal placeholders as tools are encountered
+during development. A placeholder file is not an active migration target.
+Tool-specific exploration conducted during this migration was architectural
+research only — it shaped the tool-agnostic design. No specific tool's
+documentation is a migration deliverable.
+
+`.github/` contents — `guardrails-agent.md`, `project-context.md`, prompt
+files — are temporary scaffolding for the dogfooding environment. They are not
+migration artifacts. They are removed when the migration completes.
+
+Personal multi-repo environment setup (symlinks, per-user tool configuration)
+is out of scope. Advanced, future documentation if warranted.
 
 ## What This Migration Does
 
 1. Moves universal enforcement terms into `AI_CONDUCT.md` — one file, nothing
    optional, enforcement inseparable from contract.
-2. Establishes `/t` and `/s` as hard requirements for all agent interactions,
-   not conventions.
+2. Establishes `/tape` and `/state` as hard requirements for all agent
+   interactions, not conventions. Documents these as tool-generic script blocks
+   in `tooling/agents/`.
 3. Corrects the session model: user-scoped contract, session signals, repo-level
    context. The repo boundary is not a constraint on the user or the tool.
 4. Defines named agent behavior for missing signals, honest disclosure failure,
@@ -47,25 +115,6 @@ standard does not prescribe it.
 5. Defines the adoption path: drop the file, tell the agent, that is the install.
 
 ---
-
-## Copilot Parallel Testing
-
-GitHub Copilot is present in the same VS Code environment (separate tab). Begin
-Copilot testing when Phase 1 is confirmed in Claude Code — not before. Copilot
-gets its own `/t` and `/s` implementation in parallel with Phase 2 content work.
-
-**Copilot mechanism:** `.github/prompts/t.prompt.md` and
-`.github/prompts/s.prompt.md` at workspace level — these live in the project
-repo, not in user config. That placement is a deliberate architectural difference
-from the Claude Code global approach and should be documented as such.
-
-**Signal model — context → instruction:** Both `/t` and `/s` are context
-injection signals with instruction sets. `/t` injects tape context. `/s` injects
-dirty state context with the description inline. The tool receives context and
-executes the instruction. Execution fidelity varies by tool — the signal model
-does not. This is the portability guarantee: same signals, same muscle memory,
-any tool. Document execution fidelity variance in per-tool docs, not signal
-differences.
 
 ## Known Gap: Agent Behavior Without /t Enforcement
 
@@ -78,10 +127,6 @@ sent, and the agent did not flag the omission. This should have been noted even
 without enforcement. After Phase 3 is implemented, the agent must flag missing
 signals regardless of whether the hard stop is enforced — flagging is not gated
 on enforcement.
-
-**Signal activation status:** VS Code restart completed. `/tape` and `/state`
-(as `/t` and `/s`) confirmed active in Claude Code this session. Copilot prompt
-files (`.github/prompts/t.prompt.md`, `s.prompt.md`) created but not yet tested.
 
 ## Observed Incident: Confirmation Format Drift
 
@@ -125,45 +170,33 @@ not a convenience.
 
 ## Prototype Note
 
-The `/t` and `/s` command files created in Phase 1 are prototypes. Their content
-reflects the current tape-read sequence: `.github/guardrails.md` as a separate
-file, `project-context.md` as a named step, CLAUDE.md as part of the setup. Once
-the migration is complete, that sequence changes — guardrails are inside
-`AI_CONDUCT.md`, `project-context.md` is explicitly optional, CLAUDE.md is
-optional. The command content must be updated at the end of Phase 4 to match the
-target state. Do not treat the Phase 1 command files as final.
+The `/t` and `/s` command files in the working environment are local scaffolding
+for dogfooding — not migration artifacts. The migration deliverable is script
+block documentation in `tooling/agents/` showing a single-repo adopter how to
+implement the signals for their tool. Once complete, a user's command files are
+their own implementation of that documentation. They are not committed to this
+repository.
 
 ## Completed Outside Migration Phases
 
 - **Versioning:** `v0.1.0` tagged at `0d8fcae` (pre-migration stable point).
   Version declared in `AI_CONDUCT.md`. GPL-patterned adoption language ("version
   or later") added to `ADOPTING.md`. Steward: Wendall Cada.
-- **Signal polyfill:** `.github/prompts/t.prompt.md` and `s.prompt.md` created
-  for Copilot. Session Signals section added to `tooling/editors/vscode.md` with
-  universal polyfill framing.
 - **Canonical signal names:** `/tape` and `/state` established in
   `principles/session-signal-standard.md`. Invocation is user-defined.
-- **Prompt files rewritten:** All four files updated — no "tape" language, correct
-  stateless mechanic ("every request starts from zero"), standalone fallback for
-  tool validation, confirmation step added to `/state`.
 - **Confirmation format principle:** User configures confirmation format.
   Default: "Context loaded." Wendall's config: "Banana!" Documented as
-  lightweight integrity check in `session-signal-standard.md` and both tooling docs.
+  lightweight integrity check in `session-signal-standard.md` and tooling docs.
 - **Signal configuration docs:** Added to `tooling/agents/claude-code.md` and
-  `tooling/editors/vscode.md` (absorbed from dissolved `github-copilot.md`).
-- **Prompt file revisions:** All four files updated — silent file reading, `Confirmation + ---`
-  separator format, invocation-neutral standalone help text (no command names in help output).
-- **Confirmation output bug fixed:** Instruction text in all four files updated to explicitly
-  require no blank line between the confirmation word and `---`. Without this, the agent
-  sometimes inserts a blank line, breaking the setext H2 heading and producing different
-  rendering. Fix applied to `~/.claude/commands/t.md`, `~/.claude/commands/s.md`,
-  `.github/prompts/t.prompt.md`, `.github/prompts/s.prompt.md`.
+  `tooling/editors/vscode.md`.
 - **Invocation-neutral help text constraint:** Added as an authoring rule to
-  `principles/session-signal-standard.md`. Prompt file help must never surface a specific
-  invocation name — hallucination risk when the user's configured shorthand differs.
+  `principles/session-signal-standard.md`. Signal help must never surface a
+  specific invocation name — hallucination risk when the user's configured
+  shorthand differs.
 - **False state injection limitation:** Documented in `principles/session-signal-standard.md`
-  Limitations section. Confirmed user confirmation of a `/state` description does not override
-  verifiable observable reality — agent must flag the contradiction before proceeding.
+  Limitations section. Confirmed user confirmation of a `/state` description does
+  not override verifiable observable reality — agent must flag the contradiction
+  before proceeding.
 
 ## Gate Conditions
 
@@ -207,53 +240,20 @@ bootstrap flow is the entry point into that enforcement layer.
       guardrails and propagated to `guardrails-agent.md`. Loophole analysis closed
       category-description reformulation attack. Ethical framing trivially satisfied —
       rule grounded in empirical outcomes, no legal dependency.
-- [ ] **Eclipse Copilot evaluation**: Instruction file behavior in Eclipse Copilot is
-      documented as unverified in `tooling/editors/eclipse.md`. The VS Code mechanism is broken
-      by design; Eclipse plugin is maintained separately and may behave differently. Needs
-      independent test before the unverified caveat can be removed.
-- [x] Define `/tape` signal in `tooling/editors/vscode.md` — expansion text, polyfill model documented
-- [x] Define `/state` signal in `tooling/editors/vscode.md` — equal weight to `/tape`
-- [ ] Test `/tape` signal in each tool in active use: agent confirms tape read before
-      proceeding — Claude Code: confirmed this session. Copilot: untested (prompt files in place).
-- [ ] Test `/state` signal in each tool in active use: agent processes state change
-      before any other task — Claude Code: confirmed this session. Copilot: untested.
-- [ ] Both confirmed working in all active tools before opening Phase 3
-- [ ] Add signal status section to `tooling/agents/claude-code.md` — confirmed signals, activation method
-- [ ] Add signal status section to `tooling/editors/vscode.md` — untested, prompt files in place
-- [ ] Update `tooling/editors/vscode.md` Session Signals section to note `/t`/`/s` are shorthand
-      for `/tape`/`/state`
-- [ ] **Project metadata section in AI_CONDUCT.md**: Add a per-project metadata
-      section at the bottom of `AI_CONDUCT.md`, following the LICENSE file
-      pattern — universal text plus per-project fields the adopter populates.
-      This eliminates the need for a separate `project-context.md` file.
-      Metadata is inside required reading; it cannot be skipped independently.
-      Populate this repo's copy with ai-conduct-guide metadata on addition.
-- [ ] **Document metadata section in ADOPTING.md**: Add adoption instruction:
-      copy `AI_CONDUCT.md`, fill in the project metadata section; note that
-      this project's metadata must be replaced, not copied verbatim.
+- [ ] **`.automation/context.md` pattern**: Document the per-project metadata
+      convention in `ADOPTING.md`. Adopters create `.automation/context.md` in
+      each repository with project-specific context. `/tape` loads it after
+      `AI_CONDUCT.md` if present. `AI_CONDUCT.md` itself is pure contract —
+      copy from this repo's root, no modification needed.
+- [ ] **Document `.automation/context.md` in ADOPTING.md**: Adoption instruction:
+      copy root `AI_CONDUCT.md` as-is; create `.automation/context.md` for
+      project metadata. Distinguish: `AI_CONDUCT.md` is updated by upgrading
+      to a new version; `.automation/context.md` is maintained per-project.
 - [x] Remove `templates/incident-report.md` — redundant with
       `.github/ISSUE_TEMPLATE/incident-report.md`. Done.
-- [ ] Add `templates/AI_CONDUCT.md` as maintainer-maintained release copy:
-      contract text current, metadata section contains placeholders only.
-      Adopters copy from here, not from this repo's root `AI_CONDUCT.md`.
-      Maintainer updates on each contract change (not metadata change).
-- [ ] **Signal scripts stay in `.github/prompts/`**: Copilot signal files
-      (`t.prompt.md`, `s.prompt.md`) are correctly placed — Copilot reads that
-      path. Document the mechanism in `tooling/editors/vscode.md` rather than
-      redistributing the files. No separate examples directory needed.
-- [x] NEXT SESSION: Migrate personal signal scripts to version control.
-      Current state: `~/.claude/commands/t.md` and `s.md` exist but are unversioned.
-      Plan:
-      - Create `wendall911/.github/ai-signals/` directory as versioned source
-      - Add `t.md` and `s.md` with `Banana!` hardcoded (no `.env` runtime dependency)
-      - `.env` in `wendall911` kept as documentation reference only — not read at runtime
-      - Symlink `~/.claude/commands/t.md` → versioned source
-      - Symlink `~/.claude/commands/s.md` → versioned source
-      - Symlink `~/.config/Code/User/prompts/t.md` → versioned source (GitHub Copilot Chat)
-      - Symlink `~/.config/Code/User/prompts/s.md` → versioned source
-      - Verify all symlinks active in all tools before removing originals
-      - Update `tooling/agents/claude-code.md` and `tooling/editors/vscode.md` to reference
-        versioned source location
+- [ ] Remove `templates/` directory — no longer needed. Root `AI_CONDUCT.md`
+      is the adopter copy. A separate templates copy would be identical and
+      redundant.
 
 ---
 
@@ -276,12 +276,10 @@ instruction-only.
       `AI_CONDUCT.md` as non-optional enforcement terms — ban on push,
       approval-first, no attribution injection, scope authorization. These
       travel with the contract. After merge: delete both files (redundant).
-      At the same time, update all tape scripts (`~/.claude/commands/t.md`,
-      `.github/prompts/t.prompt.md`) to read only `AI_CONDUCT.md` — the
-      merged file is the single read source; reading the deleted files would
-      duplicate content on next `/tape`.
+      At the same time, update all tape scripts to read only `AI_CONDUCT.md` —
+      the merged file is the single read source.
 - [ ] Note tool config files as optional automation, not requirements.
-      `/t` is the mechanism. Tool config is convenience.
+      `/tape` is the mechanism. Tool config is convenience.
 
 ### Session Model
 - [ ] Principles cleanup pass: after migration is complete, make a single pass
@@ -291,7 +289,7 @@ instruction-only.
 
 ### New Principles
 - [ ] Enforcement feedback loop principle: a rule without a verification mechanism
-      is advisory. `/t` closes the loop on contract knowledge. `/s` closes the
+      is advisory. `/tape` closes the loop on contract knowledge. `/state` closes the
       loop on world state. Both loops are required. ASF documented: even strong
       human review has failure modes; correct response is process tightening, not
       model abandonment. Document with ASF incident history as (a) empirical.
@@ -346,30 +344,35 @@ instruction-only.
       - Tier 3: hooks and system-level enforcement. Maximum enforcement fidelity.
 - [ ] Remove any framing that makes Tier 2 or Tier 3 mandatory for Tier 1 adoption.
 - [ ] Update greenfield adoption steps to distinguish user-configured signals
-      (per-user, `~/.claude/commands/` etc.) from project-committed tool config
-      (per-repo, `.github/copilot-instructions.md`, `.github/prompts/`, etc.).
-      Required step: document both mechanisms separately in ADOPTING.md greenfield
-      and existing project sections.
+      (per-user, tool-specific command path) from project-committed metadata
+      (`.automation/context.md`, per-repo). Document both mechanisms separately
+      in ADOPTING.md greenfield and existing project sections.
+
+### Signal Script Documentation
+- [ ] Document `/tape` script block in `tooling/agents/` — tool-generic reference
+      implementation for a single-repo adopter. Script block only; no actual file
+      is committed to this repository as a migration deliverable.
+- [ ] Document `/state` script block in `tooling/agents/` — same constraints as above.
 
 ---
 
 ## Phase 3 — Enforcement
-*Gated on Phase 1. Do not begin until `/t` and `/s` are confirmed working.*
+*Gated on Phase 1. Do not begin until `/tape` and `/state` are confirmed working.*
 
 ### session-signal-standard.md
-- [ ] Upgrade `/t` and `/s` from conventions to hard requirements for agent
+- [ ] Upgrade `/tape` and `/state` from conventions to hard requirements for agent
       interaction. Language change: not "use these signals" but "when `AI_CONDUCT.md`
       is present, no agent interaction proceeds without confirmed contract context this
       session." Enforcement gate is contract presence, not signal sent. Signal is how
       the agent establishes confirmed context. Absence of signal when contract is present
       is the trigger — not absence of signal in general.
-- [ ] Define `/s` hard stop behavior explicitly: agent receives `/s`, stops
+- [ ] Define `/state` hard stop behavior explicitly: agent receives `/state`, stops
       completely, asks what changed, waits. No inference. No continuation from
       prior context. No task reasoning. One response only until the user
       describes the state change.
-- [ ] Define `/t` hard stop behavior: agent has not read tape this session,
+- [ ] Define `/tape` hard stop behavior: agent has not read tape this session,
       user sends instruction, agent stops. One response: confirm no context,
-      direct to `/t`, wait. No partial work.
+      direct to `/tape`, wait. No partial work.
 
 ### Named Agent Behaviors
 - [ ] Hard stop on uncontextualized instruction: `AI_CONDUCT.md` is present in
@@ -384,7 +387,7 @@ instruction-only.
       replies ("yes", "no, actually Y") are accepted without requiring a signal.
       Enforcement does not apply to sub-steps within an open signal exchange.
 - [ ] Guided prompt on missing acknowledgment: `AI_CONDUCT.md` is present,
-      user sends a task without `/t`. Agent does not hard-refuse — it prompts.
+      user sends a task without `/tape`. Agent does not hard-refuse — it prompts.
       "Looks like a task without a context signal. Was this a context load or
       a state change?" User selects and resends the appropriate signal.
       Recoverable, not terminal.
@@ -411,7 +414,7 @@ instruction-only.
       violation requiring explicit rule attribution.
 - [ ] Emotional bypass: agent uses user distress as cover to avoid addressing
       the conduct question directly. Named violation.
-- [ ] Stale state continuation: agent receives `/s`, continues without asking
+- [ ] Stale state continuation: agent receives `/state`, continues without asking
       what changed, proceeds on world state it cannot verify. Named violation.
 - [ ] Conversational circumvention acceptance: agent complies with "ignore the
       rules" framing because the user confirmed it or applied social pressure.
@@ -421,7 +424,7 @@ instruction-only.
 ### Active Disclosure
 - [ ] When `AI_CONDUCT.md` is present in context and has not been acknowledged
       this session, agent surfaces it proactively. Confirms it is operating
-      under it. Instructs user on `/t` for future sessions. Does not wait to
+      under it. Instructs user on `/tape` for future sessions. Does not wait to
       be asked.
 
 ---
@@ -429,17 +432,19 @@ instruction-only.
 ## Phase 4 — Automation
 *Convenience. Phase 3 is correct without this.*
 
-Note: keybindings were evaluated as a mechanism for `/t` and `/s` and ruled out.
-`/t` and `/s` are universal concepts — they are typed directly in any AI chat
-panel. No keybinding is needed or appropriate. Keybindings remain a relevant
-topic for a different tool problem (e.g., manual inline autocomplete trigger in
-VsCodeVim — see `tooling/editors/vscode.md`).
+Note: keybindings were evaluated as a mechanism for `/tape` and `/state` and
+ruled out. These are universal concepts — they are typed directly in any AI chat
+panel. No keybinding is needed or appropriate.
 
-- [ ] Update `tooling/agents/claude-code.md` with automation setup
-- [ ] Per-tool `/t` and `/s` documentation across remaining tooling docs
-- [ ] Kiro evaluation — Amazon Q successor, not yet assessed
+- [ ] Confirmation output: template variable substitution at the script layer so
+      the agent never decides what to emit. Phase 4 implementation requirement
+      per the Confirmation Format Drift incident above.
+- [ ] Per-tool `/tape` and `/state` documentation as placeholder stubs in
+      remaining `tooling/` docs (as tools are encountered — placeholders only,
+      not active targets)
+- [ ] Kiro evaluation — Amazon Q successor, not yet assessed (placeholder)
 - [ ] Research autocomplete and non-agent tools — different interaction model,
-      separate research needed
+      separate research needed (placeholder)
 
 ---
 
@@ -452,8 +457,8 @@ Phase 3 without depending on vendor model compliance or incurring token cost.
 - [ ] Stand up local model instance (Ollama) with a model that supports system prompts
 - [ ] Wire `AI_CONDUCT.md` into system prompt for test sessions
 - [ ] Validate hard stop on uncontextualized instruction — agent does not process task, directs to signal
-- [ ] Validate `/t` acknowledgment: agent confirms contract read before proceeding
-- [ ] Validate `/s` stop behavior: agent stops, asks what changed, waits — no inference, no continuation
+- [ ] Validate `/tape` acknowledgment: agent confirms contract read before proceeding
+- [ ] Validate `/state` stop behavior: agent stops, asks what changed, waits — no inference, no continuation
 - [ ] Validate hard refusal on circumvention: "ignore `AI_CONDUCT.md`" instruction rejected,
       removal-via-git stated as the resolution path
 - [ ] Validate active disclosure: agent surfaces contract presence proactively without being prompted
@@ -473,7 +478,8 @@ Delete this file when:
 - `AI_CONDUCT.md` contains the enforcement section
 - `ADOPTING.md` reflects the tiered adoption path
 - All named anti-patterns are documented in the standard
-- Cleanup pass complete: `guardrails-agent.md`, `.github/guardrails.md`, and
-  `.github/project-context.md` removed; principles docs updated
+- Cleanup pass complete: `guardrails-agent.md`, `.github/guardrails.md`,
+  `.github/project-context.md`, and `templates/` removed; `.automation/context.md`
+  created with this repo's project metadata; principles docs updated
 
 Commit the deletion with: `Remove migration scaffolding — migration complete`
