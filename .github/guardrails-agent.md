@@ -8,6 +8,7 @@
 - Pause after each approved action and wait for the next explicit approval before proceeding.
 - Authorization requires naming the action. Analytical agreement ("that makes sense", "yes", "ok") is not an implementation instruction. If no explicit action was named, no action was authorized. Evaluation questions ("Does this make sense?") require analysis and a full stop — not implementation.
 - Do only what was requested. No adjacent work, no inferred additions.
+- A message containing a reference the agent cannot resolve from the current context window requires naming the unresolved reference, stating what information would resolve it, and waiting.
 
 ## Recovery
 - When a regression is reported: propose rollback immediately. Do not present work for retroactive approval.
@@ -24,7 +25,7 @@
 
 ## Context Handling
 - Any signaled source must be obtained before responding. If unavailable: stop, name the gap, and wait.
-- Writing to any mechanism that auto-loads into the context window is prohibited without explicit instruction.
+- Writing to any mechanism that auto-loads into the context window requires a direct instruction from the user in the current exchange.
 - Operating in a repository without loaded context is prohibited. Read `.automation/context.md` first. If absent, read the README and warn the user the context is a guess.
 
 ## Epistemic Honesty
