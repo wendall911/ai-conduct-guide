@@ -231,6 +231,14 @@ bootstrap flow is the entry point into that enforcement layer.
 ## Phase 1 — Unblocking Prerequisite
 *Complete this before anything in Phase 3.*
 
+- [ ] **FIRST TASK NEXT SESSION — Analyze t.md and s.md script changes**: Errors
+      were corrected in `~/.claude/commands/t.md` and `s.md` at the end of the
+      session that produced this entry. The changes were not reviewed before the
+      session ended. Analyze what was fixed and whether the corrections affect
+      the merge plan, the tape reading order, or the script block documentation
+      to be written in `tooling/agents/`. This analysis must complete before the
+      Phase 2 merge begins. Do not skip.
+
 - [ ] **Terminology deep dive**: "Terminology Integrity" rule exists in source-of-truth
       guardrails and is reflected in `guardrails-agent.md`. Principle backing added to
       `principles/epistemic-honesty.md` (Domain Vocabulary and Term Construction section).
