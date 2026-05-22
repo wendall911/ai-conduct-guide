@@ -16,9 +16,8 @@ operational, not theoretical.
 **Phase 1 active.** See `MIGRATION.md` for the full plan and checklist.
 
 This project is dogfooding its own spec in real time. `.github/` contents
-(including this file) are temporary scaffolding for the working environment —
-not migration artifacts. When the migration completes, this file moves to
-`.automation/context.md`.
+are temporary scaffolding for the working environment — not migration artifacts.
+This file is now at `.automation/context.md` — the target location.
 
 ## Target State
 
@@ -27,8 +26,7 @@ not migration artifacts. When the migration completes, this file moves to
 - `.automation/context.md` — per-project metadata, loaded by `/tape` after
   `AI_CONDUCT.md` if present. Each repo in a multi-repo setup has its own.
 - `templates/` — removed. Root `AI_CONDUCT.md` is the adopter copy.
-- `.github/guardrails-agent.md`, `.github/guardrails.md`, `.github/project-context.md`
-  — scaffolding, removed when migration completes.
+- `.github/guardrails-agent.md` — scaffolding, removed when migration completes.
 
 ## Scope
 
@@ -54,6 +52,7 @@ target.
 - `principles/` — reasoning behind each contract clause
 - `tooling/` — tool-specific implementation notes; placeholders only for non-active tools
 - `MIGRATION.md` — current working state tracking (temporary scaffolding)
+- `.automation/context.md` — per-project metadata, loaded by `/tape` after `AI_CONDUCT.md`
 - `.github/` — temporary scaffolding for dogfooding environment
 
 ## Contributing
