@@ -19,6 +19,12 @@ session review belongs in the current phase; add it and complete it before
 proceeding. When resuming, always identify the lowest-numbered incomplete
 phase first.
 
+**Target State:** Three files become one. `AI_CONDUCT.md` contains the contract
+and all enforcement terms — self-contained, portable. `/tape` reads
+`AI_CONDUCT.md` then `README.md` (`project-context.md` is replaced by README —
+universal, no per-project maintenance). An agent that discovers `AI_CONDUCT.md`
+cannot ignore it. Compliance or non-compliance is legible.
+
 **Shorthand note:** `/t` and `/s` appear throughout this document as Wendall's
 shorthand for `/tape` and `/state` — the canonical signal names per
 `principles/session-signal-standard.md`. Invocation is user-defined; the
