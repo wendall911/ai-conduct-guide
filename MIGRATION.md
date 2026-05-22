@@ -231,9 +231,16 @@ bootstrap flow is the entry point into that enforcement layer.
 - [ ] **Document metadata section in ADOPTING.md**: Add adoption instruction:
       copy `AI_CONDUCT.md`, fill in the project metadata section; note that
       this project's metadata must be replaced, not copied verbatim.
-- [ ] **Move script templates from `.github/prompts/` to `examples/`**: That
-      path is Copilot-specific. Reference implementations belong in a neutral
-      Tier 1 location. Add `examples/README.md` explaining per-tool locations.
+- [ ] **`templates/` cleanup**: Remove `templates/incident-report.md` (redundant
+      with `.github/ISSUE_TEMPLATE/incident-report.md` — GitHub UI covers this).
+      Add `templates/AI_CONDUCT.md` as a maintainer-maintained release copy:
+      contract text current, metadata section contains placeholders only (no
+      project-specific content). Adopters copy from here, not from this repo's
+      root `AI_CONDUCT.md`. Maintainer updates this file on each release.
+- [ ] **Signal scripts stay in `.github/prompts/`**: Copilot signal files
+      (`t.prompt.md`, `s.prompt.md`) are correctly placed — Copilot reads that
+      path. Document the mechanism in `tooling/editors/vscode.md` rather than
+      redistributing the files. No separate examples directory needed.
 - [x] NEXT SESSION: Migrate personal signal scripts to version control.
       Current state: `~/.claude/commands/t.md` and `s.md` exist but are unversioned.
       Plan:
