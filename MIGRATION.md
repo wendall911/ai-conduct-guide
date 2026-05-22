@@ -284,23 +284,10 @@ instruction-only.
       `/t` is the mechanism. Tool config is convenience.
 
 ### Session Model
-- [ ] Update `principles/session-continuity.md`: three-layer model explicitly
-      stated. Layer 1: user-scoped contract (`AI_CONDUCT.md` including metadata).
-      Layer 2: session signals (`/t`, `/s`). Layer 3: git log (project state not
-      legible from commits). `project-context.md` is eliminated — metadata lives
-      inside `AI_CONDUCT.md`. Remove repo boundary assumption — contract is
-      user-scoped.
-- [ ] Update `principles/session-signal-standard.md`: `/state` given equal weight
-      to `/tape` throughout (partial — canonical names `/tape`/`/state` established,
-      equal weight prose update still pending). `/tape` = contract knowledge.
-      `/state` = world state. Different trigger conditions, equal requirement.
-      `/state` fires more frequently than `/tape` in practice — mid-session,
-      between sessions, any time external state shifts.
-- [ ] Remove `project-context.md` as a separate file from the session model.
-      Project metadata now lives inside `AI_CONDUCT.md` as a per-project
-      section. Update `session-continuity.md` and `session-signal-standard.md`
-      to reflect: tape reads `AI_CONDUCT.md` only; no second file in the
-      required reading sequence.
+- [ ] Principles cleanup pass: after migration is complete, make a single pass
+      over all `principles/` docs to update stale references to separate
+      guardrails files and project-context.md. Do not attempt mid-migration —
+      the references will change again before the migration is finished.
 
 ### New Principles
 - [ ] Enforcement feedback loop principle: a rule without a verification mechanism
@@ -486,5 +473,7 @@ Delete this file when:
 - `AI_CONDUCT.md` contains the enforcement section
 - `ADOPTING.md` reflects the tiered adoption path
 - All named anti-patterns are documented in the standard
+- Cleanup pass complete: `guardrails-agent.md`, `.github/guardrails.md`, and
+  `.github/project-context.md` removed; principles docs updated
 
 Commit the deletion with: `Remove migration scaffolding — migration complete`
