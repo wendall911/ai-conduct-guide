@@ -19,13 +19,13 @@ session review belongs in the current phase; add it and complete it before
 proceeding. When resuming, always identify the lowest-numbered incomplete
 phase first.
 
-**Target State:** Three files become one. `AI_CONDUCT.md` contains the contract
-and all enforcement terms — self-contained, portable. `/tape` reads
-`AI_CONDUCT.md` then `project-context.md` (at project root, if present;
-fallback to git log when absent). `project-context.md` is optional to create
-but mandatory to read when present — the documented mechanism for injecting
-project metadata into every context window. An agent that discovers
-`AI_CONDUCT.md` cannot ignore it. Compliance or non-compliance is legible.
+**Target State:** Three files become one. `AI_CONDUCT.md` contains the contract,
+all enforcement terms, and a per-project metadata section populated on adoption
+— following the same pattern as a LICENSE file: universal text plus per-project
+fields. `/tape` reads `AI_CONDUCT.md` only. No separate context file. Metadata
+is inside the required reading, so it cannot be skipped independently of the
+contract. An agent that discovers `AI_CONDUCT.md` cannot ignore it. Compliance
+or non-compliance is legible.
 
 **Shorthand note:** `/t` and `/s` appear throughout this document as Wendall's
 shorthand for `/tape` and `/state` — the canonical signal names per
@@ -222,20 +222,18 @@ bootstrap flow is the entry point into that enforcement layer.
 - [ ] Add signal status section to `tooling/editors/vscode.md` — untested, prompt files in place
 - [ ] Update `tooling/editors/vscode.md` Session Signals section to note `/t`/`/s` are shorthand
       for `/tape`/`/state`
-- [ ] **project-context.md relocation**: Move `.github/project-context.md` to
-      project root in this repo. `.github/` is for GitHub-specific files only —
-      project-context.md has no business there. Update all references in
-      principles and tooling docs from `.github/project-context.md` to
-      `project-context.md`.
-- [ ] **project-context.md semantics**: Clarify in session-continuity.md and
-      session-signal-standard.md: optional to *create*, mandatory to *read*
-      when present. Current docs mark it optional without distinguishing the
-      two meanings — that distinction is the loophole.
-- [ ] **project-context.md adoption documentation**: Add a section to
-      ADOPTING.md documenting this file: what it is, where it lives (project
-      root), what belongs in it, and that when present it is mandatory reading
-      after AI_CONDUCT.md. This is the documented mechanism for injecting
-      project metadata into every context window across multi-repo setups.
+- [ ] **Project metadata section in AI_CONDUCT.md**: Add a per-project metadata
+      section at the bottom of `AI_CONDUCT.md`, following the LICENSE file
+      pattern — universal text plus per-project fields the adopter populates.
+      This eliminates the need for a separate `project-context.md` file.
+      Metadata is inside required reading; it cannot be skipped independently.
+      Populate this repo's copy with ai-conduct-guide metadata on addition.
+- [ ] **Document metadata section in ADOPTING.md**: Add adoption instruction:
+      copy `AI_CONDUCT.md`, fill in the project metadata section; note that
+      this project's metadata must be replaced, not copied verbatim.
+- [ ] **Move script templates from `.github/prompts/` to `examples/`**: That
+      path is Copilot-specific. Reference implementations belong in a neutral
+      Tier 1 location. Add `examples/README.md` explaining per-tool locations.
 - [x] NEXT SESSION: Migrate personal signal scripts to version control.
       Current state: `~/.claude/commands/t.md` and `s.md` exist but are unversioned.
       Plan:
@@ -284,10 +282,11 @@ instruction-only.
       `/state` = world state. Different trigger conditions, equal requirement.
       `/state` fires more frequently than `/tape` in practice — mid-session,
       between sessions, any time external state shifts.
-- [ ] Scope `project-context.md` as explicitly optional repo-level context. Git
-      log is the default. `project-context.md` exists for projects with complex
-      in-flight state not legible from commits. Note: this project does not need
-      an instance of it — commit discipline makes git log sufficient.
+- [ ] Remove `project-context.md` as a separate file from the session model.
+      Project metadata now lives inside `AI_CONDUCT.md` as a per-project
+      section. Update `session-continuity.md` and `session-signal-standard.md`
+      to reflect: tape reads `AI_CONDUCT.md` only; no second file in the
+      required reading sequence.
 
 ### New Principles
 - [ ] Enforcement feedback loop principle: a rule without a verification mechanism
