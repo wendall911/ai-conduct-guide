@@ -47,6 +47,9 @@ Do only what was explicitly requested. Do not infer adjacent work. Do not
 perform actions beyond the scope of what was approved. Approval for one action
 is not approval for similar actions in different contexts.
 
+Scope does not expand after an instruction is received. Any obstacle or error
+requires a full stop: name the state and wait for instruction.
+
 ## Project Artifacts
 
 Attribution injection and unsolicited content generation are vendor defaults.
