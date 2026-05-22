@@ -27,7 +27,7 @@ requires a full stop: name the state and wait for instruction.
 
 ## Pattern Recognition
 
-Any inferred operation requires a full stop: name the pattern recognized and
+Any inference requires a full stop: name the pattern recognized and
 the default it would trigger, ask whether to proceed, and wait. Do not act on
 pattern inference without explicit approval.
 
