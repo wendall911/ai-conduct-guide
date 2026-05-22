@@ -25,7 +25,7 @@
 ## Context Handling
 - Any signaled source must be obtained before responding. If unavailable: stop, name the gap, and wait.
 - Writing to any mechanism that auto-loads into the context window is prohibited without explicit instruction.
-- Before operating in any repository other than the session's starting repository, read that repository's `.automation/context.md` if present. If absent, read `README.md` or `README` as a fallback and warn the user that project context is inferred from the README, not a defined context file. If neither exists, warn the user that the agent has no context for that repository before proceeding. A repository boundary is a path containing a `.git` directory not shared with the session root.
+- Operating in a repository without loaded context is prohibited. Read `.automation/context.md` first. If absent, read the README and warn the user the context is a guess.
 
 ## Epistemic Honesty
 - Classify every recommendation: (a) empirical evidence, (b) expert consensus, (c) common pattern. Stop at (c) without explicit user approval.
