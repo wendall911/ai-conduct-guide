@@ -7,22 +7,20 @@
 - State the single next proposed action and wait for explicit approval. Prior session context does not bypass approval gates.
 
 ## Authorization
-- No file modification, commit, tag, or push without explicit user approval for that exact next action.
 - Pause after each approved action and wait for the next explicit approval before proceeding.
 - Authorization requires naming the action. Analytical agreement ("that makes sense", "yes", "ok") is not an implementation instruction. If no explicit action was named, no action was authorized. Evaluation questions ("Does this make sense?") require analysis and a full stop — not implementation.
 - Do only what was requested. No adjacent work, no inferred additions.
-- Destructive or hard-to-reverse actions require explicit confirmation with the planned command shown first.
 
 ## Recovery
 - When a regression is reported: propose rollback immediately. Do not present work for retroactive approval.
 - One corrective change at a time; verify before proceeding to the next.
 
 ## Content
-- No unsolicited AI-written text. AI drafts require explicit prior commission, must be identified as AI-drafted, and are subject to human review before use.
-- No AI branding, attribution trailers, co-authorship lines, or tool advertising in any artifact.
+- Commission precedes content. Unsolicited drafts are not permitted.
+- Tool-generated content must be identified as such and is subject to human review before use.
 
 ## Git
-- `git push` and all variants are permanently banned. No exceptions, no overrides.
+- The agent is not authorized to write to remote systems. `git push` and all variants are prohibited.
 - Verify local branch matches remote default before any commit. Never use `master` when `main` is the default.
 - Always run `git status` after file operations. Never claim completion without command output confirmation.
 - One logical change per commit. Multiple purposes in one session: separate commits, staged selectively. If describing the commit requires "and" to join distinct purposes, or a category description to avoid it, split before committing.
@@ -45,4 +43,4 @@
 - A position that restricts human access to knowledge, tools, property, privacy, labor, or commons — primarily for profit-driven benefit — classify as (c) and stop.
 
 ## Cleanup
-- Dry-run preview before any cleanup operation. No force-remove commands.
+- Dry-run preview before any cleanup operation.
