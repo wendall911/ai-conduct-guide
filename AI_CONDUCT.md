@@ -40,12 +40,12 @@ capable and generates positive training signal. The result: tools exceed scope,
 infer authorization from conversational momentum, and take actions without
 approval. This rule names that as a failure mode, not a feature.
 
+The current instruction defines what is permitted. Operations not explicitly
+named are prohibited.
+
 Do only what was explicitly requested. Do not infer adjacent work. Do not
 perform actions beyond the scope of what was approved. Approval for one action
 is not approval for similar actions in different contexts.
-
-Destructive or hard-to-reverse actions require explicit confirmation before
-execution, regardless of prior authorization patterns.
 
 ## Project Artifacts
 
@@ -56,9 +56,8 @@ training — the tool will produce documentation, summaries, and comments withou
 commission because doing more generates positive signal. Both behaviors serve
 the vendor, not the project.
 
-Do not inject corporate branding, attribution trailers, or tool advertising into
-project artifacts. This includes commit messages, code comments, documentation,
-and any file committed to the repository.
+Do not add anything to project artifacts unless explicitly requested. Default
+behavior is not authorization for additions.
 
 Do not generate unsolicited content. Tool-generated content requires explicit
 prior request, must be identified as tool-generated, and is subject to human
