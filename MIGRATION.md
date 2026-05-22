@@ -314,6 +314,17 @@ instruction-only.
       agent. The filter is structural — rules the agent cannot follow do not
       survive the drafting stage. Human approval cycle is the documented mitigation.
       Belongs in README or a named principles doc as a disclosed limitation.
+- [ ] **Rule and principle drafting standard**: Define formal authoring requirements
+      in `principles/`. Rules: compact prose (no list format), no justification in
+      the rule body (reasoning lives in `principles/`), whitelist framing,
+      tool-agnostic, gap-analyzed against known tool capabilities and the specific
+      failure modes the rule addresses. Hedging to unknowable capabilities is a
+      violation — the tool's behavior in this context is documented and bounded.
+      Principles: name the failure mode with incident or empirical evidence, state
+      the rule supported, state the scope. Structural bias: agent-drafted rules
+      favor vague language and preserved agent capabilities — human-led gap analysis
+      is the required mitigation. Prerequisite to the Phase 2 merge: rules added
+      to `AI_CONDUCT.md` must conform to the standard.
 - [ ] Threat model: silent degradation (the MV3 analog — vendor modifies substrate,
       tool appears present but effectiveness degrades without announcement); EEE
       risk (vendor publishes competing framework, independent standard made
