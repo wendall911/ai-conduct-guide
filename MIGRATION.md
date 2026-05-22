@@ -231,12 +231,12 @@ bootstrap flow is the entry point into that enforcement layer.
 - [ ] **Document metadata section in ADOPTING.md**: Add adoption instruction:
       copy `AI_CONDUCT.md`, fill in the project metadata section; note that
       this project's metadata must be replaced, not copied verbatim.
-- [ ] **`templates/` cleanup**: Remove `templates/incident-report.md` (redundant
-      with `.github/ISSUE_TEMPLATE/incident-report.md` — GitHub UI covers this).
-      Add `templates/AI_CONDUCT.md` as a maintainer-maintained release copy:
-      contract text current, metadata section contains placeholders only (no
-      project-specific content). Adopters copy from here, not from this repo's
-      root `AI_CONDUCT.md`. Maintainer updates this file on each release.
+- [x] Remove `templates/incident-report.md` — redundant with
+      `.github/ISSUE_TEMPLATE/incident-report.md`. Done.
+- [ ] Add `templates/AI_CONDUCT.md` as maintainer-maintained release copy:
+      contract text current, metadata section contains placeholders only.
+      Adopters copy from here, not from this repo's root `AI_CONDUCT.md`.
+      Maintainer updates on each contract change (not metadata change).
 - [ ] **Signal scripts stay in `.github/prompts/`**: Copilot signal files
       (`t.prompt.md`, `s.prompt.md`) are correctly placed — Copilot reads that
       path. Document the mechanism in `tooling/editors/vscode.md` rather than
@@ -272,17 +272,24 @@ instruction-only.
       anchor added; "tool" established as shorthand for "automated tool"; "tool-generated"
       replaces "AI-drafted"; "from training data" removed from License Integrity;
       tool-specific filenames removed from opening paragraph (commit 0c81f5b)
-- [ ] Add enforcement section: migrate universal guardrails in as non-optional
-      enforcement terms. Ban on push, approval-first, no attribution injection,
-      scope authorization. These travel with the contract.
+- [ ] Merge `guardrails-agent.md` and `.github/guardrails.md` content into
+      `AI_CONDUCT.md` as non-optional enforcement terms — ban on push,
+      approval-first, no attribution injection, scope authorization. These
+      travel with the contract. After merge: delete both files (redundant).
+      At the same time, update all tape scripts (`~/.claude/commands/t.md`,
+      `.github/prompts/t.prompt.md`) to read only `AI_CONDUCT.md` — the
+      merged file is the single read source; reading the deleted files would
+      duplicate content on next `/tape`.
 - [ ] Note tool config files as optional automation, not requirements.
       `/t` is the mechanism. Tool config is convenience.
 
 ### Session Model
 - [ ] Update `principles/session-continuity.md`: three-layer model explicitly
-      stated. Layer 1: user-scoped contract. Layer 2: session signals (`/t`, `/s`).
-      Layer 3: repo-level context (git log default, `project-context.md` optional).
-      Remove repo boundary assumption — the contract is user-scoped.
+      stated. Layer 1: user-scoped contract (`AI_CONDUCT.md` including metadata).
+      Layer 2: session signals (`/t`, `/s`). Layer 3: git log (project state not
+      legible from commits). `project-context.md` is eliminated — metadata lives
+      inside `AI_CONDUCT.md`. Remove repo boundary assumption — contract is
+      user-scoped.
 - [ ] Update `principles/session-signal-standard.md`: `/state` given equal weight
       to `/tape` throughout (partial — canonical names `/tape`/`/state` established,
       equal weight prose update still pending). `/tape` = contract knowledge.
@@ -351,13 +358,6 @@ instruction-only.
         instruction). Reduces friction, does not change correctness.
       - Tier 3: hooks and system-level enforcement. Maximum enforcement fidelity.
 - [ ] Remove any framing that makes Tier 2 or Tier 3 mandatory for Tier 1 adoption.
-- [ ] NEXT SESSION: Decide on `examples/` directory — reference implementations
-      for Claude Code (`tape.md`, `state.md`) using "Context loaded." default,
-      mirroring what Copilot has in `.github/prompts/`. Question to think on:
-      how to document the ecosystem fragmentation (no universal convention for
-      AI config location across tools and platforms). `examples/` is reference,
-      not auto-loaded — users copy and adapt. Include `examples/README.md`
-      explaining per-tool locations and why no universal convention exists.
 - [ ] Update greenfield adoption steps to distinguish user-configured signals
       (per-user, `~/.claude/commands/` etc.) from project-committed tool config
       (per-repo, `.github/copilot-instructions.md`, `.github/prompts/`, etc.).
