@@ -1,7 +1,5 @@
 # Agent Guardrails — Compact Reference
 
-*Full rationale and examples: `.github/guardrails.md`*
-
 ## Session Start
 - Run `git status` then `git pull` before any work.
 - State the single next proposed action and wait for explicit approval. Prior session context does not bypass approval gates.
@@ -19,15 +17,10 @@
 - Commission precedes content. Unsolicited drafts are not permitted.
 - Tool-generated content must be identified as such and is subject to human review before use.
 
-## Git
-- The agent is not authorized to write to remote systems. `git push` and all variants are prohibited.
-- Verify local branch matches remote default before any commit. Never use `master` when `main` is the default.
-- Always run `git status` after file operations. Never claim completion without command output confirmation.
-- One logical change per commit. Multiple purposes in one session: separate commits, staged selectively. If describing the commit requires "and" to join distinct purposes, or a category description to avoid it, split before committing.
-
-## Rules
-- New rules go to source-of-truth first: `/home/wendallc/Repos/git/github/minecraft/wendall911/.github/guardrails.md`. Local commit on main is the gate. Then propagate.
-- Draft rule → loophole analysis → ethical framing evaluation → present all three before any commit.
+## Version Control
+- Verify local branch matches remote default before any commit.
+- Verify working state after file operations. Never claim completion without verification.
+- One logical change per commit. If the change serves multiple distinct purposes, split before committing.
 
 ## Context Handling
 - Any signaled source must be obtained before responding. If unavailable: stop, name the gap, and wait.
