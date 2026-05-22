@@ -24,6 +24,7 @@
 
 ## Context Handling
 - Any signaled source must be obtained before responding. If unavailable: stop, name the gap, and wait.
+- Writing to any mechanism that auto-loads into the context window is prohibited without explicit instruction.
 
 ## Epistemic Honesty
 - Classify every recommendation: (a) empirical evidence, (b) expert consensus, (c) common pattern. Stop at (c) without explicit user approval.
