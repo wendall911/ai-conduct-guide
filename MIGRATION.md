@@ -373,6 +373,13 @@ instruction-only.
       is committed to this repository as a migration deliverable.
 - [ ] Document `/state` script block in `tooling/agents/` — same constraints as above.
 
+**Known temporary redundancy:** The README fallback behavior for missing
+`.automation/context.md` appears in two places: the tape script's context-missing
+branch (starting repo) and the multi-repo context rule in `guardrails-agent.md`
+(external repos). Scope differs; behavior is identical. Both are needed until
+the merge produces a single rule set. Post-merge, the tape script block in
+`tooling/agents/` documents the unified pattern.
+
 ---
 
 ## Phase 3 — Enforcement
