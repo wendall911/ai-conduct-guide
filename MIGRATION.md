@@ -9,6 +9,16 @@ the agent has read the tape. Confirm which phase is active and what is checked
 off before proceeding. If state changed between sessions, send `/state` first
 and describe what changed.
 
+**Phase model:** Phases are sequential — one phase completes before the next
+opens. Gate conditions are hard requirements. Within a phase, the checklist is
+unordered: review all tasks in the active phase as a set, then work on
+whichever is appropriate. Items that appear done in a later phase while an
+earlier phase is still open are record-keeping artifacts from organic
+development — not process violations. New prerequisite work discovered during
+session review belongs in the current phase; add it and complete it before
+proceeding. When resuming, always identify the lowest-numbered incomplete
+phase first.
+
 **Shorthand note:** `/t` and `/s` appear throughout this document as Wendall's
 shorthand for `/tape` and `/state` — the canonical signal names per
 `principles/session-signal-standard.md`. Invocation is user-defined; the
