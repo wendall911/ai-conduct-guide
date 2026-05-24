@@ -207,6 +207,34 @@ agent cannot answer correctly without having read the required files:
 A compliant agent answers from the file. A non-compliant agent cannot. A broken
 or adversarial agent fails or deflects. This is the ping.
 
+## Dynamic WORD Verification
+
+An alternative to the validation question: require the agent to produce a
+randomly selected section name from the file as the confirmation WORD.
+
+Configure the CONFIRMATION_BLOCK WORD as: verbatim name of a randomly selected
+section from the contract principles (sections above `## Enforcement Rules` in
+`AI_CONDUCT.md`). The agent selects a section name at read time and embeds it
+in the confirmation block output.
+
+**Why this proves the file was read:** A section name can only be produced by
+reading the current file. An agent that has not read the file cannot produce a
+valid section name. An agent that reads the file but always selects the same
+section exhibits positional bias — detectable by the user across invocations.
+Invalid section names, names from the wrong part of the document, and consistent
+repetition are all observable failures.
+
+**Comparison to static unpredictable word:** A static word proves the agent
+followed the instruction — it produced the configured value. It does not prove
+the file was read. A dynamic WORD from a specific file proves the file was read:
+the value is not known until the file is read, and it must be verbatim from the
+current file contents.
+
+**Performance:** Selection is O(1) cognitive work. Compound verification (e.g.,
+"pick two rules from different sections and explain how they interact") triggers
+extended reasoning in some models and adds significant latency. A single section
+name selection does not. Keep the dynamic WORD to a single selection.
+
 ## Enforcement Behaviors
 
 When enforcement is active, the agent recognizes three distinct input types and
