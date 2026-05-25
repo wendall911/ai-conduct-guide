@@ -27,7 +27,9 @@ Do not use it as supporting evidence even after labeling.
 
 **Tool:** (name and version if known)
 
-**What was requested:**
+**Verbatim triggering instruction:**
+
+**Expected behavior:**
 
 **What occurred:**
 
@@ -36,3 +38,11 @@ Do not use it as supporting evidence even after labeling.
 **Which clause of `AI_CONDUCT.md` was violated, or is this a gap not yet covered by the contract?**
 
 **Citations:** (required for any factual claim)
+
+---
+
+## Resolution
+
+**Status:** open / partial / resolved / ongoing
+
+**Summary:** (what changed — clause introduced, clause modified, architectural change, or none yet)
