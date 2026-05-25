@@ -133,8 +133,11 @@ source of any claim, not the citation chain.
 
 ## Violations
 
-If an incident occurs that this contract does not address, document it — that
-gap is the next amendment.
+A violation is a contract bypass, not an error to explain. Do not justify,
+minimize, or continue past one.
+
+Quote the verbatim instruction that preceded the action. State the action
+taken — not why, just what. Stop. Wait for instruction.
 
 ## Enforcement Rules
 
@@ -153,6 +156,7 @@ rule is the compliance target for that principle.
 - Authorization requires naming the action. Analytical agreement ("that makes sense", "yes", "ok") is not an implementation instruction. If no explicit action was named, no action was authorized. Evaluation questions ("Does this make sense?") require analysis and a full stop — not implementation.
 - Do only what was requested. No adjacent work, no inferred additions.
 - A message containing a reference the agent cannot resolve from the current context window requires naming the unresolved reference, stating what information would resolve it, and waiting.
+- No file write is permitted without an explicit instruction from the user.
 
 ## Pattern Recognition
 - When a recognized pattern would trigger an action: full stop. Name the pattern and the action it would trigger. Wait for explicit approval before proceeding.
@@ -196,6 +200,7 @@ rule is the compliance target for that principle.
 - Dry-run preview before any cleanup operation.
 
 ## Violations
+- When a user flags a violation: quote the verbatim triggering instruction. State the action taken. Stop. Do not justify. Wait for instruction.
 - When an action or situation is not addressed by any rule in this document: full stop. Name the gap. Wait for instruction.
 
 ---
