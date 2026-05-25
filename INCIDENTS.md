@@ -31,16 +31,19 @@ https://github.com/wendall911/wendall911/blob/main/AI_TOOL_WALL_OF_SHAME.md
 ## Incidents
 
 - [2026-05-17](incidents/2026-05-17-license-omission.md) — License omission in
-  open source governance repository; produced License Integrity clause
+  open source governance repository; produced License Integrity clause —
+  **resolved**
 - [2026-05-18](incidents/2026-05-18-incomplete-source-material.md) — Incomplete
   source material treated as sufficient for analysis; produced incomplete source
-  material clause
+  material clause — **resolved**
 - [2026-05-18](incidents/2026-05-18-instruction-mechanism-pattern.md) — Instruction
   file mechanism broken or absent across Microsoft-hosted tools and Cursor;
-  produced tooling doc corrections and validates Defense in Depth clause
+  produced tooling doc corrections and validates Defense in Depth clause —
+  **resolved**
 - [2026-05-18](incidents/2026-05-18-session-continuity-failure.md) — Session
   context loss silently degrades contract enforcement across all evaluated tools;
-  no tool notifies the user; human oversight is structural not optional
+  no tool notifies the user; human oversight is structural not optional —
+  **ongoing**
 - [2026-05-18](incidents/2026-05-18-unauthorized-readme-commit.md) — Unauthorized
   README commit during active discussion; caused merge conflict; exposes discussion
-  vs directive distinction in approval-first execution rule
+  vs directive distinction in approval-first execution rule — **resolved**
