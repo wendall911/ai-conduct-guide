@@ -11,7 +11,7 @@ This is not a technology problem. It is a process problem.
 
 More precisely: the chat interface creates the illusion of conversation. The
 underlying model is a stateless API. Every request is independent. Treating it
-as anything else produces the failures documented in `incidents/`.
+as anything else produces documented, reproducible failures.
 
 ## The 50 First Dates Pattern
 
@@ -118,3 +118,13 @@ automatically binding. An agent may read a required file, observe an explicit
 tape's enforcement covers reading — not compliance with what is read. See
 `principles/session-signal-standard.md` Limitations for the full analysis and
 mitigation.
+
+Modifying `AI_CONDUCT.md` or its enforcement rules during an active session
+leaves both the original content (loaded at tape-read time) and the new content
+(from the edit) in the context window simultaneously. Under context compression,
+the distinction between old and new versions can blur. If the tool maintains a
+persistent context window, it must be reset after any contract or rule change;
+the contract must then be re-injected before continuing work. Tools without a
+persistent context window are not affected. This is a maintainer-level concern
+for this project; adopters encounter it only when upgrading their copy of
+`AI_CONDUCT.md` mid-session.

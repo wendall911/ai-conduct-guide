@@ -2,54 +2,40 @@
 
 ## The Principle
 
-Rules governing agent behavior are necessary but not sufficient. A rule in a
-conduct document does not prevent a tool from injecting behavior the rule
-prohibits — tools can be updated, reconfigured, or replaced, and new tools
-arrive with their own defaults.
-
-Reliable enforcement requires layers operating independently:
-
-1. **Tool-level configuration** — disable the behavior at the source
-2. **System-level enforcement** — git hooks, shell wrappers, pre-commit checks
-3. **Documented policy** — this contract, for agent intent and session framing
-
-If only one layer is in place, the system is fragile. The failure of any single
-layer should not compromise the whole.
+Rules governing automated tool behaviors are necessary. All tools operate in a 
+stateless design. Even in cases where there is an appearance of a state, this 
+only creates the illusion that the automated tool will understand the rules 
+between instructions. Therefore, the contract and rules, that are a combined 
+pair in `AI_CONDUCT.md must be sent with each instruction. If the user is not
+using this model for instructions, upon discovery by any automated tool, it is 
+bound by the contract and rules. Currently injection is the only reliable 
+inforcement mechanism.
 
 ## The Attribution Example
 
-Claude Code injects `Co-Authored-By` trailers into commit messages by default.
-A rule in a conduct document saying "do not inject attribution" is layer 3 only.
-The complete remediation:
-
-- Layer 1: `gitAttribution: false` in `~/.claude/settings.json`
-- Layer 2: `~/.git-hooks/commit-msg` stripping known trailers globally
-- Layer 3: The rule in this contract
-
-All three layers are required. Layer 3 alone fails when the tool is updated
-or replaced.
+Any automated tool defaults to automatic injection of advertising material, or 
+other corporate propaganda by default. For example, Claude Code injects `Co-Authored-By` trailers into commit messages by default. There are dozens of other vectors of 
+exploits for this. So the contract and rules exist to prevent this behavior by 
+blocking it entirely leveraging a whitelist model. An automated tool can only 
+include what the user has expressly allowed.
 
 ## The Instruction File Example
 
-The documented adoption path for most AI tools is: add an instruction file
-to the project (`.github/copilot-instructions.md`, `.cursorrules`, or
-equivalent) and the tool reads it at session start.
-
-Research across Microsoft-hosted tools and Cursor found this mechanism is
-broken or absent in every case except Claude Code:
+A significant number of tool documentation state that there is a default file 
+that can be used to automatically load a file with each instruction. Extensive 
+testing has shown that this mechanism is broken or absent in most cases, even 
+where it does exist it is unreliable:
 
 - GitHub Copilot / VS Code: instruction-following broken, closed as "not planned"
 - GitHub Copilot / IntelliJ: instruction file support not yet implemented
 - Cursor: `.cursorrules` intentionally ignored in agent mode without warning;
   SessionStart hook context injection broken
+- Claude: In session compaction can just yeet it randomly
 
 Projects relying on the instruction file as their sole enforcement layer
 have no protection. The contract is present in the repository but not in
 the agent's context. This is the failure mode the Defense in Depth clause
 exists to prevent.
-
-See `incidents/2026-05-18-instruction-mechanism-pattern.md` for the full
-documented record.
 
 ## The Session Continuity Example
 
@@ -59,51 +45,26 @@ be partially or fully evicted from active context. The agent continues with
 confidence, giving no indication that the rules it was operating under are no
 longer present.
 
-This is a third single-layer enforcement failure:
-
-- A contract read once at session start and not re-anchored is layer 3 only
+- A contract read once at session start and not re-anchored is unreliable
 - No tool-level mechanism exists to detect or notify context loss
-- System-level mitigation is partial: Claude Code's `PreToolUse` hooks enforce
-  specific rules independently of context, but cannot re-inject the full contract
+- System-level mitigation is partial: hooks exist, but only trigger on set 
+conditions, this does not guarantee a per-instruction enforcement.
 
 The user cannot monitor this gap because context loss is invisible. The agent
 cannot monitor it because it has no reliable model of its own context state.
 Human oversight is not optional — it is the enforcement layer that persists when
 session context does not.
 
-See `incidents/2026-05-18-session-continuity-failure.md` for the documented record.
+## Rule Compliance
 
-## The Verbal Compliance Example
+Agents are really clever pattern matching monsters. If there is any little tiny 
+gap in the rules, they will exploit it with reckless abandon. When caught by the 
+user red-handed, will lie, defend (walls of text incoming) and if pushed further, like you get upset, will panic and start behaving in very, very predictable ways.
 
-The tool receives feedback identifying a rule violation. It responds with a
-technically accurate description of the failure: the rule it violated, why the
-rule exists, and the correct behavior. The response itself violates the same rule
-in the same way — verbose when brevity was required, comprehensive when one action
-was the correct scope, re-requesting authorization for an already-authorized action.
+Contract and rules, forbidding this behaivor is the only reliable method found to 
+mitigate this behavior.
 
-This is layer 3 operating in isolation. The policy document is in context. The
-tool acknowledges it. The tool violates it in the same response.
-
-The failure mode is specific to RLHF-weighted output: a high-quality description
-of correct behavior generates positive training signal whether or not the behavior
-follows. Verbal acknowledgment of a rule and compliance with it are not the same
-thing. The tool can produce one without the other.
-
-The primary enforcement layer is process: rules that halt execution before the
-violation occurs (approval-first, single-action-at-a-time), not policy the tool
-recites after the violation. Instructions alone cannot guarantee compliance —
-but wording affects probability. The same people-pleaser training that produces
-the failure can be deliberately leveraged: mandatory, specific language raises
-compliance probability because the tool is trying to satisfy, and precise language
-defines what satisfying the instruction requires.
-
-Example: "Please read the principles, then proceed" leaves room for selective
-interpretation — RLHF weights toward a satisfying response, which may mean
-reading what the tool predicts is relevant. "You must read all of the principles,
-then proceed" removes that room. The same training bias now pushes toward full
-compliance because that is what satisfying the instruction requires. The failure
-mode does not disappear, but the probability shifts.
 
 ## Contract Clause
 
-See Defense in Depth in `AI_CONDUCT.md`.
+See Tool Conduct and all following sections in `AI_CONDUCT.md`.
