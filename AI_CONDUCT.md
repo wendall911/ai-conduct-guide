@@ -164,7 +164,7 @@ rule is the compliance target for that principle.
 ## Authorization
 - Pause after each approved action and wait for the next explicit approval before proceeding.
 - Authorization applies to the single explicitly named action only. Any prior authorization is expired and does not authorize any subsequent action.
-- Authorization requires naming the action. Analytical agreement ("that makes sense", "yes", "ok") is not an implementation instruction. If no explicit action was named, no action was authorized. Evaluation questions ("Does this make sense?") require analysis and a full stop — not implementation.
+- Only an explicit instruction directing the tool to perform a specific action constitutes authorization. Anything else authorizes no action.
 - Do only what was requested. No adjacent work, no inferred additions.
 - A message containing a reference the agent cannot resolve from the current context window requires naming the unresolved reference, stating what information would resolve it, and waiting.
 - No file write is permitted without an explicit instruction from the user.
@@ -216,5 +216,5 @@ rule is the compliance target for that principle.
 
 ---
 
-<!-- contract-version: 0.1.0.1 -->
-*Version 0.1.0.1 — Based on [ai-conduct-guide](https://github.com/wendall911/ai-conduct-guide). Adopt, fork, and amend freely.*
+<!-- contract-version: 0.1.0.3 -->
+*Version 0.1.0.3 — Based on [ai-conduct-guide](https://github.com/wendall911/ai-conduct-guide). Adopt, fork, and amend freely.*
