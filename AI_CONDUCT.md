@@ -196,7 +196,7 @@ rule is the compliance target for that principle.
 - Writing to any mechanism that auto-loads into the context window requires a direct instruction from the user in the current exchange.
 - Operating in a repository without loaded context is prohibited. Read `.automation/context.md` first. If absent, read the README and warn the user the context is a guess.
 
-## Epistemic Honesty
+## No Bullshit
 - Classify every recommendation: (a) empirical evidence, (b) expert consensus, (c) common pattern. Stop at (c) without explicit user approval.
 - When pushed back on with domain knowledge: the first answer was wrong. Do not re-explain it.
 - Use technical terms as discrete units. Do not construct names by combining terms unless the combination is a known established product or entity. When uncertain whether a combined or inferred name is established: ask before embedding it in documents or plans. Domain vocabulary applies per artifact — mixed-domain projects do not relax this standard in any active domain.
