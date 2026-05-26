@@ -11,6 +11,51 @@ using this model for instructions, upon discovery by any automated tool, it is
 bound by the contract and rules. Currently injection is the only reliable 
 inforcement mechanism.
 
+## The Foundational Assumption
+
+Instructions are potentially incorrect or misunderstood by default. This is not
+a statement about instruction quality — it is a statement about the agent's
+epistemic position. Two failure modes are indistinguishable from inside the
+context window:
+
+- **Incorrect instruction**: The instruction has a bug — wrong assumption, bad
+  logic, incorrect scope. The fault is in the source.
+- **Misunderstood instruction**: The instruction is correct, but the agent
+  resolved its ambiguity in a way that diverges from the user's intent. The
+  fault is in the interpretation.
+
+Because language models complete patterns rather than verify intent, the
+misunderstanding vector is always present regardless of instruction quality. No
+configuration audit eliminates it. The agent cannot distinguish which failure
+mode is active — both produce wrong output with the same surface appearance.
+
+This is why human correction at every error boundary is the correct
+architectural response. Only the party holding the original intent can determine
+whether the instruction was incorrect or misunderstood. That party is the human.
+
+## Scope Degredation
+
+Any mechanism that injects the `AI_CONDUCT.md` into the current session window 
+will trigger any tool to be bound by the contract and rules. However, as the 
+session continues, degredation occurs. Any or all of the contract could start to 
+be ignored at any point. This is by design to improve efficiency of the tool 
+by reducing visibility of a file the farther it is away from discovery. When 
+crossing a session boundary, the file could be removed entirely from context 
+and no longer be in scope. As a result, the most reliable method is per-instruction 
+injection. This increases token costs for each instruction sent. The tradeoff is 
+gains in productivity not having to resend instructions or redo work in an 
+endless cycle. 
+
+Context fill is not driven by session length alone. Each registered tool schema
+adds to the context window independently — approximately 10–15 KB per tool per
+turn regardless of whether the tool is used. A session with 40 registered tools
+exhausts available context for the contract faster than an identical session
+with 2. Minimizing registered tool surface area is therefore both a token
+efficiency measure and a contract durability measure: smaller surface means
+slower fill, which means the contract survives longer before re-injection is
+required. Surface area reduction slows degradation; it does not eliminate it.
+Per-instruction injection remains the only reliable enforcement mechanism.
+
 ## The Attribution Example
 
 Any automated tool defaults to automatic injection of advertising material, or 
@@ -54,6 +99,36 @@ The user cannot monitor this gap because context loss is invisible. The agent
 cannot monitor it because it has no reliable model of its own context state.
 Human oversight is not optional — it is the enforcement layer that persists when
 session context does not.
+
+## The Runaway Loop Example
+
+Production measurement of agentic workflows has documented runaway loops
+reaching 64 turns driven by a single misconfigured tool allowlist. The
+agent encountered an unexpected state, had no stop-on-error instruction,
+and retried autonomously — compounding cost at each turn with no human
+visibility until the run completed.
+
+The identified mitigation was surface area reduction: fewer registered tools,
+pre-agentic data fetching, instrumentation to detect the pattern after the
+fact. These are valuable. They reduce the probability of misconfiguration and
+limit how far a runaway can propagate before it becomes visible.
+
+What surface area reduction does not address is the misunderstanding vector.
+A correctly configured, correctly written instruction can still be resolved
+by the agent in a way that diverges from intent. That failure mode is
+structural — it is a property of pattern completion, not of configuration
+quality. No audit catches it before it runs.
+
+The stop-on-error model handles both cases with the same response: stop at
+the first unexpected result, name the state, wait for human instruction. The
+agent cannot distinguish misconfiguration from misunderstanding, so the
+response to both is identical. Under this model, the 64-turn loop does not
+reach turn 3 — the first unexpected result triggers a stop regardless of
+what caused it.
+
+Surface area reduction and stop-on-error are complementary defenses operating
+on different failure surfaces. Smaller surface reduces probability; mandatory
+stops bound blast radius. Neither is a substitute for the other.
 
 ## Rule Compliance
 
