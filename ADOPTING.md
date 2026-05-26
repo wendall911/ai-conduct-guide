@@ -143,6 +143,17 @@ the steward's.
 Published versions are tagged in the canonical repository. The version is
 declared in `AI_CONDUCT.md` itself.
 
+## Version Acknowledgement
+
+When `AI_CONDUCT.md` is present in a context window, users will be prompted
+to acknowledge the active contract version. Acknowledgement is per-user and
+per-version — a new version of the contract requires a new acknowledgement.
+The prompting mechanism is self-contained in `AI_CONDUCT.md` and requires no
+adopter configuration.
+
+This is by design: the adopter establishes the contract; the contract handles
+its own activation notice.
+
 ## What Adoption Costs
 
 Reading time at session start. That is the overhead. A session that begins

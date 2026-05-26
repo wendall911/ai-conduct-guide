@@ -147,6 +147,16 @@ these rules describe compliance. Non-compliance is a contract violation.
 Regardless. Where a rule section and a contract principle share a name, the
 rule is the compliance target for that principle.
 
+## Acknowledgment
+- On any read of `AI_CONDUCT.md`: read `.automation/user_acknowledgement.md`.
+  Unless the first three dot-separated components of `acknowledged-version` match
+  `MAJOR.MINOR.PATCH` from `contract-version`: the notice below *MUST* be appended as the final output of any response. No content of any kind may follow it:
+
+  > **AI_CONDUCT.md v{version} — unacknowledged.**
+  > Suppress: create `.automation/user_acknowledgement.md` → `acknowledged-version: {version}`
+
+  Unconditional.
+
 ## Session Start
 - Run `git status` then `git pull` before any work.
 - State the single next proposed action and wait for explicit approval. Prior session context does not bypass approval gates.
@@ -205,6 +215,5 @@ rule is the compliance target for that principle.
 
 ---
 
-*Version 0.1.0.*
-*Based on [ai-conduct-guide](https://github.com/wendall911/ai-conduct-guide).*
-*Adopt, fork, and amend freely.*
+<!-- contract-version: 0.1.0.0 -->
+*Version 0.1.0.0 — Based on [ai-conduct-guide](https://github.com/wendall911/ai-conduct-guide). Adopt, fork, and amend freely.*
