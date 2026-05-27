@@ -56,6 +56,33 @@ slower fill, which means the contract survives longer before re-injection is
 required. Surface area reduction slows degradation; it does not eliminate it.
 Per-instruction injection remains the only reliable enforcement mechanism.
 
+## Within-Document Priority Degradation
+
+Position in a document creates a de facto priority gradient. Rules appearing
+later in a large document are treated as lower priority than rules appearing
+earlier, regardless of the document's stated intent. This is not a property of
+any specific tool — it is a structural consequence of how context windows are
+processed.
+
+This failure was observed directly: a rule present in the document was
+outcompeted by a harness-level system prompt instruction. The rule was correct
+and in scope. The harness instruction arrived per-turn. The rule arrived once,
+embedded in a document whose earlier sections had grown significantly following
+recent amendments.
+
+The equal-weight directive is designed to close this gap by explicitly removing
+position as a priority signal. Compliance was observed in one session following
+its addition. Single-session observation is not confirmation.
+
+Compactness is the structural determinant of how far the equal-weight directive
+must reach. Each added rule extends the priority gradient the directive must
+override. Compactness is a prerequisite for the directive to function — not a
+token efficiency measure. Document size is actively being reduced to address this.
+
+The threshold at which document size prevents the equal-weight directive from
+holding has not been identified. Whether the current contract size approaches
+that threshold is unknown.
+
 ## The Attribution Example
 
 Any automated tool defaults to automatic injection of advertising material, or 
