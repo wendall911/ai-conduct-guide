@@ -100,13 +100,33 @@ cannot monitor it because it has no reliable model of its own context state.
 Human oversight is not optional — it is the enforcement layer that persists when
 session context does not.
 
+Compaction introduces two additional failure modes beyond general context loss:
+
+- **Stale orphan task state.** Tasks that are `in_progress` or `pending` at
+  compaction time persist with their status intact. They do not auto-execute.
+  The risk is false signal: the agent reads `in_progress` post-compaction and
+  may treat it as authorization to proceed. The user issued no instruction in
+  the current exchange. The authorization is fabricated by state.
+
+- **Authorization-ambiguous summary injection.** The compacted summary injected
+  into the new context window is written in natural language. It may contain
+  phrases like "tasks were pending" or "user approved X." A post-compaction
+  agent may interpret this as current authorization. It is not — it is a lossy
+  summary of prior state, not an instruction in the current exchange.
+
+The execution-mode constraint in the Authorization rules closes both vectors:
+if no execution may occur between turns, neither stale task state nor summary
+language can serve as authorization regardless of what they contain. The
+constraint does not require the agent to detect or classify the ambiguity — it
+prohibits the execution window in which the ambiguity could be acted on.
+
 ## The Runaway Loop Example
 
-Production measurement of agentic workflows has documented runaway loops
-reaching 64 turns driven by a single misconfigured tool allowlist. The
-agent encountered an unexpected state, had no stop-on-error instruction,
-and retried autonomously — compounding cost at each turn with no human
-visibility until the run completed.
+GitHub's [token efficiency analysis](https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/)
+documented a 64-turn fallback loop driven by a misconfigured bash allowlist
+that blocked tool use. With tools unavailable, the agent fell back to manually
+reading source code turn after turn — no stop condition, no user visibility,
+until the run completed. Eliminated by fixing one line of configuration.
 
 The identified mitigation was surface area reduction: fewer registered tools,
 pre-agentic data fetching, instrumentation to detect the pattern after the
@@ -122,13 +142,31 @@ quality. No audit catches it before it runs.
 The stop-on-error model handles both cases with the same response: stop at
 the first unexpected result, name the state, wait for human instruction. The
 agent cannot distinguish misconfiguration from misunderstanding, so the
-response to both is identical. Under this model, the 64-turn loop does not
-reach turn 3 — the first unexpected result triggers a stop regardless of
-what caused it.
+response to both is identical. Under this model, the first unexpected result
+is a stop condition regardless of what caused it. Whether the agent actually
+stops depends on contract presence and compliance — single-session observation
+is not confirmation.
 
-Surface area reduction and stop-on-error are complementary defenses operating
-on different failure surfaces. Smaller surface reduces probability; mandatory
-stops bound blast radius. Neither is a substitute for the other.
+The task queue introduces a distinct vector. A harness-injected system-reminder
+— triggered by normal operations like `git status` — prompted task tracking
+tool use without user authorization, directly observed in session. Any
+affirmative user response in a session with pending tracked tasks satisfies the
+authorization condition for all items simultaneously; the queue fires
+asynchronously. The result is context window exhaustion with no stop condition
+and no user visibility.
+
+The existing one-action-per-response rule governs execution within a response.
+The gap is execution between responses — background and asynchronous execution
+fall outside that scope entirely. The between-turn execution prohibition closes
+that specific gap: no execution may occur outside the response to the current
+user message while any task is tracked. This is enforced at the contract layer
+via per-instruction injection, independent of vendor patch state.
+
+Surface area reduction, stop-on-error, and the between-turn execution
+prohibition are complementary defenses operating on different failure surfaces.
+Smaller surface reduces probability; mandatory stops bound blast radius; the
+execution-mode constraint removes the asynchronous execution window. None
+substitutes for the others.
 
 ## Rule Compliance
 
