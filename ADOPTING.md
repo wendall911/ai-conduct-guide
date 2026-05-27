@@ -66,6 +66,33 @@ The tiers are independent. Personal config (Tier 2) is never committed to a
 project repository. Project config (Tier 3) never contains personal settings.
 The specification (Tier 1) is the reference both tiers derive from.
 
+## Task-Specific Rule Layers
+
+The contract governs conduct — authorization, scope, epistemic honesty,
+violations. It does not govern task-specific reliability. Coding tasks,
+principle drafting, contract drafting, and other specialized work each have
+failure surfaces the contract does not address: wrong file locations, invented
+API names, rewrite instead of targeted edit, mechanism documented as symptom.
+
+A second injection layer handles this. The pattern: a command that loads the
+contract context first, then reads task-specific rules before proceeding.
+
+Reference implementations in this project:
+
+- `/draft` — contract and rule clause drafting. Loads `AI_CONDUCT.md` context
+  plus `docs/ai_conduct_drafting_rules.md`.
+- `/principle` — principles document drafting. Loads `AI_CONDUCT.md` context
+  plus `docs/principle_drafting_rules.md`.
+
+Adopters build their own task layer. The task rules are project-specific — the
+failure modes of a Python backend project differ from a frontend TypeScript
+project or a documentation-only repository. No generic task rules ship with
+this specification. The contract is the common layer; the task rules are yours.
+
+Task rules follow the same injection pattern as the contract: loaded at the
+start of every session of that task type, subject to the same degradation
+constraints. Per-session injection, not global configuration.
+
 ## Greenfield Projects
 
 Add `AI_CONDUCT.md` before any AI tool touches the project. The contract is

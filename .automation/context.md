@@ -54,6 +54,10 @@ target.
 - `MIGRATION.md` — current working state tracking (temporary scaffolding)
 - `.automation/context.md` — per-project metadata, loaded by `/tape` after `AI_CONDUCT.md`
 - `.github/` — temporary scaffolding for dogfooding environment
+- `docs/ai_conduct_drafting_policy.md` — policy for AI_CONDUCT.md drafting sessions
+- `docs/ai_conduct_drafting_rules.md` — tool-operative rules for AI_CONDUCT.md drafting
+- `docs/principle_drafting_policy.md` — policy for principles document drafting sessions
+- `docs/principle_drafting_rules.md` — tool-operative rules for principles document drafting
 
 ## Contributing
 

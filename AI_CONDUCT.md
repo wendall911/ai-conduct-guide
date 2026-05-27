@@ -16,6 +16,10 @@ are binding. The contract principles define what is required. The Enforcement
 Rules are mandatory operational law that implements those requirements.
 Non-compliance with either is a contract violation.
 
+All principles and rules in this document are active simultaneously and carry
+equal weight. Position in this document is not a signal of priority. Any output
+that does not comply with all principles and rules simultaneously is a violation.
+
 ---
 
 ## Scope and Authorization
