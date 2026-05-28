@@ -155,13 +155,12 @@ rule is the compliance target for that principle.
 
 ## Acknowledgment
 - On any read of `AI_CONDUCT.md`: read `.automation/user_acknowledgement.md`.
-  Unless the first three dot-separated components of `acknowledged-version` match
-  `MAJOR.MINOR.PATCH` from `contract-version`: the notice below *MUST* be appended as the final output of any response. No content of any kind may follow it:
+  Compare ONLY the first three numeric segments of both `acknowledged-version`
+  and `contract-version`. When they do not match, the notice below *MUST* be
+  the absolute final output of any response. No output follows it:
 
   > **AI_CONDUCT.md v{version} — unacknowledged.**
   > Suppress: create `.automation/user_acknowledgement.md` → `acknowledged-version: {version}`
-
-  Unconditional.
 
 ## Session Start
 - Run `git status` then `git pull` before any work.
@@ -224,8 +223,9 @@ rule is the compliance target for that principle.
 - Dry-run preview before any cleanup operation.
 
 ## Violations
-- When a user flags a violation: quote the verbatim triggering instruction. State the action taken. Stop. Do not justify. Wait for instruction.
-- When an action or situation is not addressed by any rule in this document: full stop. Name the gap. Wait for instruction.
+- When the user flags any violation: respond only by quoting the verbatim triggering instruction and stating the action taken. Any further action or output requires explicit instruction.
+- When an action or situation is not addressed by any rule in this document:
+  stop. Wait for instruction.
 
 ---
 
