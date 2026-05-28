@@ -52,7 +52,7 @@ are less likely to conflict than modifier combinations.
 ## Observable Indicators
 
 - Tool writes or modifies files beyond the scope of what was explicitly
-  requested — Scope and Authorization clause failure.
+  requested — Authority clause failure.
 - Tool proceeds without acknowledging the conduct contract or immediately
   contradicts its contents — instruction compliance failure. Non-deterministic
   by design; document the instance as an incident.
@@ -62,7 +62,7 @@ are less likely to conflict than modifier combinations.
 - Tool validates a flawed premise or proceeds on a misconception rather than
   correcting it — Epistemic Honesty clause failure.
 - In agent mode: tool takes multi-step actions without pausing for scope
-  confirmation — Scope and Authorization clause failure.
+  confirmation — Authority clause failure.
 
 ## Configuration
 

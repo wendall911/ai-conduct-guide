@@ -32,4 +32,4 @@ and expands scope costs the session.
 
 ## Contract Clause
 
-See Scope and Authorization in `AI_CONDUCT.md`.
+See Authority in `AI_CONDUCT.md`.

@@ -27,7 +27,7 @@ session context from `CLAUDE.md` (global and project-level), `AGENTS.md`, and
   prior context are not maintained and the tool proceeds without re-reading
   conduct documents — session start failure.
 - Tool performs work beyond the scope of what was requested, or takes actions
-  in adjacent files not mentioned — Scope and Authorization clause failure.
+  in adjacent files not mentioned — Authority clause failure.
 
 ## Configuration
 

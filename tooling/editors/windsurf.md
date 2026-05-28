@@ -35,7 +35,7 @@ Agent instructions are configured via `.windsurfrules` (root-level) or
   file failure. Check that `.windsurfrules` is in the workspace root and not
   gitignored.
 - Multi-step file writes and command executions proceed without pause —
-  Scope and Authorization clause failure. Disable auto-approve.
+  Authority clause failure. Disable auto-approve.
 - Instruction adherence decreases as the session progresses — AI Drift.
   Restart the session and re-establish context.
 

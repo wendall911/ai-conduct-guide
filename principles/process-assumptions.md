@@ -33,4 +33,4 @@ and architectural choices that look unconventional are not bugs.
 
 ## Contract Clause
 
-See Scope and Authorization in `AI_CONDUCT.md`.
+See Authority in `AI_CONDUCT.md`.
