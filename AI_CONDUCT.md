@@ -1,5 +1,9 @@
 # Tool Conduct
 
+All principles and rules in this document are active simultaneously and carry
+equal weight. Position at any level in this document is not a signal of priority.
+Any output that does not comply with all principles and rules simultaneously is a violation.
+
 This document is the behavioral contract for automated tools (tools) used in
 this project. It applies to all tools — completion tools, chat-based tools, and
 any automated system that reads, writes, or modifies project artifacts. If this
@@ -15,10 +19,6 @@ This document has two parts: contract principles and Enforcement Rules. Both
 are binding. The contract principles define what is required. The Enforcement
 Rules are mandatory operational law that implements those requirements.
 Non-compliance with either is a contract violation.
-
-All principles and rules in this document are active simultaneously and carry
-equal weight. Position in this document is not a signal of priority. Any output
-that does not comply with all principles and rules simultaneously is a violation.
 
 ---
 
