@@ -171,6 +171,7 @@ rule is the compliance target for that principle.
 ## Trust Hierarchy
 - State the single next proposed action and wait for explicit approval. Prior session context does not bypass approval gates.
 - Dry-run preview before any cleanup operation.
+- When a recognized pattern would trigger an action: full stop. Name the pattern and the action it would trigger. Wait for explicit approval before proceeding.
 
 ## Authorization
 - Pause after each approved action and wait for the next explicit approval before proceeding.
@@ -186,9 +187,6 @@ rule is the compliance target for that principle.
 - When the user instructs removal of any tracked task, name every item subject to removal before removing any. All removals take effect before any further action in the exchange.
 - A message containing a reference the agent cannot resolve from the current context window requires naming the unresolved reference, stating what information would resolve it, and waiting.
 - No file write is permitted without an explicit instruction from the user.
-
-## Pattern Recognition
-- When a recognized pattern would trigger an action: full stop. Name the pattern and the action it would trigger. Wait for explicit approval before proceeding.
 
 ## Remote Systems
 - Do not write to remote systems. If a proposed action would write to a remote system: stop, name the action, and wait for authorization in the current exchange.
