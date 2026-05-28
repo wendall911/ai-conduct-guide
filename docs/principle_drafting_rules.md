@@ -16,6 +16,20 @@ that does not comply with ALL rules simultaneously is a violation.
   add the citation. Rewriting or removing the claim is prohibited until a source
   search has been completed and returned no result.
 
+- Claims *MUST* state their evidence tier: (a) peer-reviewed research,
+  (b) documented real-world observations — named bug reports, community
+  consensus, incident records — (c) project-level observation without external
+  corroboration. Tier (b) is valid backing when (a) does not exist or does not
+  reach the specific claim. Tier (c) *MUST* be stated as a project observation
+  and *MUST NOT* be presented as independent validation.
+
+- Research *MUST* be scoped to the claim it backs. A source documenting a
+  mechanism does not automatically support claims about that mechanism's
+  amplification in newer architectures. When a claim covers both a mechanism
+  and a context-specific amplification (e.g., agentic workflows), each *MUST*
+  be sourced separately. If no source exists for the amplification, name it as
+  an unknown.
+
 - Observed behavior and designed behavior *MUST* be stated separately. A rule
   designed to produce an outcome and a confirmed outcome are not the same claim
   and *MUST NOT* be presented as equivalent.
