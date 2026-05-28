@@ -22,3 +22,5 @@ that does not comply with ALL rules simultaneously is a violation.
    narrowly-scoped text is a violation.
  - All unknowns *MUST* be stated explicitly. Any inference used to fill an
    unknown is a violation.
+ - Any enforcement rule containing multiple requirements *MUST* include an
+   equal-weight directive preceding all requirements.
