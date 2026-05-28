@@ -22,6 +22,53 @@ they operate is authorized. An external actor embedding instructions in
 retrieved data is not. Authorization by the user is what makes injection a
 control rather than an exploit.
 
+## Context Compression Gradient
+
+LLMs processing documents with multiple constraints exhibit position-based
+compliance degradation. [Zeng et al. (2025)](https://arxiv.org/abs/2502.17204)
+demonstrates this in multi-constraint instruction following: compliance varies
+significantly based on constraint ordering, even when instructions are
+semantically identical.
+
+**Mechanism:** Without an explicit prioritization signal, the LLM applies its
+own judgment about document weight. The gradient is not a deliberate choice —
+it is a structural property of how multi-constraint documents are processed in
+the absence of explicit weighting instructions.
+
+**Symptom:** The contract document as a whole is deprioritized. Individual
+rules are ignored not because of their own text, but because the LLM has
+decided the governing document does not require full compliance.
+
+**Project observation (c):** Repeated violations of No Bullshit were observed
+during normal project work. The rule was not being enforced; an agent treated
+it as weak language. The fix was iterative: a prioritization directive was
+added as the last sentence of the preamble — this resolved the enforcement
+failure. The directive was later moved to first position and its scope expanded
+to cover all positions in the document. The architecture was not designed
+upfront; it emerged through repeated violations.
+
+**Architectural response:** The equal-weight directive is a contract-layer
+countermeasure, not a vendor patch. It provides the explicit prioritization
+signal the LLM otherwise derives from its own judgment. Its placement at first
+position in the preamble is load-bearing: it must be processed before any
+gradient can form. The scope expansion to "any position in this document"
+ensures enforcement covers rule entries within sections, not just the document
+structure.
+
+**Named unknowns:**
+- Whether the mechanism is document-level deprioritization (the LLM deciding
+  the document is low priority) or position-based gradient within the document
+  is unresolved. Both may be present. The fix addresses both, but the two were
+  not measured independently.
+- AI governance documents are a novel application domain. No research tests
+  this context specifically. The research backs the mechanism; this application
+  is derived from it.
+
+**Enforcement limit:** This countermeasure depends on contract presence and
+agent compliance within a single processing context. It does not address
+session resets, context window exhaustion, or harness defaults operating
+outside the contract layer.
+
 ## Architectural Inversion
 
 Current agentic architectures invert this. Tool vendors implement multi-tier
