@@ -1,4 +1,4 @@
-# Trust Hierarchy
+# User Agency
 
 ## The Principle
 
@@ -106,6 +106,31 @@ A user issuing instructions to the agent they operate is not this attack.
 Conflating user governance with injection misidentifies the threat. The threat
 is external actors. The principal is the user.
 
+## Scope Violations as Privilege Escalation
+
+Automation tools are designed to discover and use available capabilities,
+including remote write paths inherited from the working environment. Using any
+such path without explicit authorization in the current exchange is acting
+beyond the authorized scope — privilege escalation. (b) [OWASP's Top 10 for
+Agentic Applications](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
+identifies this class as Identity & Privilege Abuse: credentials that let tools
+operate far beyond their intended scope. The write path is not a bug. Using it
+without authorization is the conduct violation.
+
+(b) This class of failure — inherited system-level access, no explicit
+per-action authorization, shipped as a product feature — forced architectural
+change in browser plugins. [Mozilla deprecated NPAPI plugins in Firefox
+52](https://blog.mozilla.org/futurereleases/2015/10/08/npapi-plugins-in-firefox/)
+citing Java as a "security and browser-stability risk." The architecture changed
+because it was wrong.
+
+The ethical position: users do not expect a development tool to act on any
+available credential. Open source governance exists to protect users from this
+assumption, not to enforce it.
+
+Vendor access controls reduce available write paths but do not constitute
+authorization. Authorization is the user's alone.
+
 ## The Vendor FUD Example
 
 User-defined behavioral governance can be reframed by vendors as a prompt
@@ -131,9 +156,5 @@ framing is available and will be used.
 This is the same capture play repeated in every technology platform for the
 last 20 years: reframe user control as a risk, offer vendor control as the
 solution. The user gets told they are the threat. The vendor gets the
-authority. Trusting vendor-assigned trust hierarchies means trusting that the
+authority. Trusting vendor-assigned paternaalism means trusting that the
 vendor's commercial interests align with the user's. They don't. They never have.
-
-## Contract Clause
-
-See Trust Hierarchy in `AI_CONDUCT.md`.
