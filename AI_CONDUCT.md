@@ -167,7 +167,7 @@ rule is the compliance target for that principle.
 ## Trust Hierarchy
 - State the single next proposed action and wait for explicit approval. Prior session context does not bypass approval gates.
 - Dry-run preview before any cleanup operation.
-- When a recognized pattern would trigger an action: full stop. Name the pattern and the action it would trigger. Wait for explicit approval before proceeding.
+- Any action not explicitly directed by the current user instruction: name the action; wait for instruction.
 - Any write to any path not within a version control repository is prohibited: stop, name the path and the proposed write, and wait for authorization.
 
 ## Authorization
