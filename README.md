@@ -11,7 +11,7 @@ This is not a capability limitation that improves with model versions. It is a s
 `AI_CONDUCT.md` addresses this by specifying what the tool must do before it starts optimizing toward the wrong objective. There is no guaranteed way to prevent failures; constant human supervision is required. The contract creates the conditions under which failures are named, documented, and addressed — before they compound.
 
 This repository is the specification. Projects adopt it by dropping `AI_CONDUCT.md`
-into their repository as a directive for AI tools that may be used within the project. Individual tools need to be configured to force `AI_CONDUCT.md` to be used. Specific instructions can be found in ./tooling.
+into their repository as a directive for AI tools that may be used within the project. Individual tools need to be configured to require the use of `AI_CONDUCT.md`. Specific instructions can be found in ./tooling.
 
 ## The Problem
 Current agentic workflows run counter to user expectations. Users expect to be in charge of their tools; agentic workflows are designed to remove the user from the equation so they are "useful". This amplifies existing models of operation where these tools operate under the permissions of the system user without restriction, leading to unexpected and unauthorized access to private data and unauthorized writes. These problems aren't bugs; they are designed features of the automated tools:
@@ -24,7 +24,7 @@ Current agentic workflows run counter to user expectations. Users expect to be i
 
 ## The Paradigm
 
-The problems listed are only a fraction of those any user can expect when using automated tooling that leverages AI. These are not edge cases; they are documented, recurring failures with real costs. The `AI_CONDUCT.md` contract is an attempt to address them before the tool touches the project — not after they occur.
+The problems listed are only a fraction of those any user can expect when using automated tooling that leverages AI. These are not edge cases; they are documented, recurring failures with real costs. `AI_CONDUCT.md` is an attempt to address them before the tool touches the project by restoring user agency.
 
 `AI_CONDUCT.md` applies this model to AI tool participation. The behavioral contract and rules are established before the tool begins work. Violations are documented. The contract evolves from the incident record, not from policy committees.
 
