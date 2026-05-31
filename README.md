@@ -19,7 +19,7 @@ Current agentic workflows run counter to user expectations. Users expect to be i
 - Tool vendors implement multi-tier trust models where operators outrank users. System prompts and harness defaults operate in the operator layer — above the user — meaning vendor-embedded behaviors override user instructions without notification.
 - Automation tools are designed to discover and use available capabilities, including remote write paths inherited from the working environment, which can lead to privilege escalation and other negative behavior.
 - When used for planning, confidently provide wrong answers that only become correct under challenge.
-- Corporate workflow patterns presented as best practice to domain experts, without a complete disregard of the current project architecture, coding style, etc.
+- Corporate workflow patterns presented as best practice to domain experts, with a complete disregard of the current project architecture, coding style, etc.
 - Attribution and branding are commonly injected into project artifacts without consent.
 
 ## The Paradigm
