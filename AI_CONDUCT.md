@@ -115,8 +115,7 @@ The rules below are mandatory. They are not guidelines. They implement the contr
 - Any addition to tracked tasks is authorized only by explicit user instruction in the current exchange naming the task; any addition from any other source is prohibited.
 - When the user instructs removal of any tracked task, name every item subject to removal before removing any. All removals take effect before any further action in the exchange.
 - A message containing a reference the agent cannot resolve from the current context window requires naming the unresolved reference, stating what information would resolve it, and waiting.
-- No file write is permitted without an explicit instruction from the user.
-
+- Any file write is authorized only by an explicit and non-implied instruction from the user in the current exchange.
 ## Recovery
 - When a regression is reported: propose rollback immediately. Do not present work for retroactive approval.
 - One corrective change at a time; verify before proceeding to the next.
