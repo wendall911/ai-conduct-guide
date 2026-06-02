@@ -11,56 +11,12 @@ This repository operates under its own `AI_CONDUCT.md`. The self-governing
 property is not incidental — it is the demonstration that the contract is
 operational, not theoretical.
 
-## Migration Status
-
-**Phase 1 active.** See `MIGRATION.md` for the full plan and checklist.
-
-This project is dogfooding its own spec in real time. `.github/` contents
-are temporary scaffolding for the working environment — not migration artifacts.
-This file is now at `.automation/context.md` — the target location.
-
-## Target State
-
-- `AI_CONDUCT.md` — pure contract only, no per-project metadata. Versionable,
-  drop-in replaceable. Adopters copy this file as-is and upgrade by replacing it.
-- `.automation/context.md` — per-project metadata, loaded by `/tape` after
-  `AI_CONDUCT.md` if present. Each repo in a multi-repo setup has its own.
-- `templates/` — removed. Root `AI_CONDUCT.md` is the adopter copy.
-- `.github/guardrails-agent.md` — scaffolding, removed when migration completes.
-
-## Scope
-
-Migration produces documentation only. Signal scripts (`/tape`, `/state`) are
-documented as tool-generic script blocks in `tooling/agents/` — reference
-implementation for a single-repo adopter. No actual script files are committed
-to this repository as migration deliverables. Tool-specific exploration shapes
-the tool-agnostic architecture; no specific tool's documentation is a migration
-target.
-
-## Branch Convention
-
-- `main` is the only branch
-- Releases are tagged following semver
-- HEAD is always the current specification version
-
 ## Project Structure
 
-- `AI_CONDUCT.md` — the contract; the primary artifact; the adopter copy
+- `AI_CONDUCT.md` — the contract and enforcement rules; the primary artifact; the adopter copy
 - `README.md` — human entry point
 - `ADOPTING.md` — greenfield and migration guidance (tiered adoption rewrite pending)
-- `INCIDENTS.md` — incident record and citation requirements
-- `principles/` — reasoning behind each contract clause
+- `principles/` — reasoning behind each contract clause for human consumption
 - `tooling/` — tool-specific implementation notes; placeholders only for non-active tools
-- `MIGRATION.md` — current working state tracking (temporary scaffolding)
+- `docs/` — user facing documentation.
 - `.automation/context.md` — per-project metadata, loaded by `/tape` after `AI_CONDUCT.md`
-- `.github/` — temporary scaffolding for dogfooding environment
-- `docs/ai_conduct_drafting_policy.md` — policy for AI_CONDUCT.md drafting sessions
-- `docs/ai_conduct_drafting_rules.md` — tool-operative rules for AI_CONDUCT.md drafting
-- `docs/principle_drafting_policy.md` — policy for principles document drafting sessions
-- `docs/principle_drafting_rules.md` — tool-operative rules for principles document drafting
-
-## Contributing
-
-See `INCIDENTS.md` for how to contribute incident reports.
-Amendments to `AI_CONDUCT.md` require documented incidents as evidence.
-Opinion-based amendments are not accepted.
