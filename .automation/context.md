@@ -18,5 +18,5 @@ operational, not theoretical.
 - `ADOPTING.md` — greenfield and migration guidance (tiered adoption rewrite pending)
 - `principles/` — reasoning behind each contract clause for human consumption
 - `tooling/` — tool-specific implementation notes; placeholders only for non-active tools
-- `docs/` — user facing documentation.
+- `docs/` — context injection helpers and reference documentation; some files serve both purposes.
 - `.automation/context.md` — per-project metadata, loaded by `/tape` after `AI_CONDUCT.md`
