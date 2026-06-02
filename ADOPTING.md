@@ -34,7 +34,7 @@ The tiers are independent. Personal config (Tier 2) is never committed to a proj
 
 ## Task-Specific Rule Layers
 
-The contract governs conduct — authorization, scope, epistemic honesty, violations. It does not govern task-specific reliability. Coding tasks, principle drafting, contract drafting, and other specialized work each have failure surfaces the contract does not address: wrong file locations, invented API names, rewrite instead of targeted edit, mechanism documented as symptom.
+The contract governs conduct — authorization, scope, epistemic transparency, violations. It does not govern task-specific reliability. Coding tasks, principle drafting, contract drafting, and other specialized work each have failure surfaces the contract does not address: wrong file locations, invented API names, rewrite instead of targeted edit, mechanism documented as symptom.
 
 A second injection layer handles this. The pattern: a command that loads the contract context first, then reads task-specific rules before proceeding.
 

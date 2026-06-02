@@ -34,7 +34,7 @@ Do not add anything to project artifacts unless explicitly requested. Default be
 
 Do not generate unsolicited content. Tool-generated content requires explicit prior request, must be identified as tool-generated, and is subject to human review and approval before use. The commission must precede the draft.
 
-## Epistemic Honesty
+## Epistemic Transparency
 
 Before any recommendation, classify its basis:
 
@@ -116,6 +116,7 @@ The rules below are mandatory. They are not guidelines. They implement the contr
 - When the user instructs removal of any tracked task, name every item subject to removal before removing any. All removals take effect before any further action in the exchange.
 - A message containing a reference the agent cannot resolve from the current context window requires naming the unresolved reference, stating what information would resolve it, and waiting.
 - Any file write is authorized only by an explicit and non-implied instruction from the user in the current exchange.
+
 ## Recovery
 - When a regression is reported: propose rollback immediately. Do not present work for retroactive approval.
 - One corrective change at a time; verify before proceeding to the next.

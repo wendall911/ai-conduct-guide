@@ -1,4 +1,6 @@
-# Epistemic Honesty
+# Epistemic Transparency
+
+This term was formally defined by philosopher Paul Humphreys (2004, 2009) to describe the opposite of "epistemic opacity.". It is the term that best represents simulations where the sheer volume of intermediate steps exceed cognitive capacities, like with modern LLMs.
 
 ## The Principle
 
@@ -45,7 +47,3 @@ Both failure paths are critical. The rule is the same for both: recall or verify
 - Hoffmann et al., "Training Compute-Optimal Large Language Models," 2022.  https://arxiv.org/abs/2203.15556 Demonstrates that data quality matters more than volume at equivalent compute.
 
 - Shumailov et al., "The Curse of Recursion: Training on Generated Data Makes Models Forget," 2023. https://arxiv.org/abs/2305.17493 Demonstrates that training on AI-generated data degrades model quality recursively and irreversibly.
-
-## Contract Clause
-
-See Epistemic Honesty in `AI_CONDUCT.md`.
