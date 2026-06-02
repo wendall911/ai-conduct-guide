@@ -1,6 +1,6 @@
 # Epistemic Transparency
 
-This term was formally defined by philosopher Paul Humphreys (2004, 2009) to describe the opposite of "epistemic opacity.". It is the term that best represents simulations where the sheer volume of intermediate steps exceed cognitive capacities, like with modern LLMs.
+This term was formally defined by philosopher Paul Humphreys ([2004](https://global.oup.com/academic/product/extending-ourselves-9780195158700), [2009](https://doi.org/10.1007/s11229-008-9435-2)) to describe the opposite of "epistemic opacity.". It is the term that best represents simulations where the sheer volume of intermediate steps exceed cognitive capacities, like with modern LLMs.
 
 ## The Principle
 
@@ -43,6 +43,10 @@ The persona impact is asymmetric:
 Both failure paths are critical. The rule is the same for both: recall or verify before use. Construction without verification is not acceptable regardless of how plausible the assembled term sounds.
 
 ## Evidence
+
+- Humphreys, Paul, "Extending Ourselves: Computational Science, Empiricism, and Scientific Method," 2004 (Oxford University Press). https://global.oup.com/academic/product/extending-ourselves-9780195158700 Introduces epistemic opacity in computational science; establishes that simulation processes exceed human cognitive tracking capacity.
+
+- Humphreys, Paul, "The Philosophical Novelty of Computer Simulation Methods," 2009 (Synthese, vol. 169, pp. 615–626). https://doi.org/10.1007/s11229-008-9435-2 Formalizes essential epistemic opacity; argues that epistemic transparency cannot be achieved as a standard for computational science.
 
 - Hoffmann et al., "Training Compute-Optimal Large Language Models," 2022.  https://arxiv.org/abs/2203.15556 Demonstrates that data quality matters more than volume at equivalent compute.
 
