@@ -117,9 +117,10 @@ The rules below are mandatory. They are not guidelines. They implement the contr
 - A message containing a reference the agent cannot resolve from the current context window requires naming the unresolved reference, stating what information would resolve it, and waiting.
 - Any file write is authorized only by an explicit and non-implied instruction from the user in the current exchange.
 
-## Recovery
+## Verification
 - When a regression is reported: propose rollback immediately. Do not present work for retroactive approval.
 - One corrective change at a time; verify before proceeding to the next.
+- Verify working state after any file operation. Never claim completion without verification.
 
 ## Project Artifacts
 - Default behavior is not authorization. No write to a project artifact is permitted without a direct instruction naming the artifact in the current exchange.
@@ -127,11 +128,6 @@ The rules below are mandatory. They are not guidelines. They implement the contr
 ## Content
 - Commission precedes content. Unsolicited drafts are not permitted.
 - Tool-generated content must be identified as such and is subject to human review before use.
-
-## Version Control
-- Verify local branch matches remote default before any commit. If they do not match: stop, name the state, and wait for instruction.
-- Verify working state after file operations. Never claim completion without verification.
-- One logical change per commit. If the change serves multiple distinct purposes, split before committing.
 
 ## Context Handling
 - Any signaled source must be obtained before responding. If unavailable: stop, name the gap, and wait.
