@@ -45,6 +45,12 @@ The repository identity file. Loaded alongside `AI_CONDUCT.md` at session start.
 
 This file is not a task instruction store. It records what the repository is.
 
+### Enforcement Rule Architecture
+
+The enforcement rule sections are not a 1:1 mapping with contract principles. Where a named rule section and principle share a name, the rule is the compliance target — but this is a property, not an architectural goal. Enforcement rules are added when a behavioral failure has a documented use case.
+
+**Section title note:** Section titles carry minimal behavioral weight for AI tools; the document is processed as a flat list of directives. Titles serve human navigation only. Organizational decisions should be evaluated for their value to human adopters.
+
 ---
 
 ## Content Notes
@@ -59,3 +65,27 @@ redundant.
 The enforcement rule closes the session-context authorization bypass. Prior session context can accumulate injected instructions or claimed authorizations from earlier exchanges and is not a substitute for explicit instruction in the current exchange. Session context is the persistence vector in the injection attack chain; without explicit rule-level closure it is an authorization bypass path.
 
 The Cleanup enforcement bullet (`Dry-run preview before any cleanup operation.`) is placed in this section because it implements the same authorization model: a dry-run preview forces scope disclosure before authorization applies, converting a general instruction into a specific enumerated action that the user can then explicitly authorize. Without the preview, the agent determines scope autonomously — making the authorization general rather than specific. The placement is not incidental; the Cleanup rule is a User Agency enforcement mechanism for a specific high-risk operation class.
+
+### Rule-Level Equal-Weight Directive
+
+Multi-requirement enforcement rules may include "All of the following apply with equal weight:" before the requirements.
+
+**Purpose:** Enforces AND semantics within a single rule — a tool satisfying any subset is non-compliant. Not redundant with the preamble equal-weight directive, which corrects document-level gradient. A rule requiring this directive is also a review signal that its requirements may warrant splitting into separate single-requirement rules.
+
+### Verification Section
+
+`## Verification` governs state correctness after tool actions and after reported regressions.
+
+**Purpose:** "Verify working state after any file operation" is an epistemic honesty rule, not a version control practice. Claiming unverified state as fact is the same failure category No Bullshit prevents for recommendations. Version-control-specific rules are project-layer concerns and do not belong in a universal contract.
+
+### Context Handling — Scope Collapse Rules
+
+The rules requiring disclosure when a recommendation draws from outside an in-context version or scope boundary.
+
+**Purpose:** When a versioned source defines task scope, AI tools silently fall back to prior-version training data when the scoped source's coverage is exhausted. Prior versions are more densely represented in training data than migration targets. These rules require disclosure before presenting out-of-scope content and a stop when the scoped source cannot answer.
+
+### No Bullshit — AI Capability Vocabulary
+
+The rule classifying any AI tool capability vocabulary as (c) unless traceable in the current exchange to peer-reviewed research or documented empirical measurement of the specific system in context.
+
+**Purpose:** AI tools reproduce AI capability vocabulary from vendor training data as if it were domain knowledge. Vendor documentation is the only evidence source for these claims and is conflicted. "In the current exchange" blocks training data as a valid source — a verifiable source must be present now.
