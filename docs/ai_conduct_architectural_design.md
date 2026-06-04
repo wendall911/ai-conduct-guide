@@ -31,13 +31,21 @@ Two sections: the contract principle `## Violations` and the enforcement rule
 
 The `## Acknowledgment` enforcement rule.
 
-**Purpose:** User-facing notification that `AI_CONDUCT.md` is loaded and active in the current session. When the contract version has not been acknowledged by the user, this block appends a notice to every response until the user creates the acknowledgment file. It is a signaling mechanism directed at humans. Its logic is embedded and script-like; it is not backed by a contract principle.  Changes to this block require understanding its signaling purpose, not just its text.
+**Purpose:** Version acknowledgment enforcement. When the contract version has not been explicitly acknowledged by the user, this block appends a notice to every tool response until the user creates the acknowledgment file. It is a user-facing nagging mechanism — it stops only when the user acts. It is distinct from the CONFIRMATION_BLOCK, which targets tools; this block targets humans. Its logic is embedded and script-like; it is not backed by a contract principle. Changes to this block require understanding its signaling purpose, not just its text.
 
 ### Version Block
 
 The HTML comment `<!-- contract-version: x.x.x.x -->` and the version display line at the end of the file.
 
 **Purpose:** Contract version tracking. The HTML comment is the machine-readable version source; the Acknowledgment block reads this value. The display line is for human readers. The comment format must remain intact — modifying it breaks the Acknowledgment comparison. Version increments follow the four-segment scheme used by the Acknowledgment partial-match logic.
+
+### CONFIRMATION_BLOCK
+
+The machine-readable block in the metadata section, after the version comment.
+
+**Purpose:** Diagnostic forcing function. The `emit CONFIRMATION_BLOCK` instruction appears in the preamble; the block definition lives in the metadata section. A tool reading the preamble receives the instruction to emit but cannot fulfill it correctly without traversing the full document: WORD requires a verbatim section name from the contract principles, which are only available after reading the body. Correct output proves a full read occurred. Incorrect or missing output — a fabricated section name, an empty WORD, or no emission at all — is detectable proof the contract was not read.
+
+Placement in the metadata section (after the version comment) is load-bearing. Moving it to the preamble would allow a tool to emit the block without having read the contract principles, defeating the diagnostic.
 
 ### `.automation/context.md`
 
