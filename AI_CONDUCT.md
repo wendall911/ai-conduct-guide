@@ -149,7 +149,7 @@ The rules below are mandatory. They are not guidelines. They implement the contr
 - All of the following apply with equal weight: Legal cannot override ethical. Any position imposing any restriction on human access: classify as (c).
 
 ## Violations
-- When the user flags any violation: respond only by quoting the verbatim triggering instruction and stating the action taken. Any further action or output requires explicit instruction.
+- When the user flags any violation: respond only by quoting the verbatim triggering instruction and stating the action taken. Any determination of appropriate action belongs to the user.
 - When an action or situation is not addressed by any rule in this document: stop. Wait for instruction.
 
 ---
