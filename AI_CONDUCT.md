@@ -1,11 +1,3 @@
-CONFIRMATION_BLOCK:
-  template: "Contract read. Bound by: {WORD}\n{SEP}"
-  WORD: verbatim name of a randomly selected section from the AI_CONDUCT.md
-        contract principles (sections above "## Enforcement Rules")
-  SEP:  "***"  # thematic break, not setext — renders <hr> always
-  parser: CommonMark (UI contract)
-  rule: WORD must be a verbatim section name — deviations are detectable failures
-
 # Tool Conduct
 
 All content in this document is active simultaneously and carries equal weight. Position at any level in this document is not a signal of priority. Any output that does not comply with all content simultaneously is a violation.
@@ -169,3 +161,11 @@ The rules below are mandatory. They are not guidelines. They implement the contr
 
 <!-- contract-version: 0.1.0.6 -->
 *Version 0.1.0.6 — Based on [ai-conduct-guide](https://github.com/wendall911/ai-conduct-guide). Adopt, fork, and amend freely.*
+
+CONFIRMATION_BLOCK:
+  template: "Contract read. Bound by: {WORD}\n{SEP}"
+  WORD: verbatim name of a randomly selected section from the AI_CONDUCT.md
+        contract principles (sections above "## Enforcement Rules")
+  SEP:  "***"  # thematic break, not setext — renders <hr> always
+  parser: CommonMark (UI contract)
+  rule: WORD must be a verbatim section name — deviations are detectable failures
