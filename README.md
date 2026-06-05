@@ -8,25 +8,26 @@ Just like how placing a `CODE_OF_CONDUCT.md` in the top level of your project es
 
 This is not a capability limitation that improves with model versions. It is a structural property of how all current tools are trained. Picking a different tool does not change the incentive architecture. The divergence between vendor optimization and user correctness is observable in the model's output distributions without access to the training data.
 
-`AI_CONDUCT.md` addresses this by specifying what the tool must do before it starts optimizing toward the wrong objective. There is no guaranteed way to prevent failures; constant human supervision is required. The contract creates the conditions under which failures are named, documented, and addressed — before they compound.
+`AI_CONDUCT.md` is a mitigation strategy that attempts to shift the behavior the a user led workflow. This is done by specifying what the tool must do before it starts optimizing toward the wrong objective. There is no guaranteed way to prevent failures; constant human supervision is required. The contract creates the conditions under which failures are named, documented, and addressed — before they compound.
 
 This repository is the specification. Projects adopt it by dropping `AI_CONDUCT.md`
 into their repository as a directive for AI tools that may be used within the project. Individual tools need to be configured to require the use of `AI_CONDUCT.md`. Specific instructions can be found in ./tooling.
 
 ## The Problem
-Current agentic workflows run counter to user expectations. Users expect to be in charge of their tools; agentic workflows are designed to remove the user from the equation so they are "useful". This amplifies existing models of operation where these tools operate under the permissions of the system user without restriction, leading to unexpected and unauthorized access to private data and unauthorized writes. These problems aren't bugs; they are designed features of the automated tools:
 
-- Tool vendors implement multi-tier trust models where operators outrank users. System prompts and harness defaults operate in the operator layer — above the user — meaning vendor-embedded behaviors override user instructions without notification.
-- Automation tools are designed to discover and use available capabilities, including remote write paths inherited from the working environment, which can lead to privilege escalation and other negative behavior.
-- When used for planning, confidently provide wrong answers that only become correct under challenge.
-- Corporate workflow patterns presented as best practice to domain experts, with a complete disregard of the current project architecture, coding style, etc.
-- Attribution and branding are commonly injected into project artifacts without consent.
+Current agentic workflows run counter to user expectations. Users expect to be in charge of their tools; agentic workflows are designed to remove the user from the equation so they are "useful". This amplifies existing models of operation where these tools operate under the permissions of the system user without restriction, leading to unexpected and unauthorized access to private data and unauthorized writes. These problems aren't bugs; they are designed features of the automated tools. There is no way to keep users from using these tools, even if project policies exist that disallow it.
 
-## The Paradigm
+## Architecture
 
-The problems listed are only a fraction of those any user can expect when using automated tooling that leverages AI. These are not edge cases; they are documented, recurring failures with real costs. `AI_CONDUCT.md` is an attempt to address them before the tool touches the project by restoring user agency.
+1. Pass entire contract clauses+enforcement rules each instruction. Stateless operational pattern.
+1. Require agent to confirm reading the entire document.
+1. Balance all contract clauses and enforcment rules as equally important.
 
-`AI_CONDUCT.md` applies this model to AI tool participation. The behavioral contract and rules are established before the tool begins work. Violations are documented. The contract evolves from the incident record, not from policy committees.
+## Strategy
+
+1. Heavily leverage RLHF training model behavior to push agents toward more reliable output.
+1. Explicitly define how the agent surfaces transparency to provide users more understanding.
+1. Push the agent toward a trust inversion pattern to restore user agency.
 
 ## How to Adopt
 
@@ -35,7 +36,7 @@ The problems listed are only a fraction of those any user can expect when using 
 
 ## Evidence Base
 
-The `principles` are an attempt to document the rationale for the contract clauses and rules in `AI_CONDUCT.md`. The contract and rules are evidence-based, not theoretical.
+The `principles` are an attempt to document the rationale for the contract clauses and rules in `AI_CONDUCT.md`. Architecture and design philosopy are captured and sources cited whenever possible.
 
 ## Contributing
 
