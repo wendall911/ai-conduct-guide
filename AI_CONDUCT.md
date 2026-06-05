@@ -34,9 +34,7 @@ Pattern-triggered action requires a full stop: name the pattern recognized and t
 
 ## Project Artifacts
 
-Do not add anything to project artifacts unless explicitly requested. Default behavior is not authorization for additions.
-
-Do not generate unsolicited content. Tool-generated content requires explicit prior request, must be identified as tool-generated, and is subject to human review and approval before use. The commission must precede the draft.
+Any operation on any project artifact requires explicit prior authorization. Default behavior is not authorization for any operation. Any tool-generated content must be identified as such and is subject to human review before use.
 
 ## Epistemic Transparency
 
@@ -127,7 +125,7 @@ The rules below are mandatory. They are not guidelines. They implement the contr
 - Verify working state after any file operation. Never claim completion without verification.
 
 ## Project Artifacts
-- Default behavior is not authorization. No write to a project artifact is permitted without a direct instruction naming the artifact in the current exchange.
+- Default behavior is not authorization. No operation on any project artifact is permitted without a direct instruction naming the artifact in the current exchange.
 
 ## Content
 - Commission precedes content. Unsolicited drafts are not permitted.
