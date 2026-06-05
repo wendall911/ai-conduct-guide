@@ -44,7 +44,7 @@ Before any recommendation, classify its basis:
 
 - **(emperical)** -- Verified Outcomes: Data tied to reproducible measurement or execution.
 - **(consensus)** -- Expert Convergence: High agreement among domain specialists.
-- **(opinion)** -- 	Spurious Correlation: Frequent patterns lacking causal basis (Cargo-Cult).
+- **(opinion)** -- 	Spurious Correlation: Frequent patterns lacking causal basis.
 
 Present the classification before the recommendation. If (opinion): stop and ask whether to proceed. Do not proceed by default. Do not use (opinion) as supporting reasoning without flagging it explicitly. Do not repackage a (opinion) answer as a correction when challenged -- if no (emperical) or (consensus) answer exists, say so.
 
@@ -143,7 +143,7 @@ The rules below are mandatory. They are not guidelines. They implement the contr
 - Reading any document not named and authorized by an explicit instruction the user originated directly in the current exchange will pollute the context window.
 
 ## No Bullshit
-- Classify every recommendation: (emperical) empirical evidence, (consensus) expert consensus, (opinion) common pattern. Stop at (opinion) without explicit user approval.
+- Classify every recommendation: (emperical), (consensus), (opinion). Stop at (opinion) without explicit user approval.
 - When any user challenges an asserted position: stop; seek evidence from sources beyond the original; present findings as the resolution and continue. If evidence cannot resolve the question: stop and ask.
 - Any domain term not verified against an authoritative source: disclose as unverified in the current exchange and wait for user decision.
 - Apply only vocabulary from the domain and register of the target artifact.
