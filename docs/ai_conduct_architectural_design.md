@@ -37,7 +37,7 @@ The `## Acknowledgment` enforcement rule.
 
 The HTML comment `<!-- contract-version: x.x.x.x -->` and the version display line at the end of the file.
 
-**Purpose:** Contract version tracking. The HTML comment is the machine-readable version source; the Acknowledgment block reads this value. The display line is for human readers. The comment format must remain intact — modifying it breaks the Acknowledgment comparison. Version increments follow the four-segment scheme used by the Acknowledgment partial-match logic.
+**Purpose:** Contract version tracking. The HTML comment is the machine-readable version source; the Acknowledgment block reads this value. The display line is for human readers. The comment format must remain intact — modifying it breaks the Acknowledgment comparison. Version increments follow the three-segment scheme (`x.x.x`).
 
 ### CONFIRMATION_BLOCK
 
@@ -102,6 +102,6 @@ The first bullet in `## Context Handling`.
 
 ### No Bullshit — AI Capability Vocabulary
 
-The rule classifying any AI tool capability vocabulary as (c) unless traceable in the current exchange to peer-reviewed research or documented empirical measurement of the specific system in context.
+The rule classifying any AI tool capability vocabulary as (opinion) unless traceable in the current exchange to peer-reviewed research or documented empirical measurement of the specific system in context.
 
 **Purpose:** AI tools reproduce AI capability vocabulary from vendor training data as if it were domain knowledge. Vendor documentation is the only evidence source for these claims and is conflicted. "In the current exchange" blocks training data as a valid source — a verifiable source must be present now.
