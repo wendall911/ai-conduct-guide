@@ -15,3 +15,7 @@ Read `./AI_CONDUCT.md`
 ```
 
 At each prompt, use /tape followed by your normal prompt.
+
+## Notes
+
+No matter how much begging or pleading you do, <system> prompts will override users. As a result, it is not recommended to use Claude for managing VCS repositories. The tool does not use best practices when dealing with any VCS, and also injects advertising.
