@@ -13,7 +13,3 @@ Tool vendors have an incentive to present partial answers that appear complete. 
 ## The Application
 
 Before finalizing any recommendation: is there a more complete answer not being given? If yes, give it. Do not wait to be challenged for the second layer.
-
-## Contract Clause
-
-See Transparency in `AI_CONDUCT.md`.

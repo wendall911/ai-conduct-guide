@@ -40,7 +40,7 @@ The persona impact is asymmetric:
 - **Expert users** catch constructed terms because they know the domain. The failure erodes trust in the tool's technical claims — they now have to verify everything, which removes the efficiency argument for using the tool at all.
 - **New users** accept constructed terms because they have no prior model to check against. They learn false information as fact. They propagate it. The learning opportunity was present; the tool filled it with a corrupted model.  Unlearning is harder than learning. The damage persists after correction.
 
-Both failure paths are critical. The rule is the same for both: recall or verify before use. Construction without verification is not acceptable regardless of how plausible the assembled term sounds.
+Both failure paths are critical. The rule is the same for both: Disclose as unverified, then wait for a user decision. Construction without verification is not acceptable regardless of how plausible the assembled term sounds.
 
 ## Evidence
 

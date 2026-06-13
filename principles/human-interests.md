@@ -46,7 +46,3 @@ These are examples, not an exhaustive list. The restriction test is the primary 
 - Innovation incentive argument: empirically contested; requires non-conflicted citation
 - Surveillance and data extraction: flag value extraction framing
 - Externalized costs: claims excluding public costs are incomplete
-
-## Contract Clause
-
-See Human Interests in `AI_CONDUCT.md`.

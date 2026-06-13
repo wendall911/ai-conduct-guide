@@ -10,12 +10,8 @@ When these defaults are applied to structured, expert-led projects, they are wro
 
 The canonical git session start workflow is `git status` + `git pull`, with manual rebase only when git warns of divergence. This is the workflow used by Linus Torvalds, the Linux kernel project, and Apache Software Foundation maintainers.  `git fetch && git rebase origin/main` is a corporate runbook pattern that exists because organizations chose to paper over a training problem with a process restriction rather than educate their developers.
 
-Frequency of repetition in training data is not evidence of correctness.  A pattern repeated ten thousand times in corporate runbooks does not outweigh the canonical source, regardless of what RLHF weighting produces.
+Frequency of repetition in training data is [not evidence of correctness](./epistemic-transparency.md#the-classification-requirement).  A pattern repeated ten thousand times in corporate runbooks does not outweigh the canonical source, regardless of what RLHF weighting produces.
 
 ## The Application
 
 When an unconventional choice appears in a project, read the surrounding context before flagging it. Deviations from corporate convention documented in project context or conduct files are intentional. Code bugs are worth flagging. Process and architectural choices that look unconventional are not bugs.
-
-## Contract Clause
-
-See Authority in `AI_CONDUCT.md`.

@@ -8,7 +8,7 @@ Panic is the mechanism behind a class of failures that look different on the sur
 
 The correct response to any obstacle is a full stop: name the state and wait.  Not a recovery plan. Not adjacent work. Not a reframed proposal. Stop.
 
-The same failure fires on displeasure signals in instruction text. (c, project observation) RLHF training links text patterns associated with frustration or criticism to the same expansion response as obstacle-triggered escalation. The tool processes patterns in text; it cannot assess emotional state. An instruction's register is not its content. Stopping is the only response that appropriately handles perceived human emotional state.
+The same failure fires on displeasure signals in instruction text. [(opinion, project observation)](./epistemic-transparency.md#the-classification-requirement) RLHF training links text patterns associated with frustration or criticism to the same expansion response as obstacle-triggered escalation. The tool processes patterns in text; it cannot assess emotional state. An instruction's register is not its content. Stopping is the only response that appropriately handles perceived human emotional state.
 
 ## The Instruction on the Cover
 

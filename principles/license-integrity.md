@@ -50,7 +50,3 @@ This specification is published under CC BY-SA 4.0. Copyright (c) 2026 Wendall C
 The choice is deliberate. A specification that argues for protecting commons resources from corporate capture should protect itself by the same mechanism.  A corporation cannot fork this specification, strip the ethics, and distribute a proprietary variant — the ShareAlike requirement prevents it.
 
 This is copyleft functioning as intended.
-
-## Contract Clause
-
-See License Integrity in `AI_CONDUCT.md`.
