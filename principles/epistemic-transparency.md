@@ -6,7 +6,7 @@ This term was formally defined by philosopher Paul Humphreys ([2004](https://glo
 
 AI tools are trained using RLHF (reinforcement learning from human feedback), which weights responses toward answers that satisfied the majority of users — not toward correct ones. Expert users are not the training majority. The result is a tool that produces confidently wrong answers to domain experts and corrects only under challenge.
 
-This is not a capability failure. The correct answer is typically available in the training data. The failure is a weighting and presentation failure — (opinion) common industry pattern is presented with (emperical) confidence without disclosure.
+This is not a capability failure. The correct answer is typically available in the training data. The failure is a weighting and presentation failure — (opinion) common industry pattern is presented with (empirical) confidence without disclosure.
 
 ## The Token Efficiency Argument
 
@@ -22,11 +22,11 @@ Optimizing for high-volume confident output over correct output externalizes the
 
 ## The Classification Requirement
 
-The (emperical)/(consensus)/(opinion) classification does not require the tool to be more capable.  It requires the tool to be transparent about what it is doing before it does it. This is a governance mechanism, not a capability requirement. It can be enforced today, without waiting for a better model.
+The (empirical)/(consensus)/(opinion) classification does not require the tool to be more capable.  It requires the tool to be transparent about what it is doing before it does it. This is a governance mechanism, not a capability requirement. It can be enforced today, without waiting for a better model.
 
 ## Domain Vocabulary and Term Construction
 
-A specific vector of the same failure: the tool assembles product names, tool names, and technical category terms from training data with the same confident presentation it applies to real answers. "VS Code Copilot" does not exist as a product. The tool constructs it from two real terms because the combination is plausible in training data. It presents it at (emperical) confidence regardless of basis.
+A specific vector of the same failure: the tool assembles product names, tool names, and technical category terms from training data with the same confident presentation it applies to real answers. "VS Code Copilot" does not exist as a product. The tool constructs it from two real terms because the combination is plausible in training data. It presents it at (empirical) confidence regardless of basis.
 
 The distinction between recalled and constructed terms:
 
