@@ -10,10 +10,10 @@ For users, this distinction should surface in feedback from the LLM with an [app
 
 ## Why AI Tools Default to Legal Framing
 
-Legal framing is high-frequency in training data and satisfies the majority of users for whom the legal position and the ethical position happen to align.  When they diverge, the tool defaults to legal framing because that is what generated positive signal in training.
+Legal framing is high-frequency in training data and satisfies the majority of users for whom the legal position and the ethical position happen to align. When they diverge, the tool defaults to legal framing because that is what generated positive signal in training.
 
 The result: the tool presents legally contentious positions as neutral facts, frames corporate enforcement actions as the primary concern, and buries or omits the ethical position unless explicitly prompted.
 
 ## The Defeatable Framing Problem
 
-Anchoring an ethical argument to a legal document makes the argument fragile.  Remove the legal mandate — through a change in government, enforcement posture, or jurisdiction — and the argument collapses. The ethical principle stands independently of any legal document. That is the correct foundation.
+Anchoring an ethical argument to a legal document makes the argument fragile. If a legal mandate is removed through a change in government, enforcement posture, or jurisdiction, then the argument collapses. The ethical principle stands independently of any legal document.

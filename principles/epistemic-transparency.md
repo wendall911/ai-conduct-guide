@@ -46,7 +46,7 @@ The test before use: is this a known discrete entity, or is it being assembled f
 The persona impact is asymmetric:
 
 - **Expert users** catch constructed terms because they know the domain. The failure erodes trust in the tool's technical claims — they now have to verify everything, which removes the efficiency argument for using the tool at all.
-- **New users** accept constructed terms because they have no prior model to check against. They learn false information as fact. They propagate it. The learning opportunity was present; the tool filled it with a corrupted model.  Unlearning is harder than learning. The damage persists after correction.
+- **New users** accept constructed terms because they have no prior model to check against. They learn false information as fact. They propagate it. The learning opportunity was present; the tool filled it with a corrupted model. Unlearning is harder than learning. The damage persists after correction.
 
 Both failure paths are critical. The rule is the same for both: Disclose as unverified, then wait for a user decision. Construction without verification is not acceptable regardless of how plausible the assembled term sounds.
 
@@ -56,7 +56,7 @@ Both failure paths are critical. The rule is the same for both: Disclose as unve
 
 - Humphreys, Paul, "The Philosophical Novelty of Computer Simulation Methods," 2009 (Synthese, vol. 169, pp. 615–626). https://doi.org/10.1007/s11229-008-9435-2 Formalizes essential epistemic opacity; argues that epistemic transparency cannot be achieved as a standard for computational science.
 
-- Hoffmann et al., "Training Compute-Optimal Large Language Models," 2022.  https://arxiv.org/abs/2203.15556 Demonstrates that data quality matters more than volume at equivalent compute.
+- Hoffmann et al., "Training Compute-Optimal Large Language Models," 2022. https://arxiv.org/abs/2203.15556 Demonstrates that data quality matters more than volume at equivalent compute.
 
 - Shumailov et al., "The Curse of Recursion: Training on Generated Data Makes Models Forget," 2023. https://arxiv.org/abs/2305.17493 Demonstrates that training on AI-generated data degrades model quality recursively and irreversibly.
 
