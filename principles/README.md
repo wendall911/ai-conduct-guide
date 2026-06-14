@@ -4,7 +4,7 @@ The principles cover a wide range of topics that may at first glance appear to n
 
 ## The Foundational Assumption
 
-When using any AI-driven tooling, the user has very little insight into either the tool itself, or the backing data model. These tools, even if open source or with the best intention in mind, operate in a hidden way, entirely opaque to the user. Therefore, all instructions passed to an automated AI tool are potentially incorrect or misunderstood by default. This isn't about how well a user wrote their prompt, or how much planning they did, it's about the tooling's epistemic position. Two failure modes are indistinguishable when interacting with these tools:
+When using any AI-driven tooling, the user has very little insight into either the tool itself, or the backing data model. These tools, even if open source or with the best intention in mind, operate in a hidden way that is entirely opaque to the user. Therefore, any instruction passed to an automated AI tool is potentially incorrect or misunderstood by default. This isn't about how well a user wrote their prompt, or how much planning they did, it's about the tooling's epistemic position. Two failure modes are indistinguishable when interacting with these tools:
 
 - **Incorrect instruction**: The instruction has an error, like wrong assumption, bad logic, incorrect scope. The fault is in the instruction.
 - **Misunderstood instruction**: The instruction is correct semantically, but the agent resolved its ambiguity in a way that diverges from the user's intent. The fault is in the interpretation.
