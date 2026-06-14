@@ -2,6 +2,17 @@
 
 The principles cover a wide range of topics that may at first glance appear to not have a rational connection. The overarching principle is simply that the software industry has benefited, and will continue to benefit from [engineering best-practices](./process-assumptions.md), [open-source projects and licenses](./license-integrity.md) and human-authored works. Without this, AI can't function. Human-authored works are the foundational training data. The problem is that this training data will continue to erode over time with the influx of AI-generated data, forcing users to adopt processes that move away from the echo chamber of [noisy data ↗](https://dl.acm.org/doi/10.1145/3442188.3445922) toward [epistemic transparency](./epistemic-transparency.md).
 
+## The Foundational Assumption
+
+When using any AI-driven tooling, the user has very little insight into either the tool itself, or the backing data model. These tools, even if open source or with the best intention in mind, operate in a hidden way, entirely opaque to the user. Therefore, all instructions passed to an automated AI tool are potentially incorrect or misunderstood by default. This isn't about how well a user wrote their prompt, or how much planning they did, it's about the tooling's epistemic position. Two failure modes are indistinguishable when interacting with these tools:
+
+- **Incorrect instruction**: The instruction has an error, like wrong assumption, bad logic, incorrect scope. The fault is in the instruction.
+- **Misunderstood instruction**: The instruction is correct semantically, but the agent resolved its ambiguity in a way that diverges from the user's intent. The fault is in the interpretation.
+
+Because language models complete patterns rather than verify intent, the misunderstanding vector is always present regardless of instruction quality. No amount of good prompt engineering, or configuration audit, or change in user behavior eliminates it. Tools backed by an LLM cannot distinguish which failure mode is active. Both produce wrong output with the same surface appearance.
+
+This is why human correction at every step is the only working solution. Only the party holding the original intent can determine whether the instruction was incorrect or misunderstood. That party is the human.
+
 ## Background History
 
 This is an account from the creator of this project Wendall Cada.
