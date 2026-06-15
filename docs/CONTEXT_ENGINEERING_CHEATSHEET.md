@@ -1,4 +1,4 @@
-# Context Engineering — Quick Reference
+# Context Engineering - Quick Reference
 
 For use alongside `AI_CONDUCT.md`. Assumes you've read [docs/CONTEXT_ENGINEERING.md](CONTEXT_ENGINEERING.md).
 

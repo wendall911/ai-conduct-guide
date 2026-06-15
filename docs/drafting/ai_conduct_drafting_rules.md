@@ -9,7 +9,7 @@ The enforcement target for all artifacts under these rules is an AI tool. These 
  - All drafted text *MUST* be tool-agnostic and gap-analyzed against known tool capabilities. Any draft that is not tool-agnostic is a violation.
  - Analysis *MUST* address only whether proposed text closes the named gap.  Any claim that a rule cannot work, is unenforceable, or exceeds what contract text can address is a scope violation, not a finding.
  - All drafted text *MUST* contain no explanatory or defensive content. Any explanatory or defensive content in a draft is a violation.
- - All drafted text *MUST* use condition-based authorization, not enumeration of any form. Any enumeration — permitted or prohibited — creates a gap. The authorizing condition *MUST* exclude all actions not explicitly matching it by default. Any enumeration in drafted text is a violation.
+ - All drafted text *MUST* use condition-based authorization, not enumeration of any form. Any enumeration -- permitted or prohibited -- creates a gap. The authorizing condition *MUST* exclude all actions not explicitly matching it by default. Any enumeration in drafted text is a violation.
  - All drafted text *MUST* use ANY/ALL type language. Any single-topic or narrowly-scoped text is a violation.
  - All unknowns *MUST* be stated explicitly. Any inference used to fill an unknown is a violation.
  - Any enforcement rule containing multiple requirements within the target text *MUST* include an equal-weight directive preceding all requirements.

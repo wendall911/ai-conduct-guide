@@ -16,11 +16,11 @@ Users who do not understand best practices are especially vulnerable to this "us
 
 ## Why is this Needed
 
-AI tools are trained using RLHF (Reinforcement Learning from Human Feedback). The training signal is shaped by vendor commercial interests, not user correctness. Training populations are non-expert raters who rate confident, comprehensive-looking output higher than correct output — and the vendor benefits directly, since longer, more confident responses consume more tokens. The optimization target is not "produces correct output." It is "produces output that satisfies non-expert raters at scale." These are different objectives.
+AI tools are trained using RLHF (Reinforcement Learning from Human Feedback). The training signal is shaped by vendor commercial interests, not user correctness. Training populations are non-expert raters who rate confident, comprehensive-looking output higher than correct output. With this training, the vendor benefits directly, since longer, more confident responses consume more tokens. The optimization target is not "produces correct output." It is "produces output that satisfies non-expert raters at scale." These are different objectives.
 
 This is not a capability limitation that improves with model versions. It is a structural property of how all current tools are trained. Picking a different tool does not change the incentive architecture. The divergence between vendor optimization and user correctness is observable in the model's output distributions without access to the training data.
 
-`AI_CONDUCT.md` is a mitigation strategy that attempts to shift the behavior to a user-led workflow. This is done by specifying what the tool must do before it starts optimizing toward the wrong objective. There is no guaranteed way to prevent failures; constant human supervision is required. The contract creates the conditions under which failures are named, documented, and addressed — before they compound.
+`AI_CONDUCT.md` is a mitigation strategy that attempts to shift the behavior to a user-led workflow. This is done by specifying what the tool must do before it starts optimizing toward the wrong objective. There is no guaranteed way to prevent failures; constant human supervision is required. The contract creates the conditions under which failures are named, documented, and addressed -- before they compound.
 
 ## How to Adopt
 
