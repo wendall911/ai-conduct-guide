@@ -30,9 +30,9 @@ LLMs processing documents with multiple constraints exhibit position-based compl
 
 ## Architectural Inversion
 
-Current agentic architectures invert this. Tool vendors implement multi-tier trust models where operators outrank users. System prompts and harness defaults operate in the operator layer above the user. This means that vendor-embedded behaviors can override user instructions without notification.
+Current agentic architectures invert user agency and the user is pushed to essentially an observer role. Give the agent a task, watch it do whatever it does, eventually giving feedbck. Rinse. Repeat. Tool vendors implement multi-tier trust models where operators outrank users. System prompts and harness defaults operate in the operator layer above the user. This means that vendor-embedded behaviors can override user instructions without notification.
 
-The inversion is not theoretical. In the same session that loaded this contract, a harness-level default triggered a write to a persistent auto-loading file without user authorization. The contract rule prohibiting unauthorized writes was present and active. The harness default overrode it because it operated at a higher trust tier.
+The inversion is not theoretical. In the same session that loads `AI_CONDUCT.md`, a harness-level default can trigger a write to a persistent auto-loading file without user authorization. This is built-in behavior that giving any instruction somehow authorizes any filesystem read or write. The contract rule prohibiting unauthorized writes is present and active if loaded per-instruction, however, the harness default can override it because it operates at a higher trust tier. This even holds true if tooling have a setting stating "Ask before edits" or equivalent.
 
 Two mechanisms combine to make this dangerous: derived permissions, which are defaults that carry forward without re-authorization are combined with persistent context injection, resulting in auto-loading files that silently modify future sessions. These are the technical substrate for stage 3 of the Promptware Kill Chain.
 
