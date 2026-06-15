@@ -10,7 +10,7 @@ This works by adding a per-instruction injection of `AI_CONDUCT.md` through a `/
 
 ## The Problem
 
-Current agentic workflows run counter to user expectations. Users who understand best-practices expect to be in charge of their tools; agentic workflows are designed to remove the user from the equation so they are "useful". This amplifies existing models of operation where these tools operate under the permissions of the system user without restriction, leading to unexpected and unauthorized access to private data and unauthorized writes. These problems aren't bugs; they are designed features of the automated tools. There is no way to keep users from using these tools, even if project policies exist that disallow it.
+Current AI tools operate contrary to many user's expectations. Users who understand best-practices expect to be in charge of their tools; AI tools are designed to remove the user from the equation so they are "useful". This amplifies existing models of operation where these tools operate under the permissions of the system user without restriction, leading to unexpected and unauthorized access to private data and unauthorized writes. These problems aren't bugs; they are designed features of the automated tools. There is no way to keep users from using these tools, even if project policies exist that disallow it.
 
 Users who do not understand best practices are especially vulnerable to this "useful" or "helpful" framing the tools present. When the tool confidently frames incorrect answers, the user has no way of knowing that it isn't true, and will blindly allow the tool to generate the wrong solution, never learning why it is wrong.
 
