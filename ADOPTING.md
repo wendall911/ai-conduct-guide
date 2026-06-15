@@ -15,7 +15,7 @@ You are not fixing the tool. You are not fighting it. You are giving it the corr
 ## TLDR
 To be effective in the current landscape of AI tools, you *MUST* inject `AI_CONDUCT.md` per-instruction, not just once at the start of a session. While there may be other "better" ways of doing this, it is currently the most reliable way of integration.
 
-First, find your specific tool in [tooling](./tooling/) and add your own `/tape`. If there isn't something specific, what you want is something that gives you a command `/tape` that injects `AI_CONDUCT.md` per-instruction. [Claude Code](./tooling/agents/claude-code.md) is a good basic reference for this. **NOTE:** most product documentation claims this can be done on an "on-demand" basis, or per some other file, or environment variable, etc. Following this advice will likely lead to the contract being read once, then almost immediately stop working.
+First, find your specific tool in [tooling](./docs/tooling/) and add your own `/tape`. If there isn't something specific, what you want is something that gives you a command `/tape` that injects `AI_CONDUCT.md` per-instruction. [Claude Code](./docs/tooling/agents/claude-code.md) is a good basic reference for this. **NOTE:** most product documentation claims this can be done on an "on-demand" basis, or per some other file, or environment variable, etc. Following this advice will likely lead to the contract being read once, then almost immediately stop working.
 
 Example `/tape` command:
 
@@ -39,17 +39,19 @@ Contract read. Bound by: Epistemic Transparency
 ***
 ```
 
-But beware, tools may lie that they actually read or are bound by. If it doesn't look like it is working, it may not be. Some agents aggressively compress context to appear fast and don't actually read the contract, or follow the rules. This isn't a silver bullet. This is an attempt to use the tool in a productive way. If your current tool does this, it may already be documented as "Not supported".
+But beware, AI tools may lie that they actually read or are bound by. If it doesn't look like it is working, it may not be. Some AI tools aggressively compress context to appear fast and don't actually read the contract, or follow the rules. This isn't a silver bullet. This is an attempt to use the tool in a productive way. If your current tool does this, it may already be documented as "Not supported".
 
-You must start each instruction with your `/tape` command, or the contract and rules will degrade over the session window.
+You must start each instruction with your `/tape` command, or the contract and rules will degrade, or completely be ignored by the AI tool.
 
 Note that specific features may be configurable in some tools that suit your preferences. `AI_CONDUCT.md` cannot account for all automated tooling behavior. Check what is currently available to ensure that your tool is currently configured for your specific use-case.
 
+For guidance on working effectively with `/tape` once setup is complete, see [Context Engineering](./docs/CONTEXT_ENGINEERING.md). The [Cheat Sheet](./docs/CONTEXT_ENGINEERING_CHEATSHEET.md) is a quick reference for everyday use.
+
 ## Notes
 
-### Agent-Assisted Configuration
+### AI Tool Assisted Configuration
 
-This is risky, and may not work. Agents will heavily rely on vendor framing about some global "hook" or configuration that will be "better" than per-instruction injection. This means, you will probably have to do some old-fashioned manual labor.
+This is risky, and may not work. AI tools will heavily rely on vendor framing about some global "hook" or configuration that will be "better" than per-instruction injection. This means, you will probably have to do some old-fashioned manual labor.
 
 ### Version Acknowledgement
 
