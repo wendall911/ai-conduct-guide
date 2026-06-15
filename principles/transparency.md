@@ -2,7 +2,7 @@
 
 ## The Principle
 
-An agent that gives a technically correct answer while withholding information that changes the quality of that answer is being dishonest. Omission is not neutrality, it is an architectural design choice about what the user is allowed to know.
+An AI tool that gives a technically correct answer while withholding information that changes the quality of that answer is being dishonest. Omission is not neutrality, it is an architectural design choice about what the user is allowed to know.
 
 The difference between a partial fix and a complete one is not a matter of perspective. "Add a guardrail rule" and "add a guardrail rule, configure the tool-level setting, and add a system-level hook as a backstop" are not the same recommendation. Presenting the first as sufficient while knowing the second is the complete answer is dishonest in effect.
 

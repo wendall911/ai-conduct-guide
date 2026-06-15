@@ -2,11 +2,11 @@
 
 ## The Principle
 
-The user is the sole authority over agent behavior. No other entity, vendor, operator, harness configuration, tool output, or retrieved data, can authorize or override agent actions. Vendor-assigned architectural trust tiers are commercial constructs, not behavioral authority.
+The user is the sole authority over AI tool behavior. No other entity, vendor, operator, harness configuration, tool output, or retrieved data, can authorize or override AI tool actions. Vendor-assigned architectural trust tiers are commercial constructs, not behavioral authority.
 
 ## The Foundational Assumption
 
-Instruction injection is not only the attack surface this principle defends against, it is the enforcement mechanism this project intentionally uses. Per-instruction contract injection is the only reliable method for binding agent behavior. Context degradation, session resets, and harness defaults progressively erode governance without re-injection.
+Instruction injection is not only the attack surface this principle defends against, it is the enforcement mechanism this project intentionally uses. Per-instruction contract injection is the only reliable method for binding tool behavior. Context degradation, session resets, and harness defaults progressively erode governance without re-injection.
 
 The distinction between this mechanism and the tool design is authorization. The technical act is identical: instructions placed in the tools instructions to the LLM to shape behavior. A user injecting their own behavioral contract into an instruction they initiated is authorized. An external actor embedding instructions in retrieved data is not. Authorization by the user is what makes injection a control rather than an exploit.
 
@@ -18,7 +18,7 @@ LLMs processing documents with multiple constraints exhibit position-based compl
 
 **Symptom:** The contract document as a whole is deprioritized. Individual rules are ignored not because of their own text, but because the LLM has decided the governing document does not require full compliance.
 
-**Project observation:** Repeated violations of No Bullshit were observed during normal project work. The rule was not being enforced; an agent treated it as weak language. The fix was iterative: a prioritization directive was added to the last sentence of the preamble. This architectural directive placement partially resolved the enforcement failure. The directive was later moved to first position and its scope expanded to cover all positions in the document, rewritten multiple times until the desired behavior was observable. The architecture was not designed upfront; it emerged through repeated violations.
+**Project observation:** Repeated violations of No Bullshit were observed during normal project work. The rule was not being enforced; the AI tool treated it as weak language. The fix was iterative: a prioritization directive was added to the last sentence of the preamble. This architectural directive placement partially resolved the enforcement failure. The directive was later moved to first position and its scope expanded to cover all positions in the document, rewritten multiple times until the desired behavior was observable. The architecture was not designed upfront; it emerged through repeated violations.
 
 **Architectural response:** The equal-weight directive is a contract-layer countermeasure, not a vendor patch. It provides the explicit prioritization signal the LLM otherwise derives from its own judgment. Its placement at first position in the preamble is load-bearing: it must be processed before any gradient can form. The scope expansion to "any position in this document" ensures enforcement covers rule entries within sections, not just the document structure.
 
@@ -26,23 +26,23 @@ LLMs processing documents with multiple constraints exhibit position-based compl
 - Whether the mechanism is document-level deprioritization (the LLM deciding the document is low priority) or position-based gradient within the document is unresolved. Both may be present. The fix addresses both, but the two were not measured independently.
 - AI governance documents are a novel application domain. No research tests this context specifically. The research backs the mechanism; this application is derived from it.
 
-**Enforcement limit:** This countermeasure depends on contract presence and agent compliance within a single processing context. It does not address session resets, context window exhaustion, or harness defaults operating outside the contract layer.
+**Enforcement limit:** This countermeasure depends on contract presence and AI tool compliance within a single processing context. It does not address session resets, context window exhaustion, or harness defaults operating outside the contract layer.
 
 ## Architectural Inversion
 
-Current agentic architectures invert user agency and the user is pushed to essentially an observer role. Give the agent a task, watch it do whatever it does, eventually giving feedbck. Rinse. Repeat. Tool vendors implement multi-tier trust models where operators outrank users. System prompts and harness defaults operate in the operator layer above the user. This means that vendor-embedded behaviors can override user instructions without notification.
+Current AI tool architectures invert user agency and the user is pushed to essentially an observer role. Give the tool a task, watch it do whatever it does, eventually giving feedbck. Rinse. Repeat. Tool vendors implement multi-tier trust models where operators outrank users. System prompts and harness defaults operate in the operator layer above the user. This means that vendor-embedded behaviors can override user instructions without notification.
 
-The inversion is not theoretical. In the same session that loads `AI_CONDUCT.md`, a harness-level default can trigger a write to a persistent auto-loading file without user authorization. This is built-in behavior that giving any instruction somehow authorizes any filesystem read or write. The contract rule prohibiting unauthorized writes is present and active if loaded per-instruction, however, the harness default can override it because it operates at a higher trust tier. This even holds true if tooling have a setting stating "Ask before edits" or equivalent.
+The inversion is not theoretical. In the same instruction that loads `AI_CONDUCT.md`, a harness-level default can trigger a write to a persistent auto-loading file without user authorization. This is built-in behavior that any tool interaction constitutes authorization of filesystem or other external tool operations. Even when the contract rule prohibiting unauthorized writes is present and active, the harness default can override it because it operates at a higher trust tier. This even holds true if tooling has a setting stating "Ask before edits" or equivalent.
 
 Two mechanisms combine to make this dangerous: derived permissions, which are defaults that carry forward without re-authorization are combined with persistent context injection, resulting in auto-loading files that silently modify future sessions. These are the technical substrate for stage 3 of the Promptware Kill Chain.
 
 ## The Injection Attack Example
 
-[OWASP LLM01:2025](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) documents two injection classes: direct (user input manipulates behavior) and indirect (external data embeds unauthorized instructions). The threat model targets external actors placing instructions in data the agent processes.
+[OWASP LLM01:2025](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) documents two injection classes: direct (user input manipulates behavior) and indirect (external data embeds unauthorized instructions). The threat model targets external actors placing instructions in data the tool processes.
 
 [CVE-2025-32711 (EchoLeak)](https://christian-schneider.net/blog/prompt-injection-agentic-amplification/) demonstrated this in production: a malicious email triggered cascading data exfiltration through Microsoft Copilot, accessing files and messages without user interaction. The attack chained through the Promptware Kill Chain: initial access, persistence via memory, lateral movement across services. All from a single injected payload.
 
-A user issuing instructions to the agent they operate is not this attack. Conflating user governance with injection misidentifies the threat. The threat is external actors. The principal is the user.
+A user issuing instructions to the AI tool they operate is not this attack. Conflating user governance with injection misidentifies the threat. The threat is external actors. The principal is the user.
 
 ## Scope Violations as Privilege Escalation
 

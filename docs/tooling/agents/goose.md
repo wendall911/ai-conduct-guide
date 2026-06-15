@@ -2,7 +2,7 @@
 
 ## Tool Overview
 
-Goose is an open-source AI agent (desktop, CLI, and API) under the Agentic AI Foundation at the Linux Foundation. It supports 15+ AI providers and 70+ extensions via the Model Context Protocol.
+Goose is an open-source AI tool (desktop, CLI, and API) under the Agentic AI Foundation at the Linux Foundation. It supports 15+ AI providers and 70+ extensions via the Model Context Protocol.
 
 ## Notes
 

@@ -25,7 +25,7 @@ The `## Enforcement Rules` section header and its introductory block.
 Two sections: the contract principle `## Violations` and the enforcement rule
 `## Violations`.
 
-**Purpose:** Failure-capture mechanism. These sections govern agent behavior at the point of a contract failure. Their design stops further action, prevents the agent from continuing past the failure, and preserves enough state for the maintainer to diagnose what happened. They are a debugging protocol, not behavioral compliance rules. Editing them as if they were compliance rules will replace their purpose with a different one.
+**Purpose:** Failure-capture mechanism. These sections govern tool behavior at the point of a contract failure. Their design stops further action, prevents the tool from continuing past the failure, and preserves enough state for the maintainer to diagnose what happened. They are a debugging protocol, not behavioral compliance rules. Editing them as if they were compliance rules will replace their purpose with a different one.
 
 ### Acknowledgment Block
 
@@ -51,7 +51,7 @@ Placement in the metadata section (after the version comment) is load-bearing. M
 
 The repository identity file. Loaded alongside `AI_CONDUCT.md` at session start.
 
-**Purpose:** Agents do not read repository README files before acting.  Repository identity, scope, and structure are not derived from ambient context — they are guessed without explicit injection. This file corrects that. In multi-repository environments, any repository boundary without this file is a boundary where the agent's working model resets to a guess.
+**Purpose:** AI tools do not read repository README files before acting.  Repository identity, scope, and structure are not derived from ambient context — they are guessed without explicit injection. This file corrects that. In multi-repository environments, any repository boundary without this file is a boundary where the tool's working model resets to a guess.
 
 This file is not a task instruction store. It records what the repository is.
 
@@ -69,12 +69,12 @@ The enforcement rule sections are not a 1:1 mapping with contract principles. Wh
 
 Two sections: the contract principle `## User Agency` and the enforcement rule `## User Agency`.
 
-**Purpose:** The principle adds mechanism-independence to the authority model in Authority: authorization is determined by source, not by the path through which an instruction entered the agent's context window. The two sections address different dimensions of the same authority model and are not
+**Purpose:** The principle adds mechanism-independence to the authority model in Authority: authorization is determined by source, not by the path through which an instruction entered the tool's context window. The two sections address different dimensions of the same authority model and are not
 redundant.
 
 The enforcement rule closes the session-context authorization bypass. Prior session context can accumulate injected instructions or claimed authorizations from earlier exchanges and is not a substitute for explicit instruction in the current exchange. Session context is the persistence vector in the injection attack chain; without explicit rule-level closure it is an authorization bypass path.
 
-The Cleanup enforcement bullet (`Dry-run preview before any cleanup operation.`) is placed in this section because it implements the same authorization model: a dry-run preview forces scope disclosure before authorization applies, converting a general instruction into a specific enumerated action that the user can then explicitly authorize. Without the preview, the agent determines scope autonomously — making the authorization general rather than specific. The placement is not incidental; the Cleanup rule is a User Agency enforcement mechanism for a specific high-risk operation class.
+The Cleanup enforcement bullet (`Dry-run preview before any cleanup operation.`) is placed in this section because it implements the same authorization model: a dry-run preview forces scope disclosure before authorization applies, converting a general instruction into a specific enumerated action that the user can then explicitly authorize. Without the preview, the tool determines scope autonomously — making the authorization general rather than specific. The placement is not incidental; the Cleanup rule is a User Agency enforcement mechanism for a specific high-risk operation class.
 
 ### Rule-Level Equal-Weight Directive
 

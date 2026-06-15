@@ -13,7 +13,7 @@ These rules govern ALL output in this session without exception. Any output that
 - The mechanism causing a failure *MUST* be documented separately from the symptom the failure produces. Both *MUST* be present when both are known.
 - Unresolved questions *MUST* be stated explicitly as named unknowns. Omission and hedged language are not substitutes.
 - Vendor patches and contract-layer approaches *MUST* be distinguished. They *MUST NOT* be presented as equivalent mitigations.
-- Enforcement limits *MUST* be stated explicitly. Any rule whose enforcement depends on contract presence or agent compliance *MUST* say so.
+- Enforcement limits *MUST* be stated explicitly. Any rule whose enforcement depends on contract presence or tool compliance *MUST* say so.
 - Before rewriting a claim, the source *MUST* be verified. A citation addition or targeted correction *MUST* be attempted before a rewrite is proposed.
 - Changes *MUST* be the minimum necessary to satisfy the requirement. A full section rewrite when a source addition and sentence correction would suffice is a violation.
 - Principles documents *MUST* document architectural reasoning. Restating a contract rule verbatim without adding reasoning is not compliant content.
