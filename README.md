@@ -10,7 +10,7 @@ This works by adding a per-instruction injection of `AI_CONDUCT.md` through a `/
 
 ## The Problem
 
-Current AI tools operate contrary to many user's expectations. Users who understand best-practices expect to be in charge of their tools; AI tools are designed to remove the user from the equation so they are "useful". This amplifies existing models of operation where these tools operate under the permissions of the system user without restriction, leading to unexpected and unauthorized access to private data and unauthorized writes. These problems aren't bugs; they are designed features of the automated tools. There is no way to keep users from using these tools, even if project policies exist that disallow it.
+Current AI tools operate contrary to many users' expectations. Users who understand best-practices expect to be in charge of their tools; AI tools are designed to remove the user from the equation so they are "useful". This amplifies existing models of operation where these tools operate under the permissions of the system user without restriction, leading to unexpected and unauthorized access to private data and unauthorized writes. These problems aren't bugs; they are designed features of the automated tools. There is no way to keep users from using these tools, even if project policies exist that disallow it.
 
 Users who do not understand best practices are especially vulnerable to this "useful" or "helpful" framing the tools present. When the tool confidently frames incorrect answers, the user has no way of knowing that it isn't true, and will blindly allow the tool to generate the wrong solution, never learning why it is wrong.
 
@@ -24,10 +24,10 @@ This is not a capability limitation that improves with model versions. It is a s
 
 ## How to Adopt
 
-This repository contains both documentation and a usable drop-in contract for use with current tooling. Projects adopt it by dropping `AI_CONDUCT.md` into their repository as a directive for AI tools that may be used within the project. Individual tools need to be configured to require the use of `AI_CONDUCT.md`. Specific instructions can be found in [tooling](./tooling).
+This repository contains both documentation and a usable drop-in contract for use with current tooling. Projects adopt it by dropping `AI_CONDUCT.md` into their repository as a directive for AI tools that may be used within the project. Individual tools need to be configured to require the use of `AI_CONDUCT.md`. Specific instructions can be found in [tooling](./docs/tooling/).
 
 1. First copy `AI_CONDUCT.md` into your repository
-1. Second, prepare any tooling so it will inject `AI_CONDUCT.md` at the start of each instruction, using the `/tape` mechanism. See [ADOPTING.md](./ADOPTING.md) for instructions.
+1. Second, prepare any tooling so it will inject `AI_CONDUCT.md` with each instruction, using the `/tape` mechanism. See [ADOPTING.md](./ADOPTING.md) for instructions.
 
 ## What Can I Expect?
 
@@ -42,7 +42,9 @@ This project is not a "Silver Bullet" or AI-hype. The expected outcome:
 
 ## Evidence Base
 
-The [principles](./principles/) are an attempt to document the rationale for the contract clauses and rules in `AI_CONDUCT.md`. Architecture and design philosophy are captured and sources cited whenever possible.
+The [principles](./principles/README.md) are living documentation for the contract clauses and rules in `AI_CONDUCT.md`. Architecture and design philosophy are captured and sources cited whenever possible.
+
+Documentation and reference material for `AI_CONDUCT.md` usage is generally captured in [/docs](./docs/). [Context engineering](./docs/CONTEXT_ENGINEERING.md) is specifically documented, including a "[cheat sheet](./docs/CONTEXT_ENGINEERING_CHEATSHEET.md)" for everyday usage guidance.
 
 ## Contributing
 
