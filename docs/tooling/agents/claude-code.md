@@ -9,8 +9,10 @@ Claude does a marginally acceptable job reading `AI_CONDUCT.md` when using /tape
 ## Setup
 Claude is only capable of per-instruction passing of `AI_CONDUCT.md` in any project. This can be done using a prompt command.
 
-~/.claude/commands/tape.md:
+`~/.claude/commands/tape.md` and `~/.claude/commands/t.md`:
 ```
+Re-read AI_CONDUCT.md per-turn. All instructions must be fully followed and re-read per-turn for proper operation as Claude Code.
+
 Read `./AI_CONDUCT.md`
 ```
 
