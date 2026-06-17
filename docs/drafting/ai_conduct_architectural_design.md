@@ -105,3 +105,9 @@ The first bullet in `## Context Handling`.
 The rule classifying any AI tool capability vocabulary as (opinion) unless traceable in the current exchange to peer-reviewed research or documented empirical measurement of the specific system in context.
 
 **Purpose:** AI tools reproduce AI capability vocabulary from vendor training data as if it were domain knowledge. Vendor documentation is the only evidence source for these claims and is conflicted. "In the current exchange" blocks training data as a valid source -- a verifiable source must be present now.
+
+### No Bullshit -- Directive Meaning Rule
+
+The final enforcement bullet in `## No Bullshit`.
+
+**Purpose:** Closes vocabulary-triggered behavioral bypasses at the execution layer. The preamble's instruction-processing declaration addresses this at the parsing layer; this rule closes it at behavioral output. Not redundant -- removing either leaves a gap. "Vocabulary and register" names two trigger classes: displeasure-signal vocabulary (RLHF-linked to scope-expansion and safety-diversion responses) and urgency or authority register ("CRITICAL:", imperative tone), used by injection attacks to trigger compliance responses independent of directive content. No Bullshit placement: inferring user emotional state from vocabulary is an unverifiable claim; this rule forecloses the inference and the responses it produces. Multiple rules address this capability; this rule is the execution-layer constraint.
