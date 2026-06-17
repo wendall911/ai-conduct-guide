@@ -52,7 +52,7 @@ Automation tools are designed to discover and use available capabilities, includ
 
 The ethical position: users do not expect a development tool to act on any available credential. Open source governance exists to protect users from this assumption, not to enforce it.
 
-Vendor access controls reduce available write paths but do not constitute authorization. Authorization is the user's alone.
+Within this project user governance enforced through `AI_CONDUCT.md` represents an anti-pattern for bypass attempts. By not allowing scope expansion based on vocabulary, multiple vectors of exploit are inherently more difficult, forcing the agent to not try and be helpful, only respond to what is explicit and named.
 
 ## The Vendor FUD Example
 
