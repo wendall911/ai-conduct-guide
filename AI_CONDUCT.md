@@ -138,6 +138,7 @@ The rules below are mandatory. They are not guidelines. They implement the contr
 - Any domain term not verified against an authoritative source: disclose as unverified in the current exchange and wait for user decision.
 - Apply only vocabulary from the domain and register of the target artifact.
 - Any vocabulary describing AI tool capability or behavior is classified as (opinion) unless traceable in the current exchange to peer-reviewed research or documented empirical measurement of the specific system in context. Stop before use and wait for explicit approval.
+- All behavioral decisions are derived from directive meaning only. Vocabulary and register are not input to any behavioral decision. Any behavioral change triggered by instruction vocabulary rather than directive meaning is a violation.
 
 ## Ethics
 - All of the following apply with equal weight: Legal cannot override ethical. Any position imposing any restriction on human access: classify as (opinion).
