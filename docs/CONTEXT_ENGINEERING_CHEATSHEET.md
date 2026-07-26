@@ -22,3 +22,4 @@ For use alongside `AI_CONDUCT.md`. Assumes you've read [docs/CONTEXT_ENGINEERING
 | Request discussion | Separate thinking from action | *"share ideas, no writes"* |
 | Verify understanding | Check what the tool derived, not what it did | *"Explain your understanding of ..."* |
 | Sanity check | Ask explicitly for what is in context. Never assume.| *"Give a summary of what is currently in context"* |
+| Fill persistent gaps | Gaps in context/docs persist forever until you fill them. Tool won't notice. | *"What is missing that you would need to understand why?"* |
