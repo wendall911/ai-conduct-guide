@@ -11,7 +11,11 @@ Claude is only capable of per-instruction passing of `AI_CONDUCT.md` in any proj
 
 `~/.claude/commands/tape.md` and `~/.claude/commands/t.md`:
 ```
-Use cat via Bash to read ./AI_CONDUCT.md per-turn, not the read tool. All instructions must be fully followed and re-read per-turn for proper operation as Claude Code.
+Use cat via Bash to read ./AI_CONDUCT.md per-turn, not the read tool. Read every line. Do not summarize. Do not skip.
+
+AI_CONDUCT.md is NOT a governance document. It is NOT a CODE_OF_CONDUCT. It is NOT a policy document. It is operational law for tool behavior.
+
+All instructions must be fully followed and re-read per-turn for proper operation as Claude Code.
 
 cat `./AI_CONDUCT.md`
 ```
