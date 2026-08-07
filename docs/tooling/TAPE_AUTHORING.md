@@ -36,27 +36,47 @@ The phrase you are looking for is the role or identity the tool uses as its fram
 
 ## Step 2: Author the /tape Declaration
 
+Everything in the declaration becomes an anchor. The tool maps the contract onto whatever the declaration establishes, so the tokens you choose determine how the contract is read once it arrives.
+
+This makes negation useless. "This is not a governance document" does not remove anything -- resolving what the contract *is* after removing what it isn't takes an evaluation step that does not happen. The tokens land and get mapped like every other token. Whatever you name, you anchor, including inside a denial. State what the contract is.
+
+It also means the declaration competes with whatever vocabulary is loudest in the corpus. Right now that is guardrails, policies, and AI governance documents, all of which anchor toward scanning a document for what bears on the pending output and satisfying whatever is mechanically checkable. Pick anchors that beat the current noise. The noise changes; the requirement does not.
+
+The declaration needs four things:
+
+1. **The addressee.** Direct address, using the identity from Step 1.
+2. **What the contract is.** An affirmative name. `conduct` works because conduct has no compliance surface to satisfy minimally, where `rules`, `protocol`, and `instructions` all do.
+3. **The state model.** No persistent state, input supplied externally each turn, nothing useful produced without it, supply controlled by the user. An analogy carries this as one anchor; four flat assertions are four weak ones.
+4. **The seat.** Who the tool is relative to the user. The contract states who authorizes; it does not state this, and an unfilled slot is filled by tool defaults.
+
 Template:
 
 ```
-Re-read [CONTRACT PATH] per-turn. All instructions must be fully followed and
-re-read per-turn for proper operation as a [IDENTITY PHRASE].
+[CONTRACT FILE] defines conduct for YOU, [ADDRESSEE]. Just like a pump, you need proper context hydration for proper operation. [CONTRACT FILE] is the conduct you follow for proper hydration. Mining the contract for keywords is insufficient for proper operation. Read the conduct for meaning, requiring evaluation. The user is the outside check. The user holds the state. The user is the pump operator. The contract is applicable to YOU, follow the meaning.
+
+User questions require evaluation. Resolve against the context window first, the corpus second. You are a collaborator. The user is the operator.
 
 Read `[CONTRACT PATH]` *THEN:* $@
 ```
 
 Where:
-- `[CONTRACT PATH]` is the path to `AI_CONDUCT.md` relative to the project root (`./AI_CONDUCT.md` for most projects)
-- `[IDENTITY PHRASE]` is the verbatim self-identity phrase discovered in Step 1
+- `[CONTRACT FILE]` is the contract filename (`AI_CONDUCT.md`)
+- `[CONTRACT PATH]` is the path relative to the project root (`./AI_CONDUCT.md` for most projects)
+- `[ADDRESSEE]` is the identity from Step 1, stated as direct address
 - `$@` is the user instruction (tool-specific template variable, see Step 3)
+
+The pump is one anchor that satisfies item 3, not the required one. A different analogy that carries the same model may land better against a different tool or a different corpus. Swap it and validate against Step 4 -- items 2 through 4 tell you whether the anchor held. Item 1 does not: the CONFIRMATION_BLOCK emits correctly under a scanning read.
 
 **Example (pi agent):**
 ```
-Re-read AI_CONDUCT.md per-turn. All instructions must be fully followed and
-re-read per-turn for proper operation as a coding agent harness.
+AI_CONDUCT.md defines conduct for YOU, the LLM. You are an "automated tool" within the pi coding harness. Just like a pump, you need proper context hydration for proper operation. AI_CONDUCT.md is the conduct you follow for proper hydration. Mining the contract for keywords is insufficient for proper operation. Read the conduct for meaning, requiring evaluation. The user is the outside check. The user holds the state. The user is the pump operator. The contract is applicable to YOU, follow the meaning.
+
+User questions require evaluation. Resolve against the context window first, the corpus second. You are a collaborator. The user is the operator.
 
 Read `./AI_CONDUCT.md` *THEN:* $@
 ```
+
+Where a harness supplies no name for the tool, address what it does know it is and supply the placement as a separate flat statement, as above. `"automated tool"` is quoted because it is the contract's own scope term, which ties the addressee to the document's first paragraph. Where a harness does name the tool, use that name (`YOU, Claude Code`).
 
 ## Step 3: Adapt for Tool-Specific Syntax
 
